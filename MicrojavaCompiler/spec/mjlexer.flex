@@ -76,10 +76,9 @@ import java_cup.runtime.Symbol;
 "{"				{ return new_symbol(sym.LBRACE, yytext()); }
 "}"				{ return new_symbol(sym.RBRACE, yytext()); }
 
-"true"			{ return new_symbol(sym.BOOL, new Boolean(yytext())); }
-"false"			{ return new_symbol(sym.BOOL, new Boolean(yytext())); }
+"true" | "false" { return new_symbol(sym.BOOL, new Boolean(yytext())); }
 [0-9]+			{ return new_symbol(sym.NUMBER, new Integer(yytext())); }
-\'([a-z]|[A-Z])\'	{ return new_symbol(sym.CHAR, yytext()); }
+"'"[\040-\176]"'" {return new_symbol (sym.CHAR, new Character (yytext().charAt(1)));}
 \"([^\\\"]|\\.)*\"		{ return new_symbol(sym.STRING, new String(yytext())); }
 
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]*	{ return new_symbol(sym.IDENT, yytext()); }
@@ -88,4 +87,4 @@ import java_cup.runtime.Symbol;
 <COMMENT> . 	{ yybegin(COMMENT); }
 <COMMENT>"\r\n" { yybegin(YYINITIAL); }
 
-. { System.err.println("Leksicka greska (" + yytext() + ") u liniji " + (yyline + 1) + ", koloni " + (yycolumn + 1)); }
+. { System.err.println("Lexical error (" + yytext() + ") at row " + (yyline + 1) + ", column " + (yycolumn + 1)); }

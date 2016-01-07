@@ -29,3 +29,8 @@ program Prilepi
 		novi = veci*step + manji;
 	}
 }
+
+// glob promenljive = 7
+// lok promenljive = 0
+// glob konst = 1
+// glob nizovi = 0

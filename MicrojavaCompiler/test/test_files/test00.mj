@@ -1,0 +1,8 @@
+program MJProgram
+	int x, y;
+	bool flag;
+{
+	void main() int a; {
+		flag = true;
+	}
+}

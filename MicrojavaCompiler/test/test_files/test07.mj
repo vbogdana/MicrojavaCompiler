@@ -99,3 +99,8 @@ program Geometrija
 		}
 		
 	}
+	
+// glob promenljive = 2
+// lok promenljive = 0
+// glob konst = 1
+// glob nizovi = 1

@@ -1,0 +1,205 @@
+package compiler;
+
+import java_cup.runtime.*;
+//import java.io.*;
+import org.apache.log4j.*;
+
+parser code {:
+
+	boolean inClass = false,
+			inMain = false,
+			method = false;
+	
+	// nivo A
+	int globalVarCnt = 0,			//	definicije glob prom
+		localVarCnt = 0,			//	definicije lokalnih prom u mainu
+		globalConstCnt = 0,			//	definicije glob konstanti
+		globalArrayCnt = 0;			// 	deklaracije glob nizova
+		
+	// nivo B
+	int functionCnt = 0,			// definicije funkcija u glavnom programu
+		blockCnt = 0,				//	blokovi naredbi
+		callCnt = 0,				//	pozivi funkcija u main metodi
+		formParCnt = 0;				//	deklaracije form argumenata funkcija
+		
+	// nivo C
+	int nestedClassCnt = 0,			//	definicije unutr klasa
+		nestedClassMethodCnt = 0,	//	definicije metoda unutr klasa
+		nestedClassAttrCnt = 0;		//	deklaracije polja unutr klasa
+	
+	Logger log = Logger.getLogger(getClass()); 
+   
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+    
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatal syntax error - ", cur_token);
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("Syntax error", cur_token);
+    }
+    
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol)
+            msg.append (" at row ").append(((Symbol)info).left);
+        log.error(msg.toString());
+    }
+:}
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+/* Keywords */
+terminal PROGRAM, BREAK, CLASS, ELSE, CONST, IF, NEW, PRINT, READ, RETURN, VOID, WHILE, EXTENDS ;
+	
+/* Identifiers */
+terminal String IDENT ;
+	
+/* Constants */
+terminal Integer NUMBER ;
+terminal Character CHAR ;
+terminal Boolean BOOL ;
+terminal String STRING ;
+	
+/* Operators */
+terminal PLUS, MINUS, MUL, DIV, MOD, EQ, NEQ, GRE, GREQ, LESS, LEQ, AND, OR, EQUALS, INC, DEC, SEMI_COMMA, COMMA, STOP, 
+		 LPAREN, RPAREN, LBRACKET, RBRACKET, LBRACE, RBRACE ;
+
+/* End of file */	
+
+/* Non terminals */
+non terminal Program, Lists, List ;
+non terminal ConstDeclList, ConstDecl, ConstList, Constant, ConstType, Type ;
+non terminal VarDeclList, VarDecl, VarList, Variable, BracketsOpt, Brackets ;
+non terminal ClassDeclList, ClassDecl, ExtendsOpt, Extends, MethodsOpt, Methods ;
+non terminal MethodDeclList, MethodDecl, ReturnType, FormParsOpt, FormPars, FormPar, StatementList, Statement ;
+non terminal Matched, Unmatched ;
+non terminal ExprStatement, IfStatement, MatchedWhileStatement, UnmatchedWhileStatement, BreakStatement, ReturnStatement, ReadStatement, PrintStatement, Statements ;
+non terminal Designator, DesignatorList, DesignatorDecl, AAA, ActParsOpt, ActPars, Expr, MinusOpt, AddopTermList, AddopTerm ;
+non terminal Condition, CondTerm, CondFact, RelopExprOpt, RelopExpr, ElseStatementOpt, ElseStatement ;
+non terminal ExprOpt, NumberOpt ;
+non terminal Term, MulopFactorList, MulopFactor, Factor, BracketsExprOpt, ParenActParsOpt ;
+non terminal Relop, Addop, Mulop ;
+
+
+Program ::= PROGRAM IDENT Lists LBRACE MethodDeclList RBRACE ;
+Lists ::= Lists List | /* epsilon */ ;
+List ::= ConstDecl | VarDecl | ClassDecl ;
+
+ConstDeclList ::= ConstDeclList ConstDecl | /* epsilon */ ;
+VarDeclList ::= VarDeclList VarDecl | /* epsilon */ ;
+ClassDeclList ::= ClassDeclList ClassDecl | /* epsilon */ ;
+MethodDeclList ::= MethodDeclList MethodDecl | /* epsilon */ ;
+
+ConstDecl ::= CONST Type Constant ConstList SEMI_COMMA ;
+ConstList ::= ConstList COMMA Constant | Constant | /* epsilon */ ;
+Constant ::= IDENT EQUALS ConstType 
+			 {: parser.globalConstCnt++; :} ;
+ConstType ::= NUMBER | CHAR | BOOL | STRING ;
+Type ::= IDENT ;
+
+VarDecl ::= Type Variable VarList SEMI_COMMA ;
+VarList ::= VarList COMMA Variable | Variable | /* epsilon */ ;
+Variable ::= IDENT BracketsOpt ;
+BracketsOpt ::= Brackets | /* epsilon */  
+				{: if (parser.inMain) parser.localVarCnt++;
+				   else if (!parser.method && !parser.inClass) parser.globalVarCnt++; 
+				:} ;
+Brackets ::= LBRACKET RBRACKET 
+			 {: if (parser.inMain) parser.localVarCnt++;
+			 	else if (!parser.method && !parser.inClass) parser.globalArrayCnt++; 
+			 :} ;
+
+ClassDecl ::= CLASS 
+			  {: parser.inClass = true; :} 
+			  IDENT ExtendsOpt LBRACE VarDeclList MethodsOpt RBRACE 
+			  {: parser.inClass = false; :} ;
+ExtendsOpt ::= Extends | /* epsilon */ ;
+Extends ::= EXTENDS Type ;
+MethodsOpt ::= Methods | /* epsilon */ ;
+Methods ::= LBRACE MethodDeclList RBRACE ;
+
+MethodDecl ::= ReturnType IDENT:m LPAREN 
+			   {: parser.method = true; 
+			   	  if (!parser.inClass && m.equals("main")) parser.inMain = true; 
+			   :} 
+			   FormParsOpt RPAREN VarDeclList LBRACE StatementList RBRACE 
+			   {: parser.method = false; 
+			   	  if (parser.inMain) parser.inMain = false;
+			   :} ;
+ReturnType ::= Type | VOID ;
+FormParsOpt ::= FormPars | /* epsilon */ ;
+FormPars ::= FormPars COMMA FormPar | FormPar ;
+FormPar ::= Type IDENT BracketsOpt ;
+StatementList ::= StatementList Statement | /* epsilon */ ;
+
+Statement ::= Matched | Unmatched ;
+Unmatched ::= IF LPAREN Condition RPAREN Statement
+			  | IF LPAREN Condition RPAREN Matched ELSE Unmatched
+			  | UnmatchedWhileStatement ;
+Matched ::= ExprStatement
+			| IF LPAREN Condition RPAREN Matched ELSE Matched
+			| MatchedWhileStatement
+			| BreakStatement
+			| ReturnStatement
+			| ReadStatement
+			| PrintStatement 
+			| LBRACE StatementList RBRACE ;
+			
+ExprStatement ::= Designator AAA SEMI_COMMA ;
+Designator ::= IDENT DesignatorList ;
+DesignatorList ::= DesignatorList DesignatorDecl | /* epsilon */ ;
+DesignatorDecl ::= STOP IDENT | LBRACKET Expr RBRACKET ;
+AAA ::= EQUALS Expr | LPAREN ActParsOpt RPAREN | INC | DEC ;
+ActParsOpt ::= ActPars | /* epsilon */ ;
+ActPars ::= ActPars COMMA Expr | Expr ;
+Expr ::= MinusOpt Term AddopTermList ;
+MinusOpt ::= MINUS | /* epsilon */ ;
+AddopTermList ::= AddopTermList AddopTerm | /* epsilon */ ;
+AddopTerm ::= Addop Term ;
+
+Condition ::= Condition OR CondTerm | CondTerm ;
+CondTerm ::= CondTerm AND CondFact | CondFact ;
+CondFact ::= Expr RelopExprOpt ;
+RelopExprOpt ::= RelopExpr | /* epsilon */ ;
+RelopExpr ::= Relop Expr ;
+ 
+MatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Matched ;
+UnmatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Unmatched ;
+
+BreakStatement ::= BREAK SEMI_COMMA ;
+
+ReturnStatement ::= RETURN ExprOpt SEMI_COMMA ;
+ExprOpt ::= Expr | /* epsilon */ ;
+
+ReadStatement ::= READ LPAREN Designator RPAREN SEMI_COMMA ;
+
+PrintStatement ::= PRINT LPAREN Expr NumberOpt RPAREN SEMI_COMMA ;
+NumberOpt ::= COMMA NUMBER | /* epsilon */ ;
+
+Term ::= Factor MulopFactorList ;
+MulopFactorList ::= MulopFactorList MulopFactor | /* epsilon */ ;
+MulopFactor ::= Mulop Factor ;
+Factor ::= Designator ParenActParsOpt
+		 | NUMBER
+		 | CHAR
+		 | STRING
+		 | BOOL
+		 | NEW Type BracketsExprOpt
+		 | LPAREN Expr RPAREN ;
+BracketsExprOpt ::= LBRACKET Expr RBRACKET | /* epsilon */ ;
+ParenActParsOpt ::= LPAREN ActParsOpt RPAREN | /*epsilon */ ;
+
+Relop ::= EQ | NEQ | GRE | GREQ | LESS | LEQ ;
+Addop ::= PLUS | MINUS ;
+Mulop ::= MUL | DIV | MOD ;

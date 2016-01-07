@@ -21,3 +21,8 @@ program MaxCifra
 		print(max);              //semanticka, isto
 	}
 }
+
+// glob promenljive = 5 ? 4
+// lok promenljive = 2 ? 1
+// glob konst = 1 ? 0
+// glob nizovi = 0

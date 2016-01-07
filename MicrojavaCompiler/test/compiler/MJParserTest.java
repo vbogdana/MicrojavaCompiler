@@ -2,6 +2,7 @@ package compiler;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -13,15 +14,16 @@ import org.apache.log4j.xml.DOMConfigurator;
 
 import compiler.util.Log4JUtils;
 
-public class MJTest {
-
+public class MJParserTest {
+	
 	static {
 		DOMConfigurator.configure(Log4JUtils.instance().findLoggerConfigFile());
 		Log4JUtils.instance().prepareLogFile(Logger.getRootLogger());
 	}
 	
-	public static void main(String[] args) throws IOException {
-		Logger log = Logger.getLogger(MJTest.class);
+	public static void main(String[] args) throws Exception {
+		
+		Logger log = Logger.getLogger(MJParserTest.class);
 		Reader br = null;
 		
 		try {
@@ -33,21 +35,24 @@ public class MJTest {
 					sourceCode = new File("test/test_files/test10.mj");
 				
 				log.info("Compiling source file: " + sourceCode.getAbsolutePath());
-
+			
 				br = new BufferedReader(new FileReader(sourceCode));
-
 				Yylex lexer = new Yylex(br);
-				Symbol currToken = null;
-				while ((currToken = lexer.next_token()).sym != sym.EOF) {
-					if (currToken != null)
-						log.info(currToken.toString() + " " + currToken.value.toString());
-				}
-
-				br.close();
-				// log = Logger.getLogger(MJTest.class);
+				
+				MJParser p = new MJParser(lexer);
+		        Symbol s = p.parse();  //pocetak parsiranja
+		        
+		        br.close();
+		        
+		        // nivo A
+		        log.info("Global variables = " + p.globalVarCnt);
+		        log.info("Local variables = " + p.localVarCnt);
+		        log.info("Global constants = " + p.globalConstCnt);
+		        log.info("Global arrays = " + p.globalArrayCnt);
 			}
-
-		} finally {
+	        
+		} 
+		finally {
 			if (br != null)
 				try {
 					br.close();
@@ -55,6 +60,8 @@ public class MJTest {
 					log.error(e1.getMessage(), e1);
 				}
 		}
-	}
 
+	}
+	
+	
 }

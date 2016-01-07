@@ -18,3 +18,8 @@ program test03
 	}
 	
 }
+
+// glob promenljive = 3
+// lok promenljive = 0
+// glob konst = 1
+// glob nizovi = 0

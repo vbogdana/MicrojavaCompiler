@@ -58,4 +58,9 @@ program test08
 		g.setAB('a',  5);        //semanticka, ne poklapa se tip prvog parametra
 		g.setAB( 5,  'b');       //semanticka, ne poklapa se tip drugog parametra
 	}
-}	
+}
+
+// glob promenljive = 1
+// lok promenljive = 0
+// glob konst = 0
+// glob nizovi = 0	
