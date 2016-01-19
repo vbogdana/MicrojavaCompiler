@@ -63,4 +63,13 @@ program test08
 // glob promenljive = 1
 // lok promenljive = 0
 // glob konst = 0
-// glob nizovi = 0	
+// glob nizovi = 0
+
+// def funkcija = 1
+// pozivi funkcija = 0
+// blokovi naredbi = 5
+// formalni parametri = 3
+
+// Classes = 3
+// Methods = 4
+// Class attributes = 8

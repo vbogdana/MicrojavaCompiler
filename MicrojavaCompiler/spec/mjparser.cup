@@ -8,7 +8,8 @@ parser code {:
 
 	boolean inClass = false,
 			inMain = false,
-			method = false;
+			method = false,
+			attrDef = false;
 	
 	// nivo A
 	int globalVarCnt = 0,			//	definicije glob prom
@@ -93,25 +94,27 @@ non terminal Relop, Addop, Mulop ;
 
 
 Program ::= PROGRAM IDENT Lists LBRACE MethodDeclList RBRACE ;
-Lists ::= Lists List | /* epsilon */ ;
+Lists ::= Lists List |    ;
 List ::= ConstDecl | VarDecl | ClassDecl ;
 
-ConstDeclList ::= ConstDeclList ConstDecl | /* epsilon */ ;
-VarDeclList ::= VarDeclList VarDecl | /* epsilon */ ;
-ClassDeclList ::= ClassDeclList ClassDecl | /* epsilon */ ;
-MethodDeclList ::= MethodDeclList MethodDecl | /* epsilon */ ;
+ConstDeclList ::= ConstDeclList ConstDecl |    ;
+VarDeclList ::= VarDeclList VarDecl |    ;
+ClassDeclList ::= ClassDeclList ClassDecl |    ;
+MethodDeclList ::= MethodDeclList MethodDecl |    ;
 
 ConstDecl ::= CONST Type Constant ConstList SEMI_COMMA ;
-ConstList ::= ConstList COMMA Constant | Constant | /* epsilon */ ;
+ConstList ::= ConstList COMMA Constant | Constant |    ;
 Constant ::= IDENT EQUALS ConstType 
 			 {: parser.globalConstCnt++; :} ;
 ConstType ::= NUMBER | CHAR | BOOL | STRING ;
 Type ::= IDENT ;
 
 VarDecl ::= Type Variable VarList SEMI_COMMA ;
-VarList ::= VarList COMMA Variable | Variable | /* epsilon */ ;
-Variable ::= IDENT BracketsOpt ;
-BracketsOpt ::= Brackets | /* epsilon */  
+VarList ::= VarList COMMA Variable | Variable |    ;
+Variable ::= IDENT BracketsOpt 
+			{: if (parser.inClass && parser.attrDef) parser.nestedClassAttrCnt++; :}
+			;
+BracketsOpt ::= Brackets |     
 				{: if (parser.inMain) parser.localVarCnt++;
 				   else if (!parser.method && !parser.inClass) parser.globalVarCnt++; 
 				:} ;
@@ -122,11 +125,19 @@ Brackets ::= LBRACKET RBRACKET
 
 ClassDecl ::= CLASS 
 			  {: parser.inClass = true; :} 
-			  IDENT ExtendsOpt LBRACE VarDeclList MethodsOpt RBRACE 
-			  {: parser.inClass = false; :} ;
-ExtendsOpt ::= Extends | /* epsilon */ ;
+			  IDENT ExtendsOpt LBRACE 
+			  {: parser.attrDef = true; :}
+			  VarDeclList 
+			  {: parser.attrDef = false; :}
+			  MethodsOpt RBRACE 
+			  {: 
+			  	parser.inClass = false; 
+			  	parser.nestedClassCnt++;
+			  :} 
+			  ;
+ExtendsOpt ::= Extends |    ;
 Extends ::= EXTENDS Type ;
-MethodsOpt ::= Methods | /* epsilon */ ;
+MethodsOpt ::= Methods |    ;
 Methods ::= LBRACE MethodDeclList RBRACE ;
 
 MethodDecl ::= ReturnType IDENT:m LPAREN 
@@ -134,14 +145,20 @@ MethodDecl ::= ReturnType IDENT:m LPAREN
 			   	  if (!parser.inClass && m.equals("main")) parser.inMain = true; 
 			   :} 
 			   FormParsOpt RPAREN VarDeclList LBRACE StatementList RBRACE 
-			   {: parser.method = false; 
+			   {: parser.method = false;
+			   	  parser.blockCnt++;
+			   	  // da li brojimo i main u funkcije
+			   	  if (!parser.inClass) parser.functionCnt++;
+			   	  else parser.nestedClassMethodCnt++;
 			   	  if (parser.inMain) parser.inMain = false;
 			   :} ;
 ReturnType ::= Type | VOID ;
-FormParsOpt ::= FormPars | /* epsilon */ ;
+FormParsOpt ::= FormPars |    ;
 FormPars ::= FormPars COMMA FormPar | FormPar ;
-FormPar ::= Type IDENT BracketsOpt ;
-StatementList ::= StatementList Statement | /* epsilon */ ;
+FormPar ::= Type IDENT BracketsOpt 
+			{: parser.formParCnt++; :}
+			;
+StatementList ::= StatementList Statement |    ;
 
 Statement ::= Matched | Unmatched ;
 Unmatched ::= IF LPAREN Condition RPAREN Statement
@@ -154,24 +171,33 @@ Matched ::= ExprStatement
 			| ReturnStatement
 			| ReadStatement
 			| PrintStatement 
-			| LBRACE StatementList RBRACE ;
+			| LBRACE StatementList RBRACE 
+			{: parser.blockCnt++; :}
+			;
 			
 ExprStatement ::= Designator AAA SEMI_COMMA ;
 Designator ::= IDENT DesignatorList ;
-DesignatorList ::= DesignatorList DesignatorDecl | /* epsilon */ ;
-DesignatorDecl ::= STOP IDENT | LBRACKET Expr RBRACKET ;
-AAA ::= EQUALS Expr | LPAREN ActParsOpt RPAREN | INC | DEC ;
-ActParsOpt ::= ActPars | /* epsilon */ ;
+DesignatorList ::= DesignatorList DesignatorDecl |    ;
+DesignatorDecl ::= STOP IDENT
+				   | LBRACKET Expr RBRACKET ;
+AAA ::= EQUALS Expr
+		| INC 
+		| DEC
+		| LPAREN ActParsOpt RPAREN 
+		{: if (parser.inMain) parser.callCnt++; :}
+		 ;
+ActParsOpt ::= ActPars |    ;
 ActPars ::= ActPars COMMA Expr | Expr ;
+
 Expr ::= MinusOpt Term AddopTermList ;
-MinusOpt ::= MINUS | /* epsilon */ ;
-AddopTermList ::= AddopTermList AddopTerm | /* epsilon */ ;
+MinusOpt ::= MINUS |    ;
+AddopTermList ::= AddopTermList AddopTerm |    ;
 AddopTerm ::= Addop Term ;
 
 Condition ::= Condition OR CondTerm | CondTerm ;
 CondTerm ::= CondTerm AND CondFact | CondFact ;
 CondFact ::= Expr RelopExprOpt ;
-RelopExprOpt ::= RelopExpr | /* epsilon */ ;
+RelopExprOpt ::= RelopExpr | ;
 RelopExpr ::= Relop Expr ;
  
 MatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Matched ;
@@ -180,15 +206,15 @@ UnmatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Unmatched ;
 BreakStatement ::= BREAK SEMI_COMMA ;
 
 ReturnStatement ::= RETURN ExprOpt SEMI_COMMA ;
-ExprOpt ::= Expr | /* epsilon */ ;
+ExprOpt ::= Expr |    ;
 
 ReadStatement ::= READ LPAREN Designator RPAREN SEMI_COMMA ;
 
 PrintStatement ::= PRINT LPAREN Expr NumberOpt RPAREN SEMI_COMMA ;
-NumberOpt ::= COMMA NUMBER | /* epsilon */ ;
+NumberOpt ::= COMMA NUMBER |    ;
 
 Term ::= Factor MulopFactorList ;
-MulopFactorList ::= MulopFactorList MulopFactor | /* epsilon */ ;
+MulopFactorList ::= MulopFactorList MulopFactor |    ;
 MulopFactor ::= Mulop Factor ;
 Factor ::= Designator ParenActParsOpt
 		 | NUMBER
@@ -196,9 +222,13 @@ Factor ::= Designator ParenActParsOpt
 		 | STRING
 		 | BOOL
 		 | NEW Type BracketsExprOpt
-		 | LPAREN Expr RPAREN ;
-BracketsExprOpt ::= LBRACKET Expr RBRACKET | /* epsilon */ ;
-ParenActParsOpt ::= LPAREN ActParsOpt RPAREN | /*epsilon */ ;
+		 | LPAREN Expr RPAREN 
+		 {: if (parser.inMain) parser.callCnt++; :}
+		 ;
+BracketsExprOpt ::= LBRACKET Expr RBRACKET |    ;
+ParenActParsOpt ::= LPAREN ActParsOpt RPAREN
+					{: if (parser.inMain) parser.callCnt++; :}
+					|   ;
 
 Relop ::= EQ | NEQ | GRE | GREQ | LESS | LEQ ;
 Addop ::= PLUS | MINUS ;

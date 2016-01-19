@@ -49,6 +49,17 @@ public class MJParserTest {
 		        log.info("Local variables = " + p.localVarCnt);
 		        log.info("Global constants = " + p.globalConstCnt);
 		        log.info("Global arrays = " + p.globalArrayCnt);
+		        
+		        // nivo B
+		        log.info("Global functions = " + p.functionCnt);
+		        log.info("Function calls = " + p.callCnt);
+		        log.info("Statement blocks = " + p.blockCnt);
+		        log.info("Formal parameters = " + p.formParCnt);
+		        
+		        // nivo C
+		        log.info("Classes = " + p.nestedClassCnt);
+		        log.info("Methods = " + p.nestedClassMethodCnt);
+		        log.info("Class attributes = " + p.nestedClassAttrCnt);
 			}
 	        
 		} 

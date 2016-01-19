@@ -118,3 +118,12 @@ void main() A a; B b;C c; int i,y,z; int x[];string str1,str2; bool bulin;
 // lok promenljive = 9 + 1 niz ?
 // glob konst = 3
 // glob nizovi = 0
+
+// def funkcija = 3
+// pozivi funkcija = 11 ?
+// blokovi naredbi = 6
+// formalni parametri = 4 
+
+// Classes = 4
+// Methods = 7
+// Class attributes = 8/9/10

@@ -83,3 +83,12 @@ class Delta{
 // lok promenljive = 5
 // glob konst = 0
 // glob nizovi = 0
+
+// def funkcija = 1
+// pozivi funkcija = 1
+// blokovi naredbi = 7
+// formalni parametri = 12
+
+// Classes = 4
+// Methods = 6
+// Class attributes = 6

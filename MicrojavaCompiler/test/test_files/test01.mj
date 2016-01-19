@@ -34,3 +34,8 @@ program Prilepi
 // lok promenljive = 0
 // glob konst = 1
 // glob nizovi = 0
+
+// def funkcija = 1 (main)
+// pozivi funkcija = 0
+// blokovi naredbi = 4
+// formalni parametri = 0

@@ -1,0 +1,9 @@
+PREVODJENJE LEXERA
+------------------------------------------
+-d src\compiler spec\mjlexer.flex
+JFlex.Main
+
+PREVODJENJE PARSERA
+------------------------------------------
+-destdir src\compiler -parser MJParser spec\mjparser.cup
+java_cup.Main
