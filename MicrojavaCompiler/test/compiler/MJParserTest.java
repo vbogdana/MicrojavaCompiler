@@ -27,12 +27,12 @@ public class MJParserTest {
 		Reader br = null;
 		
 		try {
-			for (int i = 0; i < 11; i++) {
+			for (int i = 0; i < 12; i++) {
 				File sourceCode = null;
-				if (i != 10)
+				if (i < 10)
 					sourceCode = new File("test/test_files/test0" + i + ".mj");
 				else
-					sourceCode = new File("test/test_files/test10.mj");
+					sourceCode = new File("test/test_files/test" + i + ".mj");
 				
 				log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 			

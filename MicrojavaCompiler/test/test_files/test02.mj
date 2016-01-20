@@ -22,9 +22,9 @@ program MaxCifra
 	}
 }
 
-// glob promenljive = 5 ? 4
-// lok promenljive = 2 ? 1
-// glob konst = 1 ? 0
+// glob promenljive = 4
+// lok promenljive = 1
+// glob konst = 0
 // glob nizovi = 0
 
 // def funkcija = 1

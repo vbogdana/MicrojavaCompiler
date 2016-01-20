@@ -1,8 +1,25 @@
 program MJProgram
 	int x, y;
+	int x y;
+	int x y
+	int x y;
+	int x y, z;
+	int x, y z, z, y z;
+	string a,b, f d;
+	int a, f g, a;
 	bool flag;
 {
 	void main() int a; {
 		flag = true;
 	}
 }
+
+// glob promenljive = 8
+// lok promenljive = 1
+// glob konst = 0
+// glob nizovi = 0
+
+// def funkcija = 1 (main)
+// pozivi funkcija = 0
+// blokovi naredbi = 1
+// formalni parametri = 0

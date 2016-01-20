@@ -1,0 +1,51 @@
+program P
+	const int size = 10;
+	class Table {
+		int pos[], neg[];
+		{
+			void putp (int a, int idx) { this.pos[idx]=a; }
+			void putn (int a, int idx) { this.neg[idx]=a; }
+			int getp (int idx) { return pos[idx]; }
+			int getn (int idx) { return neg[idx]; }
+		}
+	}
+	Table val;
+	{
+		void main() int x, i;
+		{
+			//		Initialize val
+			val = new Table;
+			val.pos = new int [size];
+			val.neg = new int [size]
+			i = 0;
+			while (i < size) {
+				val.putp(0,i);
+				val.putn(0,i);
+				i++;
+			}
+			//		Read values
+			read(x);
+			while (x > 0) {
+				if (0 <= x && x < size) {
+					val.putp(val.getp(x)+1);
+				} else if (size < x && x < 0) {
+					val.putn(val.getn(x)+1);
+				}
+				read(x);
+			}
+		}
+	}
+	
+// Global variables = 1
+// Local variables = 2
+// Global constants = 1
+// Global arrays = 0
+
+// Global functions = 1
+// Function calls = 6
+// Statement blocks = 9
+// Formal parameters = 6
+
+// Classes = 1
+// Methods = 4
+// Class attributes = 2

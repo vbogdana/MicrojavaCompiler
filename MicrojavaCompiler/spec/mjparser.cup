@@ -80,54 +80,107 @@ terminal PLUS, MINUS, MUL, DIV, MOD, EQ, NEQ, GRE, GREQ, LESS, LEQ, AND, OR, EQU
 
 /* Non terminals */
 non terminal Program, Lists, List ;
-non terminal ConstDeclList, ConstDecl, ConstList, Constant, ConstType, Type ;
+non terminal ConstDecl, ConstList, Constant, ConstType, Type ;
 non terminal VarDeclList, VarDecl, VarList, Variable, BracketsOpt, Brackets ;
-non terminal ClassDeclList, ClassDecl, ExtendsOpt, Extends, MethodsOpt, Methods ;
+non terminal ClassDecl, ExtendsOpt, Extends, MethodsOpt, Methods ;
 non terminal MethodDeclList, MethodDecl, ReturnType, FormParsOpt, FormPars, FormPar, StatementList, Statement ;
 non terminal Matched, Unmatched ;
-non terminal ExprStatement, IfStatement, MatchedWhileStatement, UnmatchedWhileStatement, BreakStatement, ReturnStatement, ReadStatement, PrintStatement, Statements ;
+non terminal ExprStatement, MatchedWhileStatement, UnmatchedWhileStatement, BreakStatement, ReturnStatement, ReadStatement, PrintStatement ;
 non terminal Designator, DesignatorList, DesignatorDecl, AAA, ActParsOpt, ActPars, Expr, MinusOpt, AddopTermList, AddopTerm ;
-non terminal Condition, CondTerm, CondFact, RelopExprOpt, RelopExpr, ElseStatementOpt, ElseStatement ;
+non terminal Condition, CondTerm, CondFact, RelopExprOpt, RelopExpr ;
 non terminal ExprOpt, NumberOpt ;
 non terminal Term, MulopFactorList, MulopFactor, Factor, BracketsExprOpt, ParenActParsOpt ;
 non terminal Relop, Addop, Mulop ;
+non terminal LocalVarDeclList, LocalVarDecl, LocalVarList ;
 
 
 Program ::= PROGRAM IDENT Lists LBRACE MethodDeclList RBRACE ;
 Lists ::= Lists List |    ;
 List ::= ConstDecl | VarDecl | ClassDecl ;
 
-ConstDeclList ::= ConstDeclList ConstDecl |    ;
 VarDeclList ::= VarDeclList VarDecl |    ;
-ClassDeclList ::= ClassDeclList ClassDecl |    ;
+LocalVarDeclList ::= LocalVarDeclList LocalVarDecl |    ;
 MethodDeclList ::= MethodDeclList MethodDecl |    ;
 
-ConstDecl ::= CONST Type Constant ConstList SEMI_COMMA ;
-ConstList ::= ConstList COMMA Constant | Constant |    ;
+ConstDecl ::= CONST Type ConstList SEMI_COMMA 
+			| CONST Type error SEMI_COMMA
+			{: parser.log.debug("Uspesan oporavak od greske pri definiciji konstante."); :}
+			;
+ConstList ::= ConstList COMMA Constant 
+			| error COMMA Constant
+			{: parser.log.debug("Uspesan oporavak od greske pri definiciji konstante."); :}
+			| Constant
+			;
 Constant ::= IDENT EQUALS ConstType 
-			 {: parser.globalConstCnt++; :} ;
+			 {: parser.globalConstCnt++; :} 
+		  |  IDENT EQUALS error
+		     {: parser.log.debug("Uspesan oporavak od greske pri dodeli vrednosti konstanti."); :}
+		     ;
 ConstType ::= NUMBER | CHAR | BOOL | STRING ;
 Type ::= IDENT ;
 
-VarDecl ::= Type Variable VarList SEMI_COMMA ;
-VarList ::= VarList COMMA Variable | Variable |    ;
+VarDecl ::= Type VarList SEMI_COMMA 
+		| 	Type error SEMI_COMMA
+		{: 
+			parser.log.debug("Uspesan oporavak od greske pri definiciji glob.promenljve.");
+		:}
+		;
+LocalVarDecl ::= Type LocalVarList SEMI_COMMA 
+			 |   Type error SEMI_COMMA
+			 {: 
+				// ovde gledamo sve lokalne promenljive, ne samo u mainu
+				if (!parser.attrDef)
+					parser.log.debug("Uspesan oporavak od greske pri deklaraciji lok.promenljve.");
+				else
+				 	parser.log.debug("Uspesan oporavak od greske pri deklaraciji polja unutr.klase."); 
+			 :}
+			 |	 Type error
+			 {: 
+				// ovde gledamo sve lokalne promenljive, ne samo u mainu
+				if (!parser.attrDef)
+					parser.log.debug("Uspesan oporavak od greske pri deklaraciji lok.promenljve.");
+				else
+				 	parser.log.debug("Uspesan oporavak od greske pri deklaraciji polja unutr.klase.");
+			 :}
+			 ;
+VarList ::= VarList COMMA Variable 
+		| 	error COMMA Variable
+		{: 
+			parser.log.debug("Uspesan oporavak od greske pri definiciji glob.promenljve.");
+		:}
+		|	Variable 
+		;
+LocalVarList ::= LocalVarList COMMA Variable 
+			 |	 Variable 
+			 ;
 Variable ::= IDENT BracketsOpt 
-			{: if (parser.inClass && parser.attrDef) parser.nestedClassAttrCnt++; :}
+			{: 	
+				if (parser.inClass && parser.attrDef) 
+					parser.nestedClassAttrCnt++; 
+			:}
 			;
 BracketsOpt ::= Brackets |     
-				{: if (parser.inMain) parser.localVarCnt++;
-				   else if (!parser.method && !parser.inClass) parser.globalVarCnt++; 
+				{: 
+					// brojimo samo lokalne u main funkciji
+					if (parser.inMain) 
+						parser.localVarCnt++;
+				   	else if (!parser.method && !parser.inClass) 
+				   		parser.globalVarCnt++; 
 				:} ;
 Brackets ::= LBRACKET RBRACKET 
-			 {: if (parser.inMain) parser.localVarCnt++;
-			 	else if (!parser.method && !parser.inClass) parser.globalArrayCnt++; 
+			 {: 
+			 	// brojimo samo lokalne u main funkciji
+			 	if (parser.inMain) 
+			 		parser.localVarCnt++;
+			 	else if (!parser.method && !parser.inClass) 
+			 		parser.globalArrayCnt++; 
 			 :} ;
 
 ClassDecl ::= CLASS 
 			  {: parser.inClass = true; :} 
 			  IDENT ExtendsOpt LBRACE 
 			  {: parser.attrDef = true; :}
-			  VarDeclList 
+			  LocalVarDeclList 
 			  {: parser.attrDef = false; :}
 			  MethodsOpt RBRACE 
 			  {: 
@@ -135,28 +188,45 @@ ClassDecl ::= CLASS
 			  	parser.nestedClassCnt++;
 			  :} 
 			  ;
-ExtendsOpt ::= Extends |    ;
+ExtendsOpt ::= Extends 
+			|  error
+			{: parser.log.debug("Uspesan oporavak od greske pri deklaraciji prosirenja natklase."); :}
+			|    ;
 Extends ::= EXTENDS Type ;
 MethodsOpt ::= Methods |    ;
 Methods ::= LBRACE MethodDeclList RBRACE ;
 
-MethodDecl ::= ReturnType IDENT:m LPAREN 
-			   {: parser.method = true; 
-			   	  if (!parser.inClass && m.equals("main")) parser.inMain = true; 
-			   :} 
-			   FormParsOpt RPAREN VarDeclList LBRACE StatementList RBRACE 
-			   {: parser.method = false;
-			   	  parser.blockCnt++;
+MethodDecl ::= ReturnType IDENT:m LPAREN
+			   {: 
+			   	  parser.method = true; 
+			   	  if (!parser.inClass && m.equals("main")) 
+			   	  	parser.inMain = true; 
+			   :}
+			   FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE 
+			   {: 
 			   	  // da li brojimo i main u funkcije
-			   	  if (!parser.inClass) parser.functionCnt++;
-			   	  else parser.nestedClassMethodCnt++;
-			   	  if (parser.inMain) parser.inMain = false;
-			   :} ;
+			   	  parser.method = false;
+			   	  parser.blockCnt++;
+			   	  if (!parser.inClass) 
+			   	  	parser.functionCnt++;
+			   	  else 
+			   	  	parser.nestedClassMethodCnt++;
+			   	  if (parser.inMain) 
+			   	  	parser.inMain = false;
+			   :}
+			 	;
+
 ReturnType ::= Type | VOID ;
 FormParsOpt ::= FormPars |    ;
-FormPars ::= FormPars COMMA FormPar | FormPar ;
+FormPars ::= FormPars COMMA FormPar
+		 |	 error COMMA FormPar
+		 {: parser.log.debug("Uspesan oporavak od greske pri deklaraciji form.parametra."); :}
+		 | 	 FormPar 
+		 ;
 FormPar ::= Type IDENT BracketsOpt 
 			{: parser.formParCnt++; :}
+		|	Type error
+			{: parser.log.debug("Uspesan oporavak od greske pri deklaraciji form.parametra."); :}
 			;
 StatementList ::= StatementList Statement |    ;
 
@@ -179,12 +249,22 @@ ExprStatement ::= Designator AAA SEMI_COMMA ;
 Designator ::= IDENT DesignatorList ;
 DesignatorList ::= DesignatorList DesignatorDecl |    ;
 DesignatorDecl ::= STOP IDENT
-				   | LBRACKET Expr RBRACKET ;
+				   | LBRACKET Expr RBRACKET 
+				   | LBRACKET error RBRACKET
+				   {: parser.log.debug("Uspesan oporavak od greske pri indeksiranju niza."); :}
+				   ;
 AAA ::= EQUALS Expr
+		| EQUALS error
+		{: parser.log.debug("Uspesan oporavak od greske pri dodeli vrednosti."); :}
 		| INC 
 		| DEC
 		| LPAREN ActParsOpt RPAREN 
-		{: if (parser.inMain) parser.callCnt++; :}
+		{: 
+			if (parser.inMain) 
+				parser.callCnt++; 
+		:}
+		| LPAREN error RPAREN
+		{: parser.log.debug("Uspesan oporavak od greske pri navodjenju liste parametara."); :}
 		 ;
 ActParsOpt ::= ActPars |    ;
 ActPars ::= ActPars COMMA Expr | Expr ;
@@ -194,7 +274,11 @@ MinusOpt ::= MINUS |    ;
 AddopTermList ::= AddopTermList AddopTerm |    ;
 AddopTerm ::= Addop Term ;
 
-Condition ::= Condition OR CondTerm | CondTerm ;
+Condition ::= Condition OR CondTerm 
+		  | CondTerm 
+		  | error
+		  {: parser.log.debug("Uspesan oporavak od greske pri logickom izrazu if/while konstrukcije."); :}
+		  ;
 CondTerm ::= CondTerm AND CondFact | CondFact ;
 CondFact ::= Expr RelopExprOpt ;
 RelopExprOpt ::= RelopExpr | ;
@@ -223,12 +307,16 @@ Factor ::= Designator ParenActParsOpt
 		 | BOOL
 		 | NEW Type BracketsExprOpt
 		 | LPAREN Expr RPAREN 
-		 {: if (parser.inMain) parser.callCnt++; :}
 		 ;
 BracketsExprOpt ::= LBRACKET Expr RBRACKET |    ;
 ParenActParsOpt ::= LPAREN ActParsOpt RPAREN
-					{: if (parser.inMain) parser.callCnt++; :}
-					|   ;
+				{: 
+					if (parser.inMain) 
+						parser.callCnt++; 
+				:}
+				|	LPAREN error RPAREN
+				{: parser.log.debug("Uspesan oporavak od greske pri navodjenju liste parametara."); :}
+				|   ;
 
 Relop ::= EQ | NEQ | GRE | GREQ | LESS | LEQ ;
 Addop ::= PLUS | MINUS ;
