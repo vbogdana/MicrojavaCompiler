@@ -7,3 +7,41 @@ PREVODJENJE PARSERA
 ------------------------------------------
 -destdir src\compiler -parser MJParser spec\mjparser.cup
 java_cup.Main
+
+
+TIPOVI PODATAKA
+int 		Tab.intType				(Struct.Int)
+char 		Tab.charType			(Struct.Int)
+boolean 	parser.boolType			(Struct.Int)
+string 		parser.stringType  		(Struct.Array, Struct.Char elements)
+array 		nema predefinisano		(Struct.Array, any type elements)
+class		nema predefinisano		(Struct.Class)									bitno: Struct.setMembers(SymbolDataStructure scope)
+
+Klasa Struct - svaki Objekat tipa Niza ili Klase ima sopstvenu instancu klase Struct gde sadrzi polja klase, elemente niza
+			   svaki Objekat standardnog tipa ima referencu na predefinisan tip
+
+TIPOVI SIMBOLA
+konstanta	Obj.Con					adr - vrednost
+promenljiva	Obj.Var 				adr - mem.ofset, level - nivo ugnjezd, 
+tip/klasa	Obj.Type 
+met/func	Obj.Meth 				adr - mem.ofset, level - br.form.arg, fpPos - pozicija form.par, locals - lokalne prom
+polje		Obj.Fld 				adr - mem.ofset, locals - simboli programa
+elem niza	Obj.Elem 
+program		Obj.Prog
+
+Klasa Obj - za sva polja ima get/set metode
+
+*** STA IDE U CURRENT CLASS/CURRENT METHOD 
+KADA SU KLASE/METODE VEC DEFINISANE						URADJENO		(ona pronadjena ide)
+*** EXTENDS KLASA										URADJENO
+*** LOKALNE PROMENLJIVE NJIHOV OPSEG					URADJENO
+*** POZICIJA FORM PARAMETARA I NJIHOV BROJ				URADJENO
+*** FATAL SYNTAX ERROR test10 row 58					URADJENO
+*** RAZRESI THIS POKAZIVAC								URADJENO
+*** POVRATNI TIP FUNKCIJA
+*** VREDNOST KONSTANTI
+*** ELEMENTI NIZA
+*** ADRESA FUNKCIJA?! ILI SAMO METODA KLASE
+*** NEKAKO OZNACITI NASLEDJIVANJE(scope, da li treba)
+
+KADA REFERISEMO ELEMENT NIZA U DESIGNATORU KREIRAMO NOV OBJEKAT SA KIND = Obj.Elem I SA ADR = MEM.OFSET (odnosno broj elem u nizu) I IMENOM KAO NIZ

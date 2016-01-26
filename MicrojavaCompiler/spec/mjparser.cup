@@ -1,11 +1,24 @@
 package compiler;
 
 import java_cup.runtime.*;
-//import java.io.*;
+import java.util.*;
 import org.apache.log4j.*;
+import rs.etf.pp1.symboltable.Tab;
+import rs.etf.pp1.symboltable.concepts.*;
+
+import rs.etf.pp1.symboltable.visitors.DumpSymbolTableVisitor;
+import rs.etf.pp1.symboltable.visitors.SymbolTableVisitor;
 
 parser code {:
 
+	public static final Struct stringType = new Struct(Struct.Array, new Struct(Struct.Char, Tab.noType));
+	public static final Struct boolType = new Struct(Struct.Int);
+
+	Logger log = Logger.getLogger(getClass());
+	
+	Struct type;
+	public boolean semError = false;
+	
 	boolean inClass = false,
 			inMain = false,
 			method = false,
@@ -26,11 +39,8 @@ parser code {:
 	// nivo C
 	int nestedClassCnt = 0,			//	definicije unutr klasa
 		nestedClassMethodCnt = 0,	//	definicije metoda unutr klasa
-		nestedClassAttrCnt = 0;		//	deklaracije polja unutr klasa
-	
-	Logger log = Logger.getLogger(getClass()); 
+		nestedClassAttrCnt = 0;		//	deklaracije polja unutr klasa 
    
-    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
     
     public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
         report_fatal_error("Fatal syntax error - ", cur_token);
@@ -46,19 +56,58 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    	semError = true;
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol) {
+            msg.append (" at row ").append(((Symbol)info).left);
+            msg.append (" - unrecognized symbol '").append(((Symbol)info).value + "'");
+        }
+        log.error(msg.toString());
+    }
+    
+    public void report_info(String message, Object info) {
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
             msg.append (" at row ").append(((Symbol)info).left);
-        log.error(msg.toString());
+        log.info(msg.toString());
+    }
+    
+    public void report_debug(String message) {
+    	StringBuilder msg = new StringBuilder(message); 
+        log.debug(msg.toString());
+    }
+    
+    public String objToString(Obj o) {
+    	SymbolTableVisitor stv = new DumpSymbolTableVisitor();
+    	
+    	stv.visitObjNode(o);
+    	return stv.getOutput();
     }
 :}
 
 scan with {:
 	Symbol s = this.getScanner().next_token();
-	if (s != null && s.value != null) 
-		log.info(s.toString() + " " + s.value.toString());
+	//if (s != null && s.value != null) 
+		//log.info(s.toString() + " " + s.value.toString());
 	return s;
 :}
+
+init with {:
+	Tab.init(); // Universe scope
+	Tab.currentScope().getLocals().insertKey(new Obj(Obj.Type, "string", stringType));
+	Tab.currentScope().getLocals().insertKey(new Obj(Obj.Type, "bool", boolType));
+:}
+
+action code {:
+	Obj currentMethod = null;
+	Obj currentClass = null;
+	Obj currentDesignator = null;
+	boolean returnFound = false;
+	int fpPos = 0;
+	boolean isVoid = false;
+:}
+
+/**********************************************************************************************************/
 
 /* Keywords */
 terminal PROGRAM, BREAK, CLASS, ELSE, CONST, IF, NEW, PRINT, READ, RETURN, VOID, WHILE, EXTENDS ;
@@ -76,134 +125,277 @@ terminal String STRING ;
 terminal PLUS, MINUS, MUL, DIV, MOD, EQ, NEQ, GRE, GREQ, LESS, LEQ, AND, OR, EQUALS, INC, DEC, SEMI_COMMA, COMMA, STOP, 
 		 LPAREN, RPAREN, LBRACKET, RBRACKET, LBRACE, RBRACE ;
 
-/* End of file */	
-
 /* Non terminals */
 non terminal Program, Lists, List ;
-non terminal ConstDecl, ConstList, Constant, ConstType, Type ;
-non terminal VarDeclList, VarDecl, VarList, Variable, BracketsOpt, Brackets ;
-non terminal ClassDecl, ExtendsOpt, Extends, MethodsOpt, Methods ;
-non terminal MethodDeclList, MethodDecl, ReturnType, FormParsOpt, FormPars, FormPar, StatementList, Statement ;
+non terminal ConstDecl, ConstList, Constant, VarType ;
+non terminal VarDecl, VarList, Variable ;
+non terminal ClassDecl, Extends, MethodsOpt, Methods ;
+non terminal MethodDeclList, MethodDecl, FormParsOpt, FormPars, FormPar, StatementList, Statement ;
 non terminal Matched, Unmatched ;
 non terminal ExprStatement, MatchedWhileStatement, UnmatchedWhileStatement, BreakStatement, ReturnStatement, ReadStatement, PrintStatement ;
-non terminal Designator, DesignatorList, DesignatorDecl, AAA, ActParsOpt, ActPars, Expr, MinusOpt, AddopTermList, AddopTerm ;
+non terminal ActParsOpt, ActPars, Expr, MinusOpt, AddopTermList, AddopTerm ;
 non terminal Condition, CondTerm, CondFact, RelopExprOpt, RelopExpr ;
 non terminal ExprOpt, NumberOpt ;
-non terminal Term, MulopFactorList, MulopFactor, Factor, BracketsExprOpt, ParenActParsOpt ;
+non terminal Term, MulopFactorList, MulopFactor, Factor, ParenActParsOpt ;
 non terminal Relop, Addop, Mulop ;
-non terminal LocalVarDeclList, LocalVarDecl, LocalVarList ;
+non terminal LocalVarDeclList, LocalVarDecl, LocalVarList, LocalVariable ;
+
+/* Semantics */
+non terminal Obj ProgramName, Designator, DesignatorList ;
+non terminal Struct ConstType, Type, ReturnType ;
+non terminal Boolean BracketsOpt ;
+non terminal Assignment, SideEffect, IncDec, FunctionCall ;
 
 
-Program ::= PROGRAM IDENT Lists LBRACE MethodDeclList RBRACE ;
+/**********************************************************************************************************/
+
+Program ::= PROGRAM ProgramName:p Lists LBRACE MethodDeclList RBRACE 
+{:
+	Tab.chainLocalSymbols(p);
+	Tab.closeScope(); 
+:}
+;
+ProgramName ::= IDENT:progName 
+{:
+	RESULT = Tab.insert(Obj.Prog, progName, Tab.noType);
+	Tab.openScope();
+	parser.report_info("PARSING the program '" + progName + "' at row " + progNameleft, null);
+	
+:}
+;
+
 Lists ::= Lists List |    ;
 List ::= ConstDecl | VarDecl | ClassDecl ;
 
-VarDeclList ::= VarDeclList VarDecl |    ;
 LocalVarDeclList ::= LocalVarDeclList LocalVarDecl |    ;
 MethodDeclList ::= MethodDeclList MethodDecl |    ;
 
-ConstDecl ::= CONST Type ConstList SEMI_COMMA 
-			| CONST Type error SEMI_COMMA
-			{: parser.log.debug("Uspesan oporavak od greske pri definiciji konstante."); :}
+
+ConstDecl ::= CONST VarType ConstList SEMI_COMMA
+			{: parser.type = Tab.noType; :} 
+			| CONST VarType error SEMI_COMMA
+			{: parser.report_debug("Successful error recovery - constant definition"); :}
+			| CONST error SEMI_COMMA
+			{: parser.report_debug("Successful error recovery - constant definition"); :}
 			;
 ConstList ::= ConstList COMMA Constant 
 			| error COMMA Constant
-			{: parser.log.debug("Uspesan oporavak od greske pri definiciji konstante."); :}
+			{: parser.report_debug("Successful error recovery - constant definition"); :}
 			| Constant
 			;
-Constant ::= IDENT EQUALS ConstType 
-			 {: parser.globalConstCnt++; :} 
-		  |  IDENT EQUALS error
-		     {: parser.log.debug("Uspesan oporavak od greske pri dodeli vrednosti konstanti."); :}
-		     ;
-ConstType ::= NUMBER | CHAR | BOOL | STRING ;
-Type ::= IDENT ;
+Constant ::= IDENT:constName EQUALS ConstType:constType 
+			{: 
+				parser.globalConstCnt++;
+				Obj o = Tab.find(constName);
+	 			if (o == Tab.noObj) {
+	 				o = Tab.insert(Obj.Con, constName, parser.type);
+	 				parser.report_info("Constant '" + constName + "' declaration at row " + constNameleft, null);
+	 			} else {
+	 				parser.report_error("Semantics error at row " + constNameleft + " - multiple definition of '" + constName + "'", null);
+	 			}
+	 			
+	 			if (!o.getType().compatibleWith(constType))
+	 				parser.report_error("Semantics error at row " + constNameleft + " - incompatible types", null);
+			:} 
+		  	|  IDENT EQUALS error
+		    {: parser.report_debug("Successful error recovery - value assignment (constant)"); :}
+		    ;
+ConstType ::= NUMBER 
+			{: RESULT = Tab.intType; :}
+			| CHAR
+			{: RESULT = Tab.charType; :}
+			| BOOL
+			{: RESULT = parser.boolType; :}
+			| STRING 
+			{: RESULT = parser.stringType; :};
 
-VarDecl ::= Type VarList SEMI_COMMA 
-		| 	Type error SEMI_COMMA
+
+VarType ::= Type:type
+ 		{: parser.type = type; :};
+Type ::= IDENT:typeName 
+{:	
+	Obj typeNode = Tab.find(typeName);
+	if (typeNode == Tab.noObj) {
+		parser.report_error("Semantics error at row " + typeNameleft + " - type '" + typeName + "' not found in symbol table", null);
+		RESULT = Tab.noType;
+	}
+	else {
+		if (Obj.Type == typeNode.getKind()) {
+			RESULT = typeNode.getType();
+		}
+		else {
+			parser.report_error("Semantics error at row " + typeNameleft + " - name '" + typeName + "' doesn't represent a type", null);
+			RESULT = Tab.noType;
+		}
+	}
+:};
+
+
+VarDecl ::= VarType VarList SEMI_COMMA
+		{: parser.type = Tab.noType; :}
+		| 	VarType error SEMI_COMMA
 		{: 
-			parser.log.debug("Uspesan oporavak od greske pri definiciji glob.promenljve.");
+			parser.report_debug("Successful error recovery - global variable definition");
 		:}
 		;
-LocalVarDecl ::= Type LocalVarList SEMI_COMMA 
+VarList ::= VarList COMMA Variable 
+		| 	error COMMA Variable
+		{: 
+			parser.report_debug("Successful error recovery - global variable definition");
+		:}
+		|	Variable 
+		;
+Variable ::= IDENT:varName BracketsOpt:brack
+			{: 	
+	 			Obj o = Tab.find(varName);
+	 			if (o == Tab.noObj) {
+	 				if (!brack.booleanValue())
+		 				Tab.insert(Obj.Var, varName, parser.type);
+	 				else
+	 					Tab.insert(Obj.Var, varName, new Struct(Struct.Array, parser.type));
+	 				parser.report_info("Global variable '" + varName + "' declaration at row " + varNameleft, null);	
+	 			} else {
+	 				parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of '" + varName + "'", null);
+	 			}
+			:}
+			;
+LocalVarDecl ::= Type:type
+			 {: parser.type = type; :}
+			  LocalVarList SEMI_COMMA
+			 {: parser.type = Tab.noType; :} 
 			 |   Type error SEMI_COMMA
 			 {: 
 				// ovde gledamo sve lokalne promenljive, ne samo u mainu
 				if (!parser.attrDef)
-					parser.log.debug("Uspesan oporavak od greske pri deklaraciji lok.promenljve.");
+					parser.report_debug("Successful error recovery - local variable definition");
 				else
-				 	parser.log.debug("Uspesan oporavak od greske pri deklaraciji polja unutr.klase."); 
+				 	parser.report_debug("Successful error recovery - class attribute declaration"); 
 			 :}
 			 |	 Type error
 			 {: 
 				// ovde gledamo sve lokalne promenljive, ne samo u mainu
 				if (!parser.attrDef)
-					parser.log.debug("Uspesan oporavak od greske pri deklaraciji lok.promenljve.");
+					parser.report_debug("Successful error recovery - local variable definition");
 				else
-				 	parser.log.debug("Uspesan oporavak od greske pri deklaraciji polja unutr.klase.");
+				 	parser.report_debug("Successful error recovery - class attribute declaration");
 			 :}
 			 ;
-VarList ::= VarList COMMA Variable 
-		| 	error COMMA Variable
-		{: 
-			parser.log.debug("Uspesan oporavak od greske pri definiciji glob.promenljve.");
-		:}
-		|	Variable 
-		;
-LocalVarList ::= LocalVarList COMMA Variable 
-			 |	 Variable 
+LocalVarList ::= LocalVarList COMMA LocalVariable 
+			 |	 LocalVariable 
 			 ;
-Variable ::= IDENT BracketsOpt 
+LocalVariable ::= IDENT:varName BracketsOpt:brack
 			{: 	
-				if (parser.inClass && parser.attrDef) 
-					parser.nestedClassAttrCnt++; 
+				// brojimo samo lokalne u main funkciji
+				if (parser.inMain)
+					parser.localVarCnt++;
+				else if (parser.inClass && parser.attrDef) 
+					parser.nestedClassAttrCnt++;
+	 			
+	 			Obj o = Tab.currentScope().findSymbol(varName);
+	 			if (o == null) {
+	 				if (parser.attrDef) {
+	 					if (!brack.booleanValue())
+		 					Tab.insert(Obj.Fld, varName, parser.type);
+	 					else
+	 						Tab.insert(Obj.Fld, varName, new Struct(Struct.Array, parser.type));
+	 					parser.report_info("Class attribute '" + varName + "' declaration at row " + varNameleft, null);
+	 				} else {
+	 					if (!brack.booleanValue())
+		 					Tab.insert(Obj.Var, varName, parser.type);
+	 					else
+	 						Tab.insert(Obj.Var, varName, new Struct(Struct.Array, parser.type));
+	 					parser.report_info("Local variable '" + varName + "' declaration at row " + varNameleft, null);
+	 				}	
+	 			} else {
+	 				parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of '" + varName + "'", null);
+	 			}
 			:}
 			;
-BracketsOpt ::= Brackets |     
-				{: 
-					// brojimo samo lokalne u main funkciji
-					if (parser.inMain) 
-						parser.localVarCnt++;
-				   	else if (!parser.method && !parser.inClass) 
-				   		parser.globalVarCnt++; 
-				:} ;
-Brackets ::= LBRACKET RBRACKET 
+			
+BracketsOpt ::= LBRACKET RBRACKET 
 			 {: 
-			 	// brojimo samo lokalne u main funkciji
-			 	if (parser.inMain) 
-			 		parser.localVarCnt++;
-			 	else if (!parser.method && !parser.inClass) 
+			 	RESULT = new Boolean(true);
+			 	if (!parser.method && !parser.inClass) 
 			 		parser.globalArrayCnt++; 
+			 :} 
+			 |     
+			 {: 
+			 	RESULT = new Boolean(false);
+			   	if (!parser.method && !parser.inClass) 
+			   		parser.globalVarCnt++; 
 			 :} ;
 
-ClassDecl ::= CLASS 
-			  {: parser.inClass = true; :} 
-			  IDENT ExtendsOpt LBRACE 
+
+ClassDecl ::= CLASS IDENT:className
+			  {: 
+			  	parser.inClass = true;
+			  	
+			  	Obj o = Tab.find(className);
+			  	if (o == Tab.noObj) {
+	 				currentClass = Tab.insert(Obj.Type, className, new Struct(Struct.Class));
+	 				parser.report_info("Class '" + className + "' definition at row " + classNameleft, null);
+	 			} else {
+	 				currentClass = o;
+	 				parser.report_error("Semantics error at row " + classNameleft + " - multiple definition of a class '" + className + "'", null);
+	 			}		  		
+	 			Tab.openScope();
+			  :} 
+			  Extends LBRACE 
 			  {: parser.attrDef = true; :}
 			  LocalVarDeclList 
-			  {: parser.attrDef = false; :}
+			  {: 
+			  	parser.attrDef = false; 
+			  	currentClass.getType().setMembers(Tab.currentScope().getLocals());
+			  :}
 			  MethodsOpt RBRACE 
 			  {: 
 			  	parser.inClass = false; 
 			  	parser.nestedClassCnt++;
+			  	Tab.chainLocalSymbols(currentClass.getType());
+			   	Tab.closeScope();
+			   	currentClass = null;
 			  :} 
 			  ;
-ExtendsOpt ::= Extends 
-			|  error
-			{: parser.log.debug("Uspesan oporavak od greske pri deklaraciji prosirenja natklase."); :}
+Extends ::= EXTENDS Type:outerClass
+			{:
+				if (!(outerClass.getKind() == Struct.Class))
+					parser.report_error("Semantics error at row " + outerClassleft + " - outer class must be of a class type", null);
+				else if (outerClass == currentClass.getType())
+					parser.report_error("Semantics error at row " + outerClassleft + " - class cannot inherit itself", null);
+				else
+					parser.report_info("Class inheritance at row " + outerClassleft, null);
+			:} 
+			|  EXTENDS error
+			{: parser.report_debug("Successful error recovery - class inheritance"); :}
 			|    ;
-Extends ::= EXTENDS Type ;
 MethodsOpt ::= Methods |    ;
 Methods ::= LBRACE MethodDeclList RBRACE ;
 
-MethodDecl ::= ReturnType IDENT:m LPAREN
+
+MethodDecl ::= ReturnType:retType IDENT:methName
 			   {: 
 			   	  parser.method = true; 
-			   	  if (!parser.inClass && m.equals("main")) 
-			   	  	parser.inMain = true; 
+			   	  if (!parser.inClass && methName.equals("main")) 
+			   	  	parser.inMain = true;
+			   	  
+			   	  Obj o = Tab.currentScope().findSymbol(methName);
+				  if (o == null) {
+		 				currentMethod = Tab.insert(Obj.Meth, methName, retType);
+		 				parser.report_info("Function '" + methName + "' definition at row " + methNameleft, null);
+		 		  } else {
+		 		  		currentMethod = o;
+		 				parser.report_error("Semantics error at row " + methNameleft + " - multiple definition of a function '" + methName + "'", null);
+		 		  }	 
+			   	  Tab.openScope();
+			   	  
+			   	  if (parser.inMain && !isVoid)
+			   	  	parser.report_error("Semantics error at row " + methNameleft + " - function '" + methName + "' must be VOID", null);  	   
 			   :}
-			   FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE 
+			   LPAREN FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE 
 			   {: 
+			   	  if (parser.inMain && fpPos > 0)
+					parser.report_error("Semantics error at row " + methNameleft + " - 'main' function cannot have parameters", null);
+					
 			   	  // da li brojimo i main u funkcije
 			   	  parser.method = false;
 			   	  parser.blockCnt++;
@@ -213,27 +405,57 @@ MethodDecl ::= ReturnType IDENT:m LPAREN
 			   	  	parser.nestedClassMethodCnt++;
 			   	  if (parser.inMain) 
 			   	  	parser.inMain = false;
+			   	  	
+			   	  if (!returnFound && !isVoid)
+			   	 	parser.report_error("Semantics error at row " + methNameleft + " - function '" + methName + "' missing 'return' statement", null);
+			   	  
+			   	  currentMethod.setLevel(fpPos);
+			   	  Tab.chainLocalSymbols(currentMethod);
+			   	  Tab.closeScope();
+			   	  
+			   	  returnFound = isVoid = false;
+				  currentMethod = null;
+				  fpPos = 0;
 			   :}
 			 	;
-
-ReturnType ::= Type | VOID ;
+ReturnType ::= Type:type
+			{: isVoid = (type == Tab.noType); RESULT = type; :} 
+			| VOID 
+			{: isVoid = true; RESULT = Tab.noType; :}
+			;
 FormParsOpt ::= FormPars |    ;
 FormPars ::= FormPars COMMA FormPar
 		 |	 error COMMA FormPar
-		 {: parser.log.debug("Uspesan oporavak od greske pri deklaraciji form.parametra."); :}
+		 {: parser.report_debug("Successful error recovery - formal parameter declaration"); :}
 		 | 	 FormPar 
 		 ;
-FormPar ::= Type IDENT BracketsOpt 
-			{: parser.formParCnt++; :}
-		|	Type error
-			{: parser.log.debug("Uspesan oporavak od greske pri deklaraciji form.parametra."); :}
+FormPar ::= Type:type IDENT:parName BracketsOpt:brack 
+			{: 					
+				parser.formParCnt++;
+				
+				Obj o = Tab.currentScope().findSymbol(parName);
+	 			if (o == null) {
+	 				if (!brack.booleanValue())
+	 					o = Tab.insert(Obj.Var, parName, type);
+	 				else
+	 					o = Tab.insert(Obj.Var, parName, new Struct(Struct.Array, type));
+	 				o.setFpPos(fpPos);
+	 				fpPos++;
+	 				parser.report_info("Formal parameter '" + parName + "' declaration at row " + parNameleft, null);
+	 			} else {
+	 				parser.report_error("Semantics error at row " + parNameleft + " - multiple definition of '" + parName + "'", null);
+	 			} 
+			:}
+			|	Type error
+			{: parser.report_debug("Successful error recovery - formal parameter declaration"); :}
 			;
 StatementList ::= StatementList Statement |    ;
 
+
 Statement ::= Matched | Unmatched ;
 Unmatched ::= IF LPAREN Condition RPAREN Statement
-			  | IF LPAREN Condition RPAREN Matched ELSE Unmatched
-			  | UnmatchedWhileStatement ;
+			| IF LPAREN Condition RPAREN Matched ELSE Unmatched
+			| UnmatchedWhileStatement ;
 Matched ::= ExprStatement
 			| IF LPAREN Condition RPAREN Matched ELSE Matched
 			| MatchedWhileStatement
@@ -244,58 +466,137 @@ Matched ::= ExprStatement
 			| LBRACE StatementList RBRACE 
 			{: parser.blockCnt++; :}
 			;
-			
-ExprStatement ::= Designator AAA SEMI_COMMA ;
-Designator ::= IDENT DesignatorList ;
-DesignatorList ::= DesignatorList DesignatorDecl |    ;
-DesignatorDecl ::= STOP IDENT
-				   | LBRACKET Expr RBRACKET 
-				   | LBRACKET error RBRACKET
-				   {: parser.log.debug("Uspesan oporavak od greske pri indeksiranju niza."); :}
-				   ;
-AAA ::= EQUALS Expr
-		| EQUALS error
-		{: parser.log.debug("Uspesan oporavak od greske pri dodeli vrednosti."); :}
-		| INC 
-		| DEC
-		| LPAREN ActParsOpt RPAREN 
-		{: 
-			if (parser.inMain) 
-				parser.callCnt++; 
-		:}
-		| LPAREN error RPAREN
-		{: parser.log.debug("Uspesan oporavak od greske pri navodjenju liste parametara."); :}
-		 ;
-ActParsOpt ::= ActPars |    ;
-ActPars ::= ActPars COMMA Expr | Expr ;
 
-Expr ::= MinusOpt Term AddopTermList ;
-MinusOpt ::= MINUS |    ;
+			
+ExprStatement ::= Assignment
+				| SideEffect
+				| FunctionCall
+				;
+Assignment ::= Designator:desig EQUALS Expr SEMI_COMMA
+			{:			
+				if (desig != null)
+					if (desig.getKind() != Obj.Var && desig.getKind() != Obj.Fld && desig.getKind() != Obj.Elem) {
+						parser.report_info("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+					}
+				// proveri kompatibilnost		
+			:}
+			|  Designator EQUALS error SEMI_COMMA
+			{: parser.report_debug("Successful error recovery - value assignment"); :}
+			;
+SideEffect ::= Designator:desig IncDec SEMI_COMMA
+			{:
+				if (desig != null)
+					if (desig.getKind() != Obj.Var && desig.getKind() != Obj.Fld && desig.getKind() != Obj.Elem) {
+						parser.report_info("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+					} else {
+						if (!desig.getType().equals(Tab.intType))
+							parser.report_info("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+					}
+			:}
+			;
+IncDec ::= INC | DEC ;
+FunctionCall ::= Designator LPAREN ActParsOpt RPAREN SEMI_COMMA
+			{: 
+				if (parser.inMain) 
+					parser.callCnt++; 
+			:}
+			| Designator LPAREN error RPAREN SEMI_COMMA
+			{: parser.report_debug("Successful error recovery - actual parameters list"); :}
+		 	;
+ActParsOpt ::= ActPars |    ;
+ActPars ::= ActPars COMMA Expr 
+		| 	Expr ;
+			
+
+Designator ::= DesignatorList:dlist 
+			{: RESULT = dlist; :}
+			;			
+DesignatorList ::= 	DesignatorList:cl STOP IDENT:field
+				{:
+					if (cl.getType().getKind() != Struct.Class) 
+                    	parser.report_error("Semantics error at row " + clleft + " - expected a class",null);
+                    
+                    Obj o = cl.getType().getMembers().searchKey(field);
+                    if (o == null) {
+                    	o = Tab.noObj;
+                    	parser.report_error("Semantics error at row " + clleft + " - class attribute '" + field + "' doesn't exist",null);
+                    } else {
+                    	parser.report_info("Use of " + parser.objToString(o) + " at row " + clleft,null);
+                    }
+                    RESULT = o;
+				:}
+				|	DesignatorList:array LBRACKET Expr RBRACKET
+				{:
+					if (array.getType().getKind() != Struct.Array) 
+                    	parser.report_error("Semantics error at row " + arrayleft + " - expected an array",null);
+                    
+                    // EXPR MORA BITI INT
+                    RESULT = new Obj (Obj.Elem, array.getName(), array.getType().getElemType());
+				:}
+				|	IDENT:ident
+				{:	
+					if (ident.equals("this") && parser.inClass) {							 			
+						RESULT = currentClass;
+					} else {
+						Obj o = Tab.find(ident);
+						if (o != Tab.noObj) {
+							parser.report_info("Use of " + parser.objToString(o) + " at row " + identleft,null);		
+						} else {
+	                    	parser.report_error("Semantics error at row " + identleft + " - symbol '" + ident + "' not found",null);					
+						}
+						RESULT = o;
+					}
+				:}
+				|	DesignatorList LBRACKET error RBRACKET
+				{: parser.report_debug("Successful error recovery - array indexing"); :}
+				;
+
+Expr ::= Term AddopTermList 
+	  |  MINUS Term AddopTermList 
+	  ; 
 AddopTermList ::= AddopTermList AddopTerm |    ;
 AddopTerm ::= Addop Term ;
+
 
 Condition ::= Condition OR CondTerm 
 		  | CondTerm 
 		  | error
-		  {: parser.log.debug("Uspesan oporavak od greske pri logickom izrazu if/while konstrukcije."); :}
+		  {: parser.report_debug("Successful error recovery - condition of an if/while construction"); :}
 		  ;
-CondTerm ::= CondTerm AND CondFact | CondFact ;
+CondTerm ::= CondTerm AND CondFact 
+		  |  CondFact ;
 CondFact ::= Expr RelopExprOpt ;
-RelopExprOpt ::= RelopExpr | ;
+RelopExprOpt ::= RelopExpr |    ;
 RelopExpr ::= Relop Expr ;
- 
+
+
 MatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Matched ;
 UnmatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Unmatched ;
 
+
 BreakStatement ::= BREAK SEMI_COMMA ;
 
-ReturnStatement ::= RETURN ExprOpt SEMI_COMMA ;
+
+ReturnStatement ::= RETURN ExprOpt:expr SEMI_COMMA 
+				{:
+					returnFound = true;
+				 	/*
+				 	Struct currMethType = currentMethod.getType();
+				 	if (!currMethType.compatibleWith(expr)) {
+				 		parser.report_error("Greska na liniji " + tleft + " : " + "tip izraza u return naredbi ne slaze se sa tipom povratne vrednosti funkcije " + currentMethod.getName(), null);
+				 	}
+				 	*/		  	 
+			    :}
+;
 ExprOpt ::= Expr |    ;
+
 
 ReadStatement ::= READ LPAREN Designator RPAREN SEMI_COMMA ;
 
+
 PrintStatement ::= PRINT LPAREN Expr NumberOpt RPAREN SEMI_COMMA ;
 NumberOpt ::= COMMA NUMBER |    ;
+
 
 Term ::= Factor MulopFactorList ;
 MulopFactorList ::= MulopFactorList MulopFactor |    ;
@@ -305,18 +606,20 @@ Factor ::= Designator ParenActParsOpt
 		 | CHAR
 		 | STRING
 		 | BOOL
-		 | NEW Type BracketsExprOpt
+		 | NEW Type LBRACKET Expr RBRACKET
+		 | NEW Type
 		 | LPAREN Expr RPAREN 
 		 ;
-BracketsExprOpt ::= LBRACKET Expr RBRACKET |    ;
 ParenActParsOpt ::= LPAREN ActParsOpt RPAREN
 				{: 
 					if (parser.inMain) 
 						parser.callCnt++; 
 				:}
 				|	LPAREN error RPAREN
-				{: parser.log.debug("Uspesan oporavak od greske pri navodjenju liste parametara."); :}
-				|   ;
+				{: parser.report_debug("Successful error recovery - actual parameters list"); :}
+				|   
+				;
+
 
 Relop ::= EQ | NEQ | GRE | GREQ | LESS | LEQ ;
 Addop ::= PLUS | MINUS ;
