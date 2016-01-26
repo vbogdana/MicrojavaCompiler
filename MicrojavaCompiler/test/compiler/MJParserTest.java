@@ -12,7 +12,6 @@ import java_cup.runtime.Symbol;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
-import rs.etf.pp1.symboltable.Tab;
 import compiler.util.Log4JUtils;
 
 public class MJParserTest {
@@ -35,7 +34,6 @@ public class MJParserTest {
 				else
 					sourceCode = new File("test/test_files/test" + i + ".mj");
 				
-			//File sourceCode = new File("test/test_files/test00.mj");
 				log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 			
 				br = new BufferedReader(new FileReader(sourceCode));
@@ -62,16 +60,8 @@ public class MJParserTest {
 		        log.info("Classes = " + p.nestedClassCnt);
 		        log.info("Methods = " + p.nestedClassMethodCnt);
 		        log.info("Class attributes = " + p.nestedClassAttrCnt);
-		        
-		        if (p.semError)
-		        	log.error("Parsing UNSUCCESSFUL!");
-		        else
-		        	log.info("Parsing SUCCESSFUL!");
-		        
-		        Tab.dump();
-		        
-		        
-			}   
+			}
+	        
 		} 
 		finally {
 			if (br != null)

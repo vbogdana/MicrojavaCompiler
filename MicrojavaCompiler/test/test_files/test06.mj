@@ -26,6 +26,6 @@ program test06
 // glob nizovi = 4
 
 // def funkcija = 1
-// pozivi funkcija = 2
+// pozivi funkcija = 0
 // blokovi naredbi = 1
 // formalni parametri = 0
