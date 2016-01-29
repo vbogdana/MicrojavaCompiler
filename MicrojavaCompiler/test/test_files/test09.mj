@@ -31,7 +31,7 @@ class Beta extends Alfa{
 		void dodaj(int x, int y, int z) bool bulova; {
 			c = bulova++;                //sintaksna, oporavak do ;
 			a = "Alfa";                  //semanticka, tipovi se ne poklapaju
-			d = "Delta";                 //semanticka, isto
+			d = "Delta";                 //semanticka, isto			OBRATI
 			b = 'b';                     
 			print(b);
 		}
@@ -47,7 +47,7 @@ class Gama extends Alfa{
 			i = 'i';                         
 			niz = new int[5];                //semanticka, niz nije deklarisan, tipovi se ne poklapaju
 			while(i < 5)                     //semanticka, tipovi se ne poklapaju  
-				niz[i] = x + y + z + i;      //semanticka, niz, i, isto
+				niz[i] = x + y + z + i;      //semanticka, niz, i, isto		MOZDA OVDE FALI OKO TIPOVA
 				i++;                         //semanticka
 		}
 	}

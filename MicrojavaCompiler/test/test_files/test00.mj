@@ -1,9 +1,11 @@
 program MJProgram
-	const int i = 2;
+	const int i = 2, j = 3;
 	const int in = true;
-	const string ab = "vnjf";
+	const string prvi = "prvi", drugi = "drugi", treci = "treci";
 	const string str = 2;
 	const char c = 'a';
+	const string cetvrti = "cetvrti";
+	const bool tflag = true, fflag = false;
 	
 	int x, y;
 	int x y;

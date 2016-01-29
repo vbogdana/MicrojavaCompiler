@@ -28,14 +28,14 @@ public class MJParserTest {
 		Reader br = null;
 		
 		try {
-			/*for (int i = 0; i < 12; i++) {
+			for (int i = 0; i < 12; i++) {
 				File sourceCode = null;
 				if (i < 10)
 					sourceCode = new File("test/test_files/test0" + i + ".mj");
 				else
 					sourceCode = new File("test/test_files/test" + i + ".mj");
-			*/	
-			File sourceCode = new File("test/test_files/test11.mj");
+				
+			//File sourceCode = new File("test/test_files/test05.mj");
 				log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 			
 				br = new BufferedReader(new FileReader(sourceCode));
@@ -71,7 +71,7 @@ public class MJParserTest {
 		        Tab.dump();
 		        
 		        
-			//}   
+			}   
 		} 
 		finally {
 			if (br != null)

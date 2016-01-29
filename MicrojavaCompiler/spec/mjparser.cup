@@ -13,9 +13,10 @@ parser code {:
 
 	public static final Struct stringType = new Struct(Struct.Array, new Struct(Struct.Char, Tab.noType));
 	public static final Struct boolType = new Struct(Struct.Int);
+	public static final String boolTrue = "true", boolFalse = "false", classThis = "this";
 
 	Logger log = Logger.getLogger(getClass());
-	
+	Map<Struct, ArrayList<Struct>> inheritanceTable = new LinkedHashMap<Struct, ArrayList<Struct>>();
 	Struct type;
 	public boolean semError = false;
 	
@@ -83,6 +84,23 @@ parser code {:
     	stv.visitObjNode(o);
     	return stv.getOutput();
     }
+    
+     public boolean assignableTo(Obj dst, Struct src) {
+    	Struct dstType = dst.getType();
+    	
+    	if (src.assignableTo(dstType))
+    		return true;
+    	/*
+		if (dstType.getKind() == Struct.Array && dstType.getElemType().equals(Tab.charType) && src.equals(stringType))
+			return true;
+		*/
+		if (dstType.getKind() == Struct.Class && src.getKind() == Struct.Class)
+			if (inheritanceTable.containsKey(dstType))
+				if (inheritanceTable.get(dstType).contains(src))
+					return true;
+	
+		return false;
+	}
 :}
 
 scan with {:
@@ -99,12 +117,22 @@ init with {:
 :}
 
 action code {:
+	int constValue = 0;
+	ArrayList<String> constStrings = new ArrayList<String> ();
 	Obj currentMethod = null;
 	Obj currentClass = null;
+	Struct superClass = null;
 	Obj currentDesignator = null;
+	Obj currentCall = null;
+	Stack<Obj> funcCalls = new Stack<Obj> ();
+	Iterator<Obj> iterator = null;
+	Stack<Iterator<Obj>> iterators = new Stack<Iterator<Obj>> ();
+	int pos = 0;
+	Stack<Integer> positions = new Stack<Integer> ();
 	boolean returnFound = false;
-	int fpPos = 0;
+	int fpPos = 0, actPars = 0;
 	boolean isVoid = false;
+	boolean inWhile = false;
 :}
 
 /**********************************************************************************************************/
@@ -122,53 +150,100 @@ terminal Boolean BOOL ;
 terminal String STRING ;
 	
 /* Operators */
-terminal PLUS, MINUS, MUL, DIV, MOD, EQ, NEQ, GRE, GREQ, LESS, LEQ, AND, OR, EQUALS, INC, DEC, SEMI_COMMA, COMMA, STOP, 
+terminal String PLUS, MINUS, MUL, DIV, MOD, EQ, NEQ, GRE, GREQ, LESS, LEQ, AND, OR, EQUALS, INC, DEC, SEMI_COMMA, COMMA, STOP, 
 		 LPAREN, RPAREN, LBRACKET, RBRACKET, LBRACE, RBRACE ;
 
 /* Non terminals */
 non terminal Program, Lists, List ;
 non terminal ConstDecl, ConstList, Constant, VarType ;
 non terminal VarDecl, VarList, Variable ;
-non terminal ClassDecl, Extends, MethodsOpt, Methods ;
+non terminal ClassDecl, Extends, Methods ;
 non terminal MethodDeclList, MethodDecl, FormParsOpt, FormPars, FormPar, StatementList, Statement ;
-non terminal Matched, Unmatched ;
-non terminal ExprStatement, MatchedWhileStatement, UnmatchedWhileStatement, BreakStatement, ReturnStatement, ReadStatement, PrintStatement ;
-non terminal ActParsOpt, ActPars, Expr, MinusOpt, AddopTermList, AddopTerm ;
-non terminal Condition, CondTerm, CondFact, RelopExprOpt, RelopExpr ;
-non terminal ExprOpt, NumberOpt ;
-non terminal Term, MulopFactorList, MulopFactor, Factor, ParenActParsOpt ;
-non terminal Relop, Addop, Mulop ;
+non terminal Matched, Unmatched, MatchedIfStatement, UnmatchedIfStatement, IfTerm ;
+non terminal MatchedWhileStatement, UnmatchedWhileStatement, BreakStatement, WhileTerm ;
+non terminal ExprStatement, ReturnStatement, ReadStatement, PrintStatement ;
+non terminal NumberOpt ;
+non terminal String Relop, Addop, Mulop ;
 non terminal LocalVarDeclList, LocalVarDecl, LocalVarList, LocalVariable ;
 
 /* Semantics */
 non terminal Obj ProgramName, Designator, DesignatorList ;
-non terminal Struct ConstType, Type, ReturnType ;
+non terminal Struct ConstType, Type, ReturnType, Factor, Expr, Term, Function, ActPars, ConditionCheck, Condition, CondTerm, CondFact ;
 non terminal Boolean BracketsOpt ;
 non terminal Assignment, SideEffect, IncDec, FunctionCall ;
 
 
 /**********************************************************************************************************/
 
-Program ::= PROGRAM ProgramName:p Lists LBRACE MethodDeclList RBRACE 
-{:
-	Tab.chainLocalSymbols(p);
-	Tab.closeScope(); 
-:}
+Program ::= PROGRAM ProgramName:p Lists LBRACE MethodDeclList RBRACE:dummy
+		{:
+			Tab.chainLocalSymbols(p);
+			Obj o = Tab.find("main");
+			if (o == Tab.noObj || o.getKind() != Obj.Meth)
+				parser.report_error("Semantics error at row " + dummyleft + " - program missing 'main' function", null);
+			Tab.closeScope();
+			
+		:}
 ;
 ProgramName ::= IDENT:progName 
-{:
-	RESULT = Tab.insert(Obj.Prog, progName, Tab.noType);
-	Tab.openScope();
-	parser.report_info("PARSING the program '" + progName + "' at row " + progNameleft, null);
-	
-:}
+			{:
+				RESULT = Tab.insert(Obj.Prog, progName, Tab.noType);
+				Tab.openScope();
+				// parser.report_info("PARSING the program '" + progName + "' at row " + progNameleft, null);
+				
+			:}
 ;
+
+
 
 Lists ::= Lists List |    ;
 List ::= ConstDecl | VarDecl | ClassDecl ;
-
 LocalVarDeclList ::= LocalVarDeclList LocalVarDecl |    ;
 MethodDeclList ::= MethodDeclList MethodDecl |    ;
+
+
+
+ConstType ::= NUMBER:val
+			{: RESULT = Tab.intType; constValue = val; :}
+			| CHAR:val
+			{: RESULT = Tab.charType; constValue = val; :}
+			| BOOL:val
+			{: 
+				RESULT = parser.boolType; 
+				if (val.booleanValue())
+					constValue = 1; 
+				else
+					constValue = 0;
+			:}
+			| STRING:val 
+			{: 
+				RESULT = parser.stringType; 
+				constStrings.add(val);
+				constValue = constStrings.size() - 1; 
+			:}
+;
+VarType ::= Type:type
+ 		{: parser.type = type; :}
+ ;
+Type ::= IDENT:typeName 
+	{:	
+		Obj typeNode = Tab.find(typeName);
+		if (typeNode == Tab.noObj) {
+			parser.report_error("Semantics error at row " + typeNameleft + " - type '" + typeName + "' not found in symbol table", null);
+			RESULT = Tab.noType;
+		}
+		else {
+			if (Obj.Type == typeNode.getKind()) {
+				RESULT = typeNode.getType();
+			}
+			else {
+				parser.report_error("Semantics error at row " + typeNameleft + " - name '" + typeName + "' doesn't represent a type", null);
+				RESULT = Tab.noType;
+			}
+		}
+	:}
+;
+
 
 
 ConstDecl ::= CONST VarType ConstList SEMI_COMMA
@@ -177,19 +252,21 @@ ConstDecl ::= CONST VarType ConstList SEMI_COMMA
 			{: parser.report_debug("Successful error recovery - constant definition"); :}
 			| CONST error SEMI_COMMA
 			{: parser.report_debug("Successful error recovery - constant definition"); :}
-			;
+;
 ConstList ::= ConstList COMMA Constant 
 			| error COMMA Constant
 			{: parser.report_debug("Successful error recovery - constant definition"); :}
 			| Constant
-			;
+;
 Constant ::= IDENT:constName EQUALS ConstType:constType 
 			{: 
 				parser.globalConstCnt++;
 				Obj o = Tab.find(constName);
 	 			if (o == Tab.noObj) {
 	 				o = Tab.insert(Obj.Con, constName, parser.type);
-	 				parser.report_info("Constant '" + constName + "' declaration at row " + constNameleft, null);
+	 				// parser.report_info("Constant '" + constName + "' declaration at row " + constNameleft, null);
+	 				o.setAdr(constValue);
+	 				constValue = 0;
 	 			} else {
 	 				parser.report_error("Semantics error at row " + constNameleft + " - multiple definition of '" + constName + "'", null);
 	 			}
@@ -199,52 +276,20 @@ Constant ::= IDENT:constName EQUALS ConstType:constType
 			:} 
 		  	|  IDENT EQUALS error
 		    {: parser.report_debug("Successful error recovery - value assignment (constant)"); :}
-		    ;
-ConstType ::= NUMBER 
-			{: RESULT = Tab.intType; :}
-			| CHAR
-			{: RESULT = Tab.charType; :}
-			| BOOL
-			{: RESULT = parser.boolType; :}
-			| STRING 
-			{: RESULT = parser.stringType; :};
-
-
-VarType ::= Type:type
- 		{: parser.type = type; :};
-Type ::= IDENT:typeName 
-{:	
-	Obj typeNode = Tab.find(typeName);
-	if (typeNode == Tab.noObj) {
-		parser.report_error("Semantics error at row " + typeNameleft + " - type '" + typeName + "' not found in symbol table", null);
-		RESULT = Tab.noType;
-	}
-	else {
-		if (Obj.Type == typeNode.getKind()) {
-			RESULT = typeNode.getType();
-		}
-		else {
-			parser.report_error("Semantics error at row " + typeNameleft + " - name '" + typeName + "' doesn't represent a type", null);
-			RESULT = Tab.noType;
-		}
-	}
-:};
-
-
+;
+		    
+		    
+		    
 VarDecl ::= VarType VarList SEMI_COMMA
 		{: parser.type = Tab.noType; :}
 		| 	VarType error SEMI_COMMA
-		{: 
-			parser.report_debug("Successful error recovery - global variable definition");
-		:}
-		;
+		{: parser.report_debug("Successful error recovery - global variable definition"); :}
+;
 VarList ::= VarList COMMA Variable 
 		| 	error COMMA Variable
-		{: 
-			parser.report_debug("Successful error recovery - global variable definition");
-		:}
+		{: parser.report_debug("Successful error recovery - global variable definition"); :}
 		|	Variable 
-		;
+;
 Variable ::= IDENT:varName BracketsOpt:brack
 			{: 	
 	 			Obj o = Tab.find(varName);
@@ -253,12 +298,15 @@ Variable ::= IDENT:varName BracketsOpt:brack
 		 				Tab.insert(Obj.Var, varName, parser.type);
 	 				else
 	 					Tab.insert(Obj.Var, varName, new Struct(Struct.Array, parser.type));
-	 				parser.report_info("Global variable '" + varName + "' declaration at row " + varNameleft, null);	
+	 				// parser.report_info("Global variable '" + varName + "' declaration at row " + varNameleft, null);	
 	 			} else {
 	 				parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of '" + varName + "'", null);
 	 			}
 			:}
-			;
+;
+			
+			
+			
 LocalVarDecl ::= Type:type
 			 {: parser.type = type; :}
 			  LocalVarList SEMI_COMMA
@@ -279,10 +327,10 @@ LocalVarDecl ::= Type:type
 				else
 				 	parser.report_debug("Successful error recovery - class attribute declaration");
 			 :}
-			 ;
+;
 LocalVarList ::= LocalVarList COMMA LocalVariable 
 			 |	 LocalVariable 
-			 ;
+;
 LocalVariable ::= IDENT:varName BracketsOpt:brack
 			{: 	
 				// brojimo samo lokalne u main funkciji
@@ -291,27 +339,42 @@ LocalVariable ::= IDENT:varName BracketsOpt:brack
 				else if (parser.inClass && parser.attrDef) 
 					parser.nestedClassAttrCnt++;
 	 			
-	 			Obj o = Tab.currentScope().findSymbol(varName);
-	 			if (o == null) {
 	 				if (parser.attrDef) {
-	 					if (!brack.booleanValue())
-		 					Tab.insert(Obj.Fld, varName, parser.type);
-	 					else
-	 						Tab.insert(Obj.Fld, varName, new Struct(Struct.Array, parser.type));
-	 					parser.report_info("Class attribute '" + varName + "' declaration at row " + varNameleft, null);
+	 					Obj o = Tab.currentScope().findSymbol(varName);
+	 					if (o == null) {
+		 					if (!brack.booleanValue())
+			 					Tab.insert(Obj.Fld, varName, parser.type);
+		 					else
+		 						Tab.insert(Obj.Fld, varName, new Struct(Struct.Array, parser.type));
+		 					// parser.report_info("Class attribute '" + varName + "' declaration at row " + varNameleft, null);
+	 					} else {
+	 						if ((superClass != null) && (superClass.getMembers().searchKey(varName) != null)) {
+	 							int adr = o.getAdr();
+	 							Tab.currentScope().getLocals().deleteKey(varName);
+	 							if (!brack.booleanValue())
+				 					o = Tab.insert(Obj.Fld, varName, parser.type);
+			 					else
+			 						o = Tab.insert(Obj.Fld, varName, new Struct(Struct.Array, parser.type));
+	 							o.setAdr(adr);
+	 							// parser.report_info("Class attribute '" + varName + "' redefinition at row " + varNameleft, null);
+	 						} else
+	 							parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of a class attribute '" + varName + "'", null);				
+	 					}
 	 				} else {
-	 					if (!brack.booleanValue())
-		 					Tab.insert(Obj.Var, varName, parser.type);
-	 					else
-	 						Tab.insert(Obj.Var, varName, new Struct(Struct.Array, parser.type));
-	 					parser.report_info("Local variable '" + varName + "' declaration at row " + varNameleft, null);
+	 					Obj o = Tab.currentScope().findSymbol(varName);
+ 						if (o == null) {
+		 					if (!brack.booleanValue())
+			 					Tab.insert(Obj.Var, varName, parser.type);
+		 					else
+		 						Tab.insert(Obj.Var, varName, new Struct(Struct.Array, parser.type));
+		 					// parser.report_info("Local variable '" + varName + "' declaration at row " + varNameleft, null);
+		 				} else {
+		 					parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of a local variable '" + varName + "'", null);
+		 				}
 	 				}	
-	 			} else {
-	 				parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of '" + varName + "'", null);
-	 			}
+	 			
 			:}
-			;
-			
+;			
 BracketsOpt ::= LBRACKET RBRACKET 
 			 {: 
 			 	RESULT = new Boolean(true);
@@ -323,7 +386,9 @@ BracketsOpt ::= LBRACKET RBRACKET
 			 	RESULT = new Boolean(false);
 			   	if (!parser.method && !parser.inClass) 
 			   		parser.globalVarCnt++; 
-			 :} ;
+			 :} 
+;
+
 
 
 ClassDecl ::= CLASS IDENT:className
@@ -333,43 +398,97 @@ ClassDecl ::= CLASS IDENT:className
 			  	Obj o = Tab.find(className);
 			  	if (o == Tab.noObj) {
 	 				currentClass = Tab.insert(Obj.Type, className, new Struct(Struct.Class));
-	 				parser.report_info("Class '" + className + "' definition at row " + classNameleft, null);
+	 				// parser.report_info("Class '" + className + "' definition at row " + classNameleft, null);
 	 			} else {
 	 				currentClass = o;
 	 				parser.report_error("Semantics error at row " + classNameleft + " - multiple definition of a class '" + className + "'", null);
-	 			}		  		
-	 			Tab.openScope();
+	 			}
+	 			Tab.openScope();		  		
 			  :} 
 			  Extends LBRACE 
-			  {: parser.attrDef = true; :}
+			  {: 
+			  	parser.attrDef = true;
+			  	if (superClass != null) {
+					if (parser.inheritanceTable.containsKey(superClass))
+						parser.inheritanceTable.get(superClass).add(currentClass.getType());
+					else {
+						ArrayList<Struct> list = new ArrayList<Struct> ();
+						list.add(currentClass.getType());
+						parser.inheritanceTable.put(superClass, list);
+					}
+				}
+			  :}
 			  LocalVarDeclList 
 			  {: 
 			  	parser.attrDef = false; 
 			  	currentClass.getType().setMembers(Tab.currentScope().getLocals());
+			  	if (superClass != null) {
+			  		Iterator<Obj> exIter = superClass.getMembers().symbols().iterator();
+					Obj meth = null;
+					Obj o = null;
+					while (exIter.hasNext()) {
+						meth = exIter.next();
+						if (meth.getKind() == Obj.Meth) {
+			 				o = Tab.insert(Obj.Meth, meth.getName(), meth.getType());
+			 				Tab.openScope();
+			 				Iterator<Obj> methIter = meth.getLocalSymbols().iterator();
+			 				int i = 0;
+			 				while (methIter.hasNext()) {
+			 					Obj par = methIter.next();
+			 					if (par.getType().getKind() != Struct.Array)
+				 					par = Tab.insert(Obj.Var, par.getName(), par.getType());
+				 				else
+				 					par = Tab.insert(Obj.Var, par.getName(), new Struct(Struct.Array, par.getType().getElemType()));
+				 				if (i < meth.getLevel())
+				 					par.setFpPos(i++);		
+			 				}
+			 				Tab.chainLocalSymbols(o);
+			 				Tab.closeScope();
+			 				o.setLevel(i);
+						}
+					}
+			  	}
 			  :}
-			  MethodsOpt RBRACE 
+			  Methods RBRACE 
 			  {: 
 			  	parser.inClass = false; 
 			  	parser.nestedClassCnt++;
 			  	Tab.chainLocalSymbols(currentClass.getType());
 			   	Tab.closeScope();
 			   	currentClass = null;
+			   	superClass = null;
 			  :} 
-			  ;
+;
 Extends ::= EXTENDS Type:outerClass
 			{:
 				if (!(outerClass.getKind() == Struct.Class))
 					parser.report_error("Semantics error at row " + outerClassleft + " - outer class must be of a class type", null);
 				else if (outerClass == currentClass.getType())
 					parser.report_error("Semantics error at row " + outerClassleft + " - class cannot inherit itself", null);
-				else
-					parser.report_info("Class inheritance at row " + outerClassleft, null);
+				else {
+					// parser.report_info("Class inheritance at row " + outerClassleft, null);
+					superClass = outerClass;
+					Iterator<Obj> exIter = superClass.getMembers().symbols().iterator();
+					Obj o = null;
+					for (int i = 0; i < superClass.getNumberOfFields(); i++) {
+						o = exIter.next();
+						if (o.getKind() == Obj.Fld) {
+							if (o.getType().getKind() != Struct.Array)
+				 				Tab.insert(o.getKind(), o.getName(), o.getType());
+			 				else
+			 					Tab.insert(o.getKind(), o.getName(), new Struct(Struct.Array, o.getType().getElemType()));
+						}
+					}
+				}
 			:} 
 			|  EXTENDS error
 			{: parser.report_debug("Successful error recovery - class inheritance"); :}
-			|    ;
-MethodsOpt ::= Methods |    ;
-Methods ::= LBRACE MethodDeclList RBRACE ;
+			|    
+;
+Methods ::= LBRACE MethodDeclList RBRACE
+		|
+;
+
 
 
 MethodDecl ::= ReturnType:retType IDENT:methName
@@ -381,17 +500,21 @@ MethodDecl ::= ReturnType:retType IDENT:methName
 			   	  Obj o = Tab.currentScope().findSymbol(methName);
 				  if (o == null) {
 		 				currentMethod = Tab.insert(Obj.Meth, methName, retType);
-		 				parser.report_info("Function '" + methName + "' definition at row " + methNameleft, null);
+		 				// parser.report_info("Function '" + methName + "' definition at row " + methNameleft, null);
 		 		  } else {
 		 		  		currentMethod = o;
-		 				parser.report_error("Semantics error at row " + methNameleft + " - multiple definition of a function '" + methName + "'", null);
+		 		  		if (!((superClass != null) && (superClass.getMembers().searchKey(methName) != null)))
+		 					parser.report_error("Semantics error at row " + methNameleft + " - multiple definition of a function '" + methName + "'", null);
+		 		  		else {
+		 		  			// parser.report_info("Class method '" + methName + "' redefinition at row " + methNameleft, null);
+		 		  		}
 		 		  }	 
 			   	  Tab.openScope();
 			   	  
 			   	  if (parser.inMain && !isVoid)
 			   	  	parser.report_error("Semantics error at row " + methNameleft + " - function '" + methName + "' must be VOID", null);  	   
 			   :}
-			   LPAREN FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE 
+			   LPAREN FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE:dummy 
 			   {: 
 			   	  if (parser.inMain && fpPos > 0)
 					parser.report_error("Semantics error at row " + methNameleft + " - 'main' function cannot have parameters", null);
@@ -407,7 +530,7 @@ MethodDecl ::= ReturnType:retType IDENT:methName
 			   	  	parser.inMain = false;
 			   	  	
 			   	  if (!returnFound && !isVoid)
-			   	 	parser.report_error("Semantics error at row " + methNameleft + " - function '" + methName + "' missing 'return' statement", null);
+			   	 	parser.report_error("Semantics error at row " + dummyleft + " - function '" + methName + "' missing 'return' statement", null);
 			   	  
 			   	  currentMethod.setLevel(fpPos);
 			   	  Tab.chainLocalSymbols(currentMethod);
@@ -417,18 +540,18 @@ MethodDecl ::= ReturnType:retType IDENT:methName
 				  currentMethod = null;
 				  fpPos = 0;
 			   :}
-			 	;
+;
 ReturnType ::= Type:type
 			{: isVoid = (type == Tab.noType); RESULT = type; :} 
 			| VOID 
 			{: isVoid = true; RESULT = Tab.noType; :}
-			;
+;
 FormParsOpt ::= FormPars |    ;
 FormPars ::= FormPars COMMA FormPar
 		 |	 error COMMA FormPar
 		 {: parser.report_debug("Successful error recovery - formal parameter declaration"); :}
 		 | 	 FormPar 
-		 ;
+;
 FormPar ::= Type:type IDENT:parName BracketsOpt:brack 
 			{: 					
 				parser.formParCnt++;
@@ -441,23 +564,23 @@ FormPar ::= Type:type IDENT:parName BracketsOpt:brack
 	 					o = Tab.insert(Obj.Var, parName, new Struct(Struct.Array, type));
 	 				o.setFpPos(fpPos);
 	 				fpPos++;
-	 				parser.report_info("Formal parameter '" + parName + "' declaration at row " + parNameleft, null);
+	 				// parser.report_info("Formal parameter '" + parName + "' declaration at row " + parNameleft, null);
 	 			} else {
 	 				parser.report_error("Semantics error at row " + parNameleft + " - multiple definition of '" + parName + "'", null);
 	 			} 
 			:}
 			|	Type error
 			{: parser.report_debug("Successful error recovery - formal parameter declaration"); :}
-			;
+;
 StatementList ::= StatementList Statement |    ;
 
 
+
 Statement ::= Matched | Unmatched ;
-Unmatched ::= IF LPAREN Condition RPAREN Statement
-			| IF LPAREN Condition RPAREN Matched ELSE Unmatched
+Unmatched ::= UnmatchedIfStatement
 			| UnmatchedWhileStatement ;
 Matched ::= ExprStatement
-			| IF LPAREN Condition RPAREN Matched ELSE Matched
+			| MatchedIfStatement
 			| MatchedWhileStatement
 			| BreakStatement
 			| ReturnStatement
@@ -465,162 +588,429 @@ Matched ::= ExprStatement
 			| PrintStatement 
 			| LBRACE StatementList RBRACE 
 			{: parser.blockCnt++; :}
-			;
-
-			
+;
+	
 ExprStatement ::= Assignment
 				| SideEffect
 				| FunctionCall
-				;
-Assignment ::= Designator:desig EQUALS Expr SEMI_COMMA
+;
+Assignment ::= Designator:desig EQUALS Expr:expr SEMI_COMMA
 			{:			
-				if (desig != null)
+				if (desig != null) {
 					if (desig.getKind() != Obj.Var && desig.getKind() != Obj.Fld && desig.getKind() != Obj.Elem) {
-						parser.report_info("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+						parser.report_error("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be a variable", null);
+						desig = Tab.noObj;
 					}
-				// proveri kompatibilnost		
+					// menjano
+	 				//if (!expr.assignableTo(desig.getType()))
+	 				if (!parser.assignableTo(desig, expr))
+	 					parser.report_error("Semantics error at row " + desigleft + " - incompatible types", null);		 	
+				} else
+					parser.report_error("Desig je null", null);
+						
 			:}
 			|  Designator EQUALS error SEMI_COMMA
 			{: parser.report_debug("Successful error recovery - value assignment"); :}
-			;
+;
 SideEffect ::= Designator:desig IncDec SEMI_COMMA
 			{:
-				if (desig != null)
+				if (desig != null) {
 					if (desig.getKind() != Obj.Var && desig.getKind() != Obj.Fld && desig.getKind() != Obj.Elem) {
-						parser.report_info("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+						parser.report_error("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
 					} else {
 						if (!desig.getType().equals(Tab.intType))
-							parser.report_info("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+							parser.report_error("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
 					}
+				} else
+					parser.report_error("Desig je null", null);
 			:}
-			;
+;
 IncDec ::= INC | DEC ;
-FunctionCall ::= Designator LPAREN ActParsOpt RPAREN SEMI_COMMA
-			{: 
-				if (parser.inMain) 
-					parser.callCnt++; 
+FunctionCall ::= Function SEMI_COMMA ;
+Function ::= Designator:desig LPAREN 
+		 {:
+		 	if (parser.inMain) 
+				parser.callCnt++;
+				
+		 	if (desig != null) {
+		 		if (desig.getKind() != Obj.Meth)
+		 			parser.report_error("Semantics error at row " + desigleft + " - variable must be a global function or a class method", null);
+		 		else {
+		 			if (currentCall != null) {
+							funcCalls.push(currentCall);
+							iterators.push(iterator);
+							positions.push(pos);
+						}
+					currentCall = desig;
+					iterator = currentCall.getLocalSymbols().iterator();
+					pos = 0;
+					if (currentCall.getLevel() <= 0)
+			 			parser.report_error("Semantics error at row " + desigleft + " - function doesn't need parameters", null);					
+				}
+		 	} else
+		 		parser.report_error("Desig je null", null);
+		 	
+		 :}
+		 ActPars RPAREN:dummy
+		 {:
+			RESULT = Tab.noType;
+			if (currentCall != null) {
+				RESULT = currentCall.getType();
+				if (currentCall.getLevel() > pos)
+			 			parser.report_error("Semantics error at row " + dummyleft + " - function '" + currentCall.getName() + "' missing parameters", null);										
+				if (funcCalls.size() > 0) {
+					currentCall = funcCalls.pop();
+					iterator = iterators.pop();
+					pos = positions.pop();
+				} else {
+					currentCall = null;
+					iterator = null;
+					pos = 0;
+				}
+		 	} else
+		 		parser.report_error("Current call je null", null);
+		  :}
+		  |  Designator:desig LPAREN RPAREN
+		  {:
+			 if (parser.inMain) 
+					parser.callCnt++;
+
+				RESULT = Tab.noType;
+				if (desig != null) {
+			 		if (desig.getKind() != Obj.Meth)
+			 			parser.report_error("Semantics error at row " + desigleft + " - variable must be a global function or a class method", null);
+			 		else {
+							if (desig.getLevel() > 0)
+								parser.report_error("Semantics error at row " + desigleft + " - function '" + desig.getName() + "' missing parameters", null);
+							RESULT = desig.getType();
+						}
+			 	} else
+			 		parser.report_error("Desig je null", null);
+		  :}
+		  |	Designator:desig LPAREN error RPAREN
+		  {: parser.report_debug("Successful error recovery - actual parameters list"); :}
+;
+ActPars ::= Expr:expr
+		{: 
+			RESULT = Tab.noType;
+			if (currentCall != null)
+				if (currentCall.getLevel() > pos) {
+					if (currentCall.getName().equals("len")) {
+						if (expr.getKind() != Struct.Array)
+							parser.report_error("Semantics error at row " + exprleft + " - incompatible types of " + (pos+1) + ". parameter", null);
+						else
+							RESULT = expr;
+					} else {
+						if (!iterator.next().getType().compatibleWith(expr))
+							parser.report_error("Semantics error at row " + exprleft + " - incompatible types of " + (pos+1) + ". parameter", null);
+						else
+							RESULT = expr;
+					}
+					pos++;
+				} else 
+					parser.report_error("Semantics error at row " + exprleft + " - number of parameters doesn't match", null);	
+			else 
+				parser.report_error("Current call je null", null);	
+		:}
+;
+ActPars ::= ActPars:actPars COMMA Expr:expr 
+		{:
+			RESULT = Tab.noType;
+			if (currentCall != null)
+				if (currentCall.getLevel() > pos) {
+					if (!iterator.next().getType().compatibleWith(expr))
+						parser.report_error("Semantics error at row " + exprleft + " - incompatible types of " + (pos+1) + ". parameter", null);
+					else
+						RESULT = expr;
+					pos++;
+				} else 
+					parser.report_error("Semantics error at row " + exprleft + " - number of parameters doesn't match", null);	
+			else
+				parser.report_error("Current call je null", null);	
+		:}
+; 
+
+
+
+MatchedIfStatement ::= IfTerm LPAREN Condition RPAREN Matched ELSE Matched ;
+UnmatchedIfStatement ::= IfTerm LPAREN Condition RPAREN Statement
+					 | IfTerm LPAREN Condition RPAREN Matched ELSE Unmatched
+;
+IfTerm ::= IF {: :} ;
+
+
+
+MatchedWhileStatement ::= WhileTerm LPAREN Condition RPAREN Matched 
+						{: inWhile = false; :}
+;
+UnmatchedWhileStatement ::= WhileTerm LPAREN Condition RPAREN Unmatched 
+						{: inWhile = false; :}
+;
+WhileTerm ::= WHILE {: inWhile = true; :} ;
+BreakStatement ::= BREAK:dummy SEMI_COMMA 
+				{:
+					if (!inWhile)
+						parser.report_error("Semantics error at row " + dummyleft + " - 'break' statement can only be used inside a while loop", null);
+				:}
+;
+
+
+
+Condition ::= ConditionCheck:result 
+			{:
+				if (!result.equals(parser.boolType))
+					parser.report_error("Semantics error at row " + resultleft + " - expression must be a boolean value", null);
 			:}
-			| Designator LPAREN error RPAREN SEMI_COMMA
-			{: parser.report_debug("Successful error recovery - actual parameters list"); :}
-		 	;
-ActParsOpt ::= ActPars |    ;
-ActPars ::= ActPars COMMA Expr 
-		| 	Expr ;
-			
+			| error
+			{: parser.report_debug("Successful error recovery - condition of an if/while construction"); :}
+;
+ConditionCheck ::= ConditionCheck:typeL OR CondTerm:typeR
+			  {:
+			  	RESULT = Tab.noType;
+				if (typeL.equals(parser.boolType) && typeR.equals(parser.boolType))
+					RESULT = parser.boolType;
+			  :}
+			  | CondTerm:type
+			  {:
+			  	RESULT = Tab.noType;
+				if (type.equals(parser.boolType))
+					RESULT = parser.boolType;
+			  :} 		  
+;
+CondTerm ::= CondFact:type
+		{: RESULT = type; :}
+;
+CondTerm ::= CondTerm:typeL AND CondFact:typeR 
+		{:
+			RESULT = Tab.noType;
+			if (typeL.equals(parser.boolType) && typeR.equals(parser.boolType))
+				RESULT = parser.boolType;
+		:}
+;
+CondFact ::= Expr:expr
+		{: RESULT = expr; :}
+;
+CondFact ::= Expr:typeL Relop:op Expr:typeR
+		{:
+			RESULT = Tab.noType;
+			if (typeL.getKind() == Struct.Array || typeR.getKind() == Struct.Array || typeL.getKind() == Struct.Class || typeR.getKind() == Struct.Class) {
+				if (!op.equals("!=") && !op.equals("=="))
+					parser.report_error("Semantics error at row " + typeLleft + " - operator '" + op + "' not allowed for class/array types", null);
+				else {
+					if (!typeL.compatibleWith(typeR))
+						parser.report_error("Semantics error at row " + typeLleft + " - incompatible types", null);
+					else
+						RESULT = parser.boolType;
+				}
+			}
+			else {
+				if (!typeL.compatibleWith(typeR))
+					parser.report_error("Semantics error at row " + typeLleft + " - incompatible types", null);
+				else
+					RESULT = parser.boolType;
+			}		
+		:}
+;
+
+
+
+ReturnStatement ::= RETURN:dummy SEMI_COMMA 
+				{:
+					returnFound = true;
+				 	Struct currMethType = currentMethod.getType();
+				 	if (!isVoid) {
+				 		parser.report_error("Semantics error at row " + dummyleft + " - function missing a return value", null);
+				 	}	  	 
+			    :}
+			    |	RETURN Expr:expr SEMI_COMMA
+			    {:
+			    	returnFound = true;
+			    	Struct currMethType = currentMethod.getType();
+			    	if (isVoid)
+			    		parser.report_error("Semantics error at row " + exprleft + " - function does not need a return value", null);
+			    	else if (!expr.compatibleWith(currMethType))
+			    		parser.report_error("Semantics error at row " + exprleft + " - return types are not compatible", null);
+			    :}
+;
+
+
+
+ReadStatement ::= READ LPAREN Designator:desig RPAREN SEMI_COMMA 
+				{:
+					if (desig != null)
+						if (desig.getKind() != Obj.Var && desig.getKind() != Obj.Fld && desig.getKind() != Obj.Elem) {
+							parser.report_error("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be a variable", null);
+						} else {
+							if (desig.getType() != Tab.intType && desig.getType() != Tab.charType && desig.getType() != parser.boolType && desig.getType() != parser.stringType)
+								parser.report_error("Semantics error at row " + desigleft + " - parameter must be an integer/character/boolean or a string value", null);							
+						}
+					else
+						parser.report_error("Desig je null", null);
+				:}
+;
+
+
+PrintStatement ::= PRINT LPAREN Expr:expr NumberOpt RPAREN SEMI_COMMA 
+				{:
+				if (expr != Tab.intType && expr != Tab.charType && expr != parser.boolType && expr != parser.stringType)
+								parser.report_error("Semantics error at row " + exprleft + " - parameter must be an integer/character/boolean or a string value", null);							
+				:}
+;
+NumberOpt ::= COMMA NUMBER |    ;
+
+
 
 Designator ::= DesignatorList:dlist 
 			{: RESULT = dlist; :}
-			;			
+;			
 DesignatorList ::= 	DesignatorList:cl STOP IDENT:field
 				{:
-					if (cl.getType().getKind() != Struct.Class) 
+					if (cl.getType().getKind() != Struct.Class) { 
                     	parser.report_error("Semantics error at row " + clleft + " - expected a class",null);
-                    
-                    Obj o = cl.getType().getMembers().searchKey(field);
-                    if (o == null) {
-                    	o = Tab.noObj;
-                    	parser.report_error("Semantics error at row " + clleft + " - class attribute '" + field + "' doesn't exist",null);
+                    	RESULT = Tab.noObj;
                     } else {
-                    	parser.report_info("Use of " + parser.objToString(o) + " at row " + clleft,null);
-                    }
-                    RESULT = o;
+                    	Obj o = cl.getType().getMembers().searchKey(field);
+	                    if (o == null) {
+	                    	o = Tab.noObj;
+	                    	parser.report_error("Semantics error at row " + clleft + " - class attribute '" + field + "' doesn't exist",null);
+	                    } else {
+	                    	// parser.report_info("Use of " + parser.objToString(o) + " at row " + clleft,null);
+	                     }
+	                    RESULT = o;
+                    }     
 				:}
-				|	DesignatorList:array LBRACKET Expr RBRACKET
+				|	DesignatorList:array LBRACKET Expr:expr RBRACKET
 				{:
-					if (array.getType().getKind() != Struct.Array) 
+					if (array.getType().getKind() != Struct.Array) { 
                     	parser.report_error("Semantics error at row " + arrayleft + " - expected an array",null);
-                    
-                    // EXPR MORA BITI INT
-                    RESULT = new Obj (Obj.Elem, array.getName(), array.getType().getElemType());
+                    	RESULT = Tab.noObj;
+                    } else {
+                    	// menjano obrati paznju na RESULT
+                    	RESULT = Tab.noObj;
+					 	if (!expr.equals(Tab.intType))
+					 		parser.report_error("Semantics error at row " + exprleft + " - array index must be an integer value", null);		 	
+                    	else
+                    		RESULT = new Obj (Obj.Elem, array.getName(), array.getType().getElemType());
+                    }
 				:}
 				|	IDENT:ident
 				{:	
-					if (ident.equals("this") && parser.inClass) {							 			
+					if (ident.equals(parser.classThis) && parser.inClass) {							 			
 						RESULT = currentClass;
 					} else {
 						Obj o = Tab.find(ident);
 						if (o != Tab.noObj) {
-							parser.report_info("Use of " + parser.objToString(o) + " at row " + identleft,null);		
+							// parser.report_info("Use of " + parser.objToString(o) + " at row " + identleft,null);		
 						} else {
 	                    	parser.report_error("Semantics error at row " + identleft + " - symbol '" + ident + "' not found",null);					
 						}
 						RESULT = o;
 					}
 				:}
-				|	DesignatorList LBRACKET error RBRACKET
-				{: parser.report_debug("Successful error recovery - array indexing"); :}
-				;
-
-Expr ::= Term AddopTermList 
-	  |  MINUS Term AddopTermList 
-	  ; 
-AddopTermList ::= AddopTermList AddopTerm |    ;
-AddopTerm ::= Addop Term ;
-
-
-Condition ::= Condition OR CondTerm 
-		  | CondTerm 
-		  | error
-		  {: parser.report_debug("Successful error recovery - condition of an if/while construction"); :}
-		  ;
-CondTerm ::= CondTerm AND CondFact 
-		  |  CondFact ;
-CondFact ::= Expr RelopExprOpt ;
-RelopExprOpt ::= RelopExpr |    ;
-RelopExpr ::= Relop Expr ;
-
-
-MatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Matched ;
-UnmatchedWhileStatement ::= WHILE LPAREN Condition RPAREN Unmatched ;
-
-
-BreakStatement ::= BREAK SEMI_COMMA ;
-
-
-ReturnStatement ::= RETURN ExprOpt:expr SEMI_COMMA 
-				{:
-					returnFound = true;
-				 	/*
-				 	Struct currMethType = currentMethod.getType();
-				 	if (!currMethType.compatibleWith(expr)) {
-				 		parser.report_error("Greska na liniji " + tleft + " : " + "tip izraza u return naredbi ne slaze se sa tipom povratne vrednosti funkcije " + currentMethod.getName(), null);
-				 	}
-				 	*/		  	 
-			    :}
-;
-ExprOpt ::= Expr |    ;
-
-
-ReadStatement ::= READ LPAREN Designator RPAREN SEMI_COMMA ;
-
-
-PrintStatement ::= PRINT LPAREN Expr NumberOpt RPAREN SEMI_COMMA ;
-NumberOpt ::= COMMA NUMBER |    ;
-
-
-Term ::= Factor MulopFactorList ;
-MulopFactorList ::= MulopFactorList MulopFactor |    ;
-MulopFactor ::= Mulop Factor ;
-Factor ::= Designator ParenActParsOpt
-		 | NUMBER
-		 | CHAR
-		 | STRING
-		 | BOOL
-		 | NEW Type LBRACKET Expr RBRACKET
-		 | NEW Type
-		 | LPAREN Expr RPAREN 
-		 ;
-ParenActParsOpt ::= LPAREN ActParsOpt RPAREN
+				|	DesignatorList:array LBRACKET error RBRACKET
 				{: 
-					if (parser.inMain) 
-						parser.callCnt++; 
+					parser.report_debug("Successful error recovery - array indexing");
+					
+					if (array.getType().getKind() != Struct.Array) { 
+                    	parser.report_error("Semantics error at row " + arrayleft + " - expected an array",null);
+                    	RESULT = Tab.noObj;
+                    } else {
+                    	RESULT = new Obj (Obj.Elem, array.getName(), array.getType().getElemType());
+                    } 
 				:}
-				|	LPAREN error RPAREN
-				{: parser.report_debug("Successful error recovery - actual parameters list"); :}
-				|   
-				;
+;
+				
 
 
-Relop ::= EQ | NEQ | GRE | GREQ | LESS | LEQ ;
-Addop ::= PLUS | MINUS ;
-Mulop ::= MUL | DIV | MOD ;
+Expr ::= Term:term
+	{: RESULT = term; :}
+;
+Expr ::= MINUS Term:term 
+	{:
+		RESULT = Tab.noType;
+		if (!term.equals(Tab.intType))
+				parser.report_error("Semantics error at row " + termleft + " - expression must be an integer value", null);
+		else
+			RESULT = term;
+	:}
+;
+Expr ::= Expr:expr Addop:addop Term:term
+	{:
+		RESULT = Tab.noType;
+		if (expr.equals(Tab.intType) && term.equals(Tab.intType))
+			RESULT = expr;
+		else if (addop.equals("+")) {
+			if (expr.equals(parser.stringType) && term.equals(parser.stringType))
+				RESULT = parser.stringType;
+			else
+				parser.report_error("Semantics error at row " + exprleft + " - expressions must be integers or strings", null);
+		} else
+			parser.report_error("Semantics error at row " + exprleft + " - expressions must be integers", null);		
+	:}
+;
+
+
+				
+Term ::= Factor:factor
+		{: RESULT = factor; :}
+;
+Term ::= Term:term Mulop Factor:factor
+		{:
+			RESULT = Tab.noType;
+			if (!term.equals(Tab.intType) || !factor.equals(Tab.intType))
+				parser.report_error("Semantics error at row " + factorleft + " - expression must be an integer value", null);
+			else
+				RESULT = term;
+		:}
+;
+Factor::= Function:func {: RESULT = func; :} ;
+Factor ::= NEW Type:type LBRACKET Expr:expr RBRACKET
+		{:
+			RESULT = Tab.noType;
+			// menjano
+		 	if (expr.equals(Tab.intType))
+		 		RESULT = new Struct(Struct.Array, type);
+		 	else
+		 		parser.report_error("Semantics error at row " + exprleft + " - number of elements must be an integer value", null);		 	
+		:}
+;
+Factor ::= NEW Type:type
+		{:	
+			RESULT = Tab.noType;
+		 	if (type.getKind() != Struct.Class)
+		 		parser.report_error("Semantics error " + typeleft + " - variable must be of a class type", null);
+		 	else
+		 		RESULT = type;
+		:}
+;
+Factor ::= Designator:desig
+		 {: RESULT = desig.getType(); :}
+		 | NUMBER
+		 {: RESULT = Tab.intType; :}
+		 | CHAR
+		 {: RESULT = Tab.charType; :}
+		 | STRING
+		 {: RESULT = parser.stringType; :}
+		 | BOOL
+		 {: RESULT = parser.boolType; :}
+		 | LPAREN Expr:expr RPAREN 
+		 {: RESULT = expr; :}
+		 /* mozda ovde ne treba */
+;
+
+
+
+Relop ::= EQ {: RESULT = "=="; :}
+		| NEQ {: RESULT = "!="; :}
+		| GRE {: RESULT = ">"; :}
+		| GREQ {: RESULT = ">="; :}
+		| LESS {: RESULT = "<"; :}
+		| LEQ {: RESULT = "<="; :}
+;
+Addop ::= PLUS {: RESULT = "+"; :}
+		 | MINUS {: RESULT = "-"; :}
+;
+Mulop ::= MUL {: RESULT = "*"; :}
+		| DIV {: RESULT = "/"; :}
+		| MOD {: RESULT = "%"; :}
+;
