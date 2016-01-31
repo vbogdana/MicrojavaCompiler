@@ -1,0 +1,5 @@
+Greska u 2(float) nije nadjeno
+Greska u liniji 2 (float) nije tip
+Greska u liniji 8: metod mora imati return iskaz sa izrazom jer nije deklarisan sa void
+Greska u liniji 11: Metod mora imati return iskaz jer nije deklarisan sa void
+Greska u liniji 13: metod ne sme imati return sa izrazom jer je deklarisan sa void

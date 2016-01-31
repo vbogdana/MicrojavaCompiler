@@ -1,0 +1,21 @@
+Pretraga 18 (r), nadjeno Var r: int, 0, 1 
+Pretraga 18 (saberi), nadjeno Meth saberi: int, 0, 0 
+Pretraga 18 (niz), nadjeno Var niz: Arr of char, 0, 0 
+Pretraga 18 (niz), nadjeno Var niz: Arr of char, 0, 0 
+Pretraga 19 (prom), nadjeno Var prom: notype, 0, 0 
+=====================SADRZAJ TABELE SIMBOLA=========================
+(Level -1)
+Type int: int, 0, 0 
+Type char: char, 0, 0 
+Con eol: char, 10, 0 
+Con null: Class, 0, 0 
+Meth chr: char, 0, 1 [Var i: int, 0, 1 ]
+Meth ord: int, 0, 1 [Var ch: char, 0, 1 ]
+Meth len: int, 0, 1 [Var arr: Arr of notype, 0, 1 ]
+Prog Glavni: notype, 0, 1 
+    [Var prom: notype, 0, 0 ]
+    [Var niz: Arr of char, 0, 0 ]
+    [Meth saberi: int, 0, 0 ]
+    [Meth oduzmi: int, 0, 0 ]
+    [Meth nista: notype, 0, 0 ]
+    [Meth main: notype, 0, 0 [Var r: int, 0, 1 ]]
