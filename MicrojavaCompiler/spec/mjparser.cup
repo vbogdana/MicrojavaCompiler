@@ -95,8 +95,8 @@ parser code {:
 			return true;
 		*/
 		if (dstType.getKind() == Struct.Class && src.getKind() == Struct.Class)
-			if (inheritanceTable.containsKey(dstType))
-				if (inheritanceTable.get(dstType).contains(src))
+			if (inheritanceTable.containsKey(src))
+				if (inheritanceTable.get(src).contains(dstType))
 					return true;
 	
 		return false;
@@ -409,13 +409,12 @@ ClassDecl ::= CLASS IDENT:className
 			  {: 
 			  	parser.attrDef = true;
 			  	if (superClass != null) {
-					if (parser.inheritanceTable.containsKey(superClass))
-						parser.inheritanceTable.get(superClass).add(currentClass.getType());
-					else {
-						ArrayList<Struct> list = new ArrayList<Struct> ();
-						list.add(currentClass.getType());
-						parser.inheritanceTable.put(superClass, list);
+			  		ArrayList<Struct> list = new ArrayList<Struct> ();
+					list.add(superClass);
+					if (parser.inheritanceTable.containsKey(superClass)) {
+						list.addAll(parser.inheritanceTable.get(superClass));
 					}
+					parser.inheritanceTable.put(currentClass.getType(), list);
 				}
 			  :}
 			  LocalVarDeclList 

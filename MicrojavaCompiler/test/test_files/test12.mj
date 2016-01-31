@@ -1,0 +1,54 @@
+// Test301
+
+program test301
+	const int jedan = 1;
+	const int pet = 5;
+	int bodovi;
+	int niz[];
+	
+	char nizch[];
+	
+{
+	void main(){
+	
+		bodovi = 0;
+		bodovi++;
+		bodovi = bodovi + jedan;
+		bodovi--;
+		print(bodovi); 
+			//izlaz 1
+		
+		niz = new int[2];
+		niz[0] = pet;
+		niz[1] = 10;
+		bodovi = niz[1] / niz[0];
+		print(bodovi); 
+			//izlaz 2
+		
+		nizch = new char[3];
+		nizch[0] = 'a';
+		nizch[jedan] = 'b';
+		nizch[pet - 3] = 'c';
+		print( nizch[2 - 1]);
+		print( nizch[jedan * 2]);
+			//izlaz b c
+		
+		bodovi = (pet * jedan - 1) * 2 - (3 % 2 + 3 * 2 - 3) - 1 * 0; 
+		print(bodovi);
+			//izlaz 4
+			
+		read(bodovi);
+		bodovi = bodovi + 1;
+		print(bodovi);
+			//izlaz ulaz+1
+	
+	}
+}
+
+//	Izlazi: 
+//	1
+//	2
+//	b
+//	c
+//	4
+// ulaz+1

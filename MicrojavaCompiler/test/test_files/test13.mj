@@ -1,0 +1,77 @@
+//Test 302
+
+program test302
+
+const string str1 = "prvi";
+string str2;
+string ulaz;
+
+int i;
+bool ijedva;
+
+int niz[];
+{
+	
+	int sum(int z, int d){
+		return z + d;
+	}
+	
+	int inkrement(int a) int pom; {
+		pom = 1;
+		return sum(a,pom);
+	}
+	
+	void main(){
+
+			//provera da li valja IF
+		if(1!=1) print(-6);
+		else print(0);
+
+			//while i if izrazi
+		i = 0; ijedva = false;
+		while(i < 5){
+			i++;
+			if(i == 2) ijedva = true;
+		}
+		if(ijedva)
+			if(i == 5) print(1);
+			else print(-1);
+		
+			//konkatenacija i poredjenje stringova
+		str2 = "drugi";
+		str2 = str2 + str1;
+		if(str2 == "drugiprvi") print(2);
+		else print(-2);
+		
+			//poziv globalnih funkcija
+		niz = new int[3];
+		niz[0] = 1;
+		niz[1] = 2;
+		niz[2] = sum(niz[1], niz[0])  + 1;
+		if(niz[2] == 4) print(3);
+		else print(-3);
+		
+			//break u while-u, funkcija poziva funkciju
+		i = 0;
+		while(i < 10){			
+			if(i == 3) break;
+			i = inkrement(i);
+		}
+		if(i == 3) print(4);
+		else print(-4);
+		
+			//citanje string i konkatenacija
+		read(ulaz);
+		ulaz = "glava_" + ulaz;
+		ulaz = ulaz + "_rep";
+		print(ulaz);		
+	}
+}
+
+//	Izlazi: 
+//	0
+//	1
+//	2
+//	3
+//	4
+// "glava_" + "ulaz" + "_rep";

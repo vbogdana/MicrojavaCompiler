@@ -1,0 +1,367 @@
+INFO  15:28:02,001 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test00.mj
+ERROR 15:28:02,032 - Semantics error at row 3 - incompatible types
+ERROR 15:28:02,032 - Semantics error at row 5 - incompatible types
+ERROR 15:28:02,032 - Syntax error at row 11 - unrecognized symbol 'y'
+DEBUG 15:28:02,032 - Successful error recovery - global variable definition
+ERROR 15:28:02,032 - Syntax error at row 12 - unrecognized symbol 'y'
+DEBUG 15:28:02,032 - Successful error recovery - global variable definition
+ERROR 15:28:02,032 - Syntax error at row 14 - unrecognized symbol 'y'
+DEBUG 15:28:02,032 - Successful error recovery - global variable definition
+ERROR 15:28:02,032 - Semantics error at row 15 - multiple definition of 'x'
+ERROR 15:28:02,032 - Syntax error at row 15 - unrecognized symbol 'z'
+ERROR 15:28:02,032 - Semantics error at row 15 - multiple definition of 'z'
+DEBUG 15:28:02,032 - Successful error recovery - global variable definition
+ERROR 15:28:02,032 - Syntax error at row 15 - unrecognized symbol 'z'
+DEBUG 15:28:02,032 - Successful error recovery - global variable definition
+ERROR 15:28:02,032 - Syntax error at row 16 - unrecognized symbol 'd'
+DEBUG 15:28:02,032 - Successful error recovery - global variable definition
+ERROR 15:28:02,048 - Semantics error at row 17 - multiple definition of 'a'
+ERROR 15:28:02,048 - Syntax error at row 17 - unrecognized symbol 'g'
+ERROR 15:28:02,048 - Semantics error at row 17 - multiple definition of 'a'
+DEBUG 15:28:02,048 - Successful error recovery - global variable definition
+ERROR 15:28:02,048 - Semantics error at row 21 - class cannot inherit itself
+INFO  15:28:02,048 - Global variables = 10
+INFO  15:28:02,048 - Local variables = 1
+INFO  15:28:02,048 - Global constants = 11
+INFO  15:28:02,048 - Global arrays = 2
+INFO  15:28:02,048 - Global functions = 1
+INFO  15:28:02,048 - Function calls = 0
+INFO  15:28:02,048 - Statement blocks = 1
+INFO  15:28:02,048 - Formal parameters = 0
+INFO  15:28:02,048 - Classes = 1
+INFO  15:28:02,048 - Methods = 0
+INFO  15:28:02,048 - Class attributes = 1
+ERROR 15:28:02,048 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,048 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test01.mj
+INFO  15:28:02,048 - Global variables = 7
+INFO  15:28:02,048 - Local variables = 0
+INFO  15:28:02,048 - Global constants = 1
+INFO  15:28:02,048 - Global arrays = 0
+INFO  15:28:02,048 - Global functions = 1
+INFO  15:28:02,048 - Function calls = 0
+INFO  15:28:02,048 - Statement blocks = 4
+INFO  15:28:02,048 - Formal parameters = 0
+INFO  15:28:02,048 - Classes = 0
+INFO  15:28:02,048 - Methods = 0
+INFO  15:28:02,048 - Class attributes = 0
+INFO  15:28:02,048 - Parsing SUCCESSFUL!
+INFO  15:28:02,063 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test02.mj
+ERROR 15:28:02,063 - Semantics error at row 4 - type 'x' not found in symbol table
+ERROR 15:28:02,063 - Syntax error at row 4 - unrecognized symbol ';'
+DEBUG 15:28:02,063 - Successful error recovery - constant definition
+ERROR 15:28:02,063 - Syntax error at row 7 - unrecognized symbol '='
+DEBUG 15:28:02,063 - Successful error recovery - global variable definition
+ERROR 15:28:02,063 - Semantics error at row 8 - multiple definition of 'c'
+ERROR 15:28:02,063 - Syntax error at row 10 - unrecognized symbol '='
+DEBUG 15:28:02,063 - Successful error recovery - local variable definition
+ERROR 15:28:02,063 - Semantics error at row 13 - incompatible types
+ERROR 15:28:02,063 - Semantics error at row 13 - expression must be a boolean value
+ERROR 15:28:02,063 - Semantics error at row 14 - expression must be an integer value
+ERROR 15:28:02,063 - Semantics error at row 14 - incompatible types
+ERROR 15:28:02,063 - Syntax error at row 15 - unrecognized symbol '>'
+DEBUG 15:28:02,063 - Successful error recovery - condition of an if/while construction
+ERROR 15:28:02,063 - Semantics error at row 17 - expression must be an integer value
+ERROR 15:28:02,063 - Semantics error at row 17 - incompatible types
+ERROR 15:28:02,063 - Semantics error at row 19 - symbol 'x' not found
+ERROR 15:28:02,063 - Semantics error at row 19 - parameter must be an integer/character/boolean or a string value
+ERROR 15:28:02,063 - Semantics error at row 20 - symbol 'x' not found
+ERROR 15:28:02,063 - Semantics error at row 20 - expression 'noObj' must be an lvalue
+ERROR 15:28:02,063 - Semantics error at row 21 - symbol 'max' not found
+ERROR 15:28:02,063 - Semantics error at row 21 - parameter must be an integer/character/boolean or a string value
+INFO  15:28:02,063 - Global variables = 4
+INFO  15:28:02,063 - Local variables = 1
+INFO  15:28:02,063 - Global constants = 0
+INFO  15:28:02,063 - Global arrays = 0
+INFO  15:28:02,063 - Global functions = 1
+INFO  15:28:02,063 - Function calls = 0
+INFO  15:28:02,063 - Statement blocks = 2
+INFO  15:28:02,063 - Formal parameters = 0
+INFO  15:28:02,063 - Classes = 0
+INFO  15:28:02,063 - Methods = 0
+INFO  15:28:02,063 - Class attributes = 0
+ERROR 15:28:02,063 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,079 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test03.mj
+ERROR 15:28:02,079 - Semantics error at row 10 - expression 'a' must be a variable
+ERROR 15:28:02,079 - Semantics error at row 11 - expression 'a' must be a variable
+ERROR 15:28:02,079 - Semantics error at row 11 - incompatible types
+ERROR 15:28:02,079 - Semantics error at row 13 - incompatible types
+ERROR 15:28:02,079 - Semantics error at row 13 - expression must be a boolean value
+ERROR 15:28:02,079 - Semantics error at row 14 - incompatible types
+ERROR 15:28:02,079 - Semantics error at row 17 - 'break' statement can only be used inside a while loop
+INFO  15:28:02,079 - Global variables = 3
+INFO  15:28:02,079 - Local variables = 0
+INFO  15:28:02,079 - Global constants = 1
+INFO  15:28:02,079 - Global arrays = 0
+INFO  15:28:02,079 - Global functions = 1
+INFO  15:28:02,079 - Function calls = 0
+INFO  15:28:02,079 - Statement blocks = 2
+INFO  15:28:02,079 - Formal parameters = 0
+INFO  15:28:02,079 - Classes = 0
+INFO  15:28:02,079 - Methods = 0
+INFO  15:28:02,079 - Class attributes = 0
+ERROR 15:28:02,079 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,079 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test04.mj
+INFO  15:28:02,079 - Global variables = 4
+INFO  15:28:02,079 - Local variables = 0
+INFO  15:28:02,079 - Global constants = 1
+INFO  15:28:02,079 - Global arrays = 1
+INFO  15:28:02,079 - Global functions = 2
+INFO  15:28:02,094 - Function calls = 2
+INFO  15:28:02,094 - Statement blocks = 3
+INFO  15:28:02,094 - Formal parameters = 2
+INFO  15:28:02,094 - Classes = 0
+INFO  15:28:02,094 - Methods = 0
+INFO  15:28:02,094 - Class attributes = 0
+INFO  15:28:02,094 - Parsing SUCCESSFUL!
+INFO  15:28:02,094 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test05.mj
+ERROR 15:28:02,094 - Semantics error at row 4 - multiple definition of 'xc'
+ERROR 15:28:02,094 - Syntax error at row 6 - unrecognized symbol 'c'
+DEBUG 15:28:02,094 - Successful error recovery - global variable definition
+ERROR 15:28:02,094 - Semantics error at row 10 - symbol 'sqrt' not found
+ERROR 15:28:02,094 - Semantics error at row 10 - variable must be a global function or a class method
+ERROR 15:28:02,094 - Semantics error at row 10 - symbol 'sqr' not found
+ERROR 15:28:02,094 - Semantics error at row 10 - variable must be a global function or a class method
+ERROR 15:28:02,094 - Current call je null
+ERROR 15:28:02,094 - Current call je null
+ERROR 15:28:02,094 - Semantics error at row 10 - symbol 'sqr' not found
+ERROR 15:28:02,094 - Semantics error at row 10 - variable must be a global function or a class method
+ERROR 15:28:02,094 - Current call je null
+ERROR 15:28:02,094 - Current call je null
+ERROR 15:28:02,094 - Semantics error at row 10 - expressions must be integers or strings
+ERROR 15:28:02,094 - Current call je null
+ERROR 15:28:02,094 - Current call je null
+ERROR 15:28:02,094 - Semantics error at row 11 - function 'distance' missing 'return' statement
+ERROR 15:28:02,094 - Semantics error at row 14 - incompatible types
+ERROR 15:28:02,094 - Semantics error at row 15 - return types are not compatible
+ERROR 15:28:02,094 - Semantics error at row 19 - incompatible types
+ERROR 15:28:02,094 - Semantics error at row 20 - function does not need a return value
+ERROR 15:28:02,094 - Semantics error at row 23 - type 'z' not found in symbol table
+ERROR 15:28:02,094 - Syntax error at row 23 - unrecognized symbol ','
+DEBUG 15:28:02,094 - Successful error recovery - formal parameter declaration
+ERROR 15:28:02,094 - Semantics error at row 27 - function 'main' must be VOID
+ERROR 15:28:02,094 - Syntax error at row 27 - unrecognized symbol '{'
+DEBUG 15:28:02,094 - Successful error recovery - local variable definition
+ERROR 15:28:02,094 - Semantics error at row 30 - symbol 'yc' not found
+ERROR 15:28:02,094 - Semantics error at row 30 - parameter must be an integer/character/boolean or a string value
+ERROR 15:28:02,094 - Semantics error at row 32 - incompatible types of 1. parameter
+ERROR 15:28:02,094 - Semantics error at row 34 - symbol 'yc' not found
+ERROR 15:28:02,094 - Semantics error at row 34 - incompatible types of 4. parameter
+ERROR 15:28:02,094 - Semantics error at row 34 - incompatible types
+ERROR 15:28:02,094 - Semantics error at row 37 - symbol 'c' not found
+ERROR 15:28:02,110 - Semantics error at row 37 - symbol 'yc' not found
+ERROR 15:28:02,110 - Semantics error at row 37 - incompatible types of 3. parameter
+ERROR 15:28:02,110 - Semantics error at row 37 - function 'distance' missing parameters
+ERROR 15:28:02,110 - Semantics error at row 37 - incompatible types
+ERROR 15:28:02,110 - Semantics error at row 40 - incompatible types of 2. parameter
+ERROR 15:28:02,110 - Semantics error at row 40 - number of parameters doesn't match
+ERROR 15:28:02,110 - Semantics error at row 41 - incompatible types of 2. parameter
+ERROR 15:28:02,110 - Semantics error at row 41 - symbol 'c' not found
+ERROR 15:28:02,110 - Semantics error at row 41 - incompatible types of 3. parameter
+ERROR 15:28:02,110 - Semantics error at row 49 - function 'main' missing 'return' statement
+INFO  15:28:02,110 - Global variables = 10
+INFO  15:28:02,110 - Local variables = 1
+INFO  15:28:02,110 - Global constants = 0
+INFO  15:28:02,110 - Global arrays = 0
+INFO  15:28:02,110 - Global functions = 5
+INFO  15:28:02,110 - Function calls = 5
+INFO  15:28:02,110 - Statement blocks = 7
+INFO  15:28:02,110 - Formal parameters = 11
+INFO  15:28:02,110 - Classes = 0
+INFO  15:28:02,110 - Methods = 0
+INFO  15:28:02,110 - Class attributes = 0
+ERROR 15:28:02,110 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,110 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test06.mj
+ERROR 15:28:02,110 - Semantics error at row 10 - incompatible types
+ERROR 15:28:02,110 - Syntax error at row 11 - unrecognized symbol '++'
+DEBUG 15:28:02,110 - Successful error recovery - array indexing
+ERROR 15:28:02,110 - Semantics error at row 12 - array index must be an integer value
+ERROR 15:28:02,110 - Semantics error at row 12 - incompatible types
+ERROR 15:28:02,110 - Semantics error at row 13 - expressions must be integers or strings
+ERROR 15:28:02,110 - Semantics error at row 13 - incompatible types
+ERROR 15:28:02,110 - Syntax error at row 16 - unrecognized symbol '++'
+DEBUG 15:28:02,110 - Successful error recovery - value assignment
+ERROR 15:28:02,110 - Semantics error at row 17 - incompatible types of 1. parameter
+ERROR 15:28:02,110 - Semantics error at row 19 - parameter must be an integer/character/boolean or a string value
+INFO  15:28:02,110 - Global variables = 3
+INFO  15:28:02,110 - Local variables = 0
+INFO  15:28:02,110 - Global constants = 0
+INFO  15:28:02,126 - Global arrays = 4
+INFO  15:28:02,126 - Global functions = 1
+INFO  15:28:02,126 - Function calls = 2
+INFO  15:28:02,126 - Statement blocks = 1
+INFO  15:28:02,126 - Formal parameters = 0
+INFO  15:28:02,126 - Classes = 0
+INFO  15:28:02,126 - Methods = 0
+INFO  15:28:02,126 - Class attributes = 0
+ERROR 15:28:02,126 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,141 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test07.mj
+INFO  15:28:02,141 - Global variables = 2
+INFO  15:28:02,141 - Local variables = 0
+INFO  15:28:02,141 - Global constants = 1
+INFO  15:28:02,141 - Global arrays = 1
+INFO  15:28:02,141 - Global functions = 7
+INFO  15:28:02,141 - Function calls = 5
+INFO  15:28:02,141 - Statement blocks = 12
+INFO  15:28:02,141 - Formal parameters = 7
+INFO  15:28:02,141 - Classes = 1
+INFO  15:28:02,141 - Methods = 4
+INFO  15:28:02,141 - Class attributes = 3
+INFO  15:28:02,141 - Parsing SUCCESSFUL!
+INFO  15:28:02,141 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test08.mj
+ERROR 15:28:02,157 - Semantics error at row 5 - type 'Nepostojeca' not found in symbol table
+ERROR 15:28:02,157 - Semantics error at row 5 - outer class must be of a class type
+ERROR 15:28:02,157 - Semantics error at row 7 - multiple definition of a class attribute 'x'
+ERROR 15:28:02,157 - Semantics error at row 8 - type 'real' not found in symbol table
+ERROR 15:28:02,157 - Semantics error at row 9 - name 'y' doesn't represent a type
+ERROR 15:28:02,157 - Semantics error at row 17 - expression 'Alfa' must be a variable
+ERROR 15:28:02,157 - Semantics error at row 17 - incompatible types
+ERROR 15:28:02,157 - Semantics error at row 18 - incompatible types
+ERROR 15:28:02,157 - Semantics error at row 19 - class attribute 'zh' doesn't exist
+ERROR 15:28:02,157 - Semantics error at row 19 - incompatible types
+ERROR 15:28:02,157 - Semantics error at row 20 - incompatible types
+ERROR 15:28:02,157 - Semantics error at row 21 - return types are not compatible
+ERROR 15:28:02,157 - Semantics error at row 53 - symbol 'this' not found
+ERROR 15:28:02,157 - Semantics error at row 53 - incompatible types
+ERROR 15:28:02,157 - Semantics error at row 55 - function doesn't need parameters
+ERROR 15:28:02,157 - Semantics error at row 55 - number of parameters doesn't match
+ERROR 15:28:02,157 - Semantics error at row 56 - function 'setAB' missing parameters
+ERROR 15:28:02,157 - Semantics error at row 57 - incompatible types of 1. parameter
+ERROR 15:28:02,157 - Semantics error at row 57 - incompatible types of 2. parameter
+ERROR 15:28:02,157 - Semantics error at row 58 - incompatible types of 1. parameter
+ERROR 15:28:02,157 - Semantics error at row 59 - incompatible types of 2. parameter
+ERROR 15:28:02,157 - Semantics error at row 61 - program missing 'main' function
+INFO  15:28:02,157 - Global variables = 1
+INFO  15:28:02,157 - Local variables = 0
+INFO  15:28:02,157 - Global constants = 0
+INFO  15:28:02,157 - Global arrays = 0
+INFO  15:28:02,157 - Global functions = 1
+INFO  15:28:02,157 - Function calls = 0
+INFO  15:28:02,157 - Statement blocks = 5
+INFO  15:28:02,157 - Formal parameters = 3
+INFO  15:28:02,157 - Classes = 3
+INFO  15:28:02,157 - Methods = 4
+INFO  15:28:02,157 - Class attributes = 8
+ERROR 15:28:02,157 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,157 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test09.mj
+ERROR 15:28:02,173 - Semantics error at row 12 - incompatible types
+ERROR 15:28:02,173 - Semantics error at row 14 - function does not need a return value
+ERROR 15:28:02,173 - Semantics error at row 21 - multiple definition of a function 'saberi'
+ERROR 15:28:02,173 - Syntax error at row 32 - unrecognized symbol '++'
+DEBUG 15:28:02,173 - Successful error recovery - value assignment
+ERROR 15:28:02,173 - Semantics error at row 33 - incompatible types
+ERROR 15:28:02,173 - Semantics error at row 34 - incompatible types
+ERROR 15:28:02,173 - Semantics error at row 48 - symbol 'niz' not found
+ERROR 15:28:02,173 - Semantics error at row 48 - incompatible types
+ERROR 15:28:02,173 - Semantics error at row 49 - incompatible types
+ERROR 15:28:02,173 - Semantics error at row 49 - expression must be a boolean value
+ERROR 15:28:02,173 - Semantics error at row 50 - symbol 'niz' not found
+ERROR 15:28:02,173 - Semantics error at row 50 - expected an array
+ERROR 15:28:02,173 - Semantics error at row 50 - expressions must be integers or strings
+ERROR 15:28:02,173 - Semantics error at row 51 - expression 'i' must be an lvalue
+ERROR 15:28:02,173 - Semantics error at row 60 - function 'stampaj' missing 'return' statement
+ERROR 15:28:02,173 - Semantics error at row 68 - incompatible types
+ERROR 15:28:02,188 - Semantics error at row 72 - incompatible types of 1. parameter
+ERROR 15:28:02,188 - Semantics error at row 72 - incompatible types of 2. parameter
+ERROR 15:28:02,188 - Semantics error at row 75 - operator '>' not allowed for class/array types
+ERROR 15:28:02,188 - Semantics error at row 75 - expression must be a boolean value
+ERROR 15:28:02,188 - Semantics error at row 77 - incompatible types
+ERROR 15:28:02,188 - Semantics error at row 77 - incompatible types
+ERROR 15:28:02,188 - Semantics error at row 77 - expression must be a boolean value
+INFO  15:28:02,188 - Global variables = 3
+INFO  15:28:02,188 - Local variables = 5
+INFO  15:28:02,188 - Global constants = 0
+INFO  15:28:02,188 - Global arrays = 0
+INFO  15:28:02,188 - Global functions = 1
+INFO  15:28:02,188 - Function calls = 1
+INFO  15:28:02,188 - Statement blocks = 7
+INFO  15:28:02,188 - Formal parameters = 12
+INFO  15:28:02,188 - Classes = 4
+INFO  15:28:02,188 - Methods = 6
+INFO  15:28:02,188 - Class attributes = 6
+ERROR 15:28:02,188 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,188 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test10.mj
+ERROR 15:28:02,204 - Semantics error at row 10 - multiple definition of a function 'pr'
+ERROR 15:28:02,204 - Syntax error at row 46 - unrecognized symbol '='
+DEBUG 15:28:02,204 - Successful error recovery - class attribute declaration
+ERROR 15:28:02,204 - Syntax error at row 49 - unrecognized symbol ','
+DEBUG 15:28:02,204 - Successful error recovery - formal parameter declaration
+ERROR 15:28:02,204 - Syntax error at row 49 - unrecognized symbol 'c'
+DEBUG 15:28:02,204 - Successful error recovery - local variable definition
+ERROR 15:28:02,204 - Semantics error at row 50 - symbol 'c' not found
+ERROR 15:28:02,204 - Semantics error at row 50 - expressions must be integers or strings
+ERROR 15:28:02,204 - Semantics error at row 50 - function does not need a return value
+ERROR 15:28:02,204 - Syntax error at row 56 - unrecognized symbol '{'
+DEBUG 15:28:02,204 - Successful error recovery - class inheritance
+ERROR 15:28:02,204 - Syntax error at row 58 - unrecognized symbol ','
+DEBUG 15:28:02,204 - Successful error recovery - class attribute declaration
+ERROR 15:28:02,204 - Semantics error at row 73 - expression 'strin' must be a variable
+ERROR 15:28:02,204 - Semantics error at row 73 - incompatible types
+ERROR 15:28:02,204 - Semantics error at row 74 - expression must be an integer value
+ERROR 15:28:02,204 - Semantics error at row 74 - incompatible types
+ERROR 15:28:02,219 - Semantics error at row 109 - expression must be a boolean value
+INFO  15:28:02,219 - Global variables = 0
+INFO  15:28:02,219 - Local variables = 10
+INFO  15:28:02,219 - Global constants = 3
+INFO  15:28:02,219 - Global arrays = 0
+INFO  15:28:02,219 - Global functions = 3
+INFO  15:28:02,219 - Function calls = 11
+INFO  15:28:02,219 - Statement blocks = 12
+INFO  15:28:02,219 - Formal parameters = 6
+INFO  15:28:02,219 - Classes = 4
+INFO  15:28:02,219 - Methods = 7
+INFO  15:28:02,219 - Class attributes = 8
+ERROR 15:28:02,219 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,219 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test11.mj
+ERROR 15:28:02,235 - Semantics error at row 30 - function 'putp' missing parameters
+ERROR 15:28:02,235 - Semantics error at row 32 - function 'putn' missing parameters
+INFO  15:28:02,235 - Global variables = 1
+INFO  15:28:02,235 - Local variables = 2
+INFO  15:28:02,235 - Global constants = 1
+INFO  15:28:02,235 - Global arrays = 0
+INFO  15:28:02,235 - Global functions = 1
+INFO  15:28:02,235 - Function calls = 6
+INFO  15:28:02,235 - Statement blocks = 9
+INFO  15:28:02,235 - Formal parameters = 6
+INFO  15:28:02,235 - Classes = 1
+INFO  15:28:02,235 - Methods = 4
+INFO  15:28:02,235 - Class attributes = 2
+ERROR 15:28:02,235 - Parsing UNSUCCESSFUL!
+INFO  15:28:02,235 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test12.mj
+INFO  15:28:02,251 - Global variables = 1
+INFO  15:28:02,251 - Local variables = 0
+INFO  15:28:02,251 - Global constants = 2
+INFO  15:28:02,251 - Global arrays = 2
+INFO  15:28:02,251 - Global functions = 1
+INFO  15:28:02,251 - Function calls = 0
+INFO  15:28:02,251 - Statement blocks = 1
+INFO  15:28:02,251 - Formal parameters = 0
+INFO  15:28:02,251 - Classes = 0
+INFO  15:28:02,251 - Methods = 0
+INFO  15:28:02,251 - Class attributes = 0
+INFO  15:28:02,251 - Parsing SUCCESSFUL!
+INFO  15:28:02,251 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test13.mj
+INFO  15:28:02,266 - Global variables = 4
+INFO  15:28:02,266 - Local variables = 0
+INFO  15:28:02,266 - Global constants = 1
+INFO  15:28:02,266 - Global arrays = 1
+INFO  15:28:02,266 - Global functions = 3
+INFO  15:28:02,266 - Function calls = 2
+INFO  15:28:02,266 - Statement blocks = 5
+INFO  15:28:02,266 - Formal parameters = 3
+INFO  15:28:02,266 - Classes = 0
+INFO  15:28:02,266 - Methods = 0
+INFO  15:28:02,266 - Class attributes = 0
+INFO  15:28:02,266 - Parsing SUCCESSFUL!
+INFO  15:28:02,266 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test14.mj
+INFO  15:28:02,282 - Global variables = 1
+INFO  15:28:02,282 - Local variables = 5
+INFO  15:28:02,282 - Global constants = 1
+INFO  15:28:02,282 - Global arrays = 0
+INFO  15:28:02,282 - Global functions = 3
+INFO  15:28:02,282 - Function calls = 16
+INFO  15:28:02,282 - Statement blocks = 8
+INFO  15:28:02,282 - Formal parameters = 6
+INFO  15:28:02,282 - Classes = 3
+INFO  15:28:02,282 - Methods = 4
+INFO  15:28:02,282 - Class attributes = 5
+INFO  15:28:02,282 - Parsing SUCCESSFUL!
