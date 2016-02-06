@@ -70,9 +70,9 @@ public class MJParserTest {
 		        else {
 		        	log.info("Parsing SUCCESSFUL!");
 		        	if (i < 10)
-						outputCode = new File("output0" + i + ".obj");
+						outputCode = new File("test/output_files/output0" + i + ".obj");
 					else
-						outputCode = new File("output" + i + ".obj");
+						outputCode = new File("test/output_files/output" + i + ".obj");
 		        	if (outputCode.exists())
 		        		outputCode.delete();
 		        	Code.write(new FileOutputStream(outputCode));
