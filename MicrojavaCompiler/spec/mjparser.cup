@@ -101,6 +101,34 @@ parser code {:
 	
 		return false;
 	}
+	
+	// NIVO B
+	public void stringLiteral(String s) {
+		Code.loadConst(s.length() - 2 + 1); // n
+		Code.put(Code.newarray);
+		Code.put(0);
+		
+		int i = 0;
+		for (; i < s.length() - 2; i++) {
+			Code.put(Code.dup);
+			Code.loadConst(i);
+			Code.loadConst(s.charAt(i+1));
+			Code.put(Code.bastore);
+		}
+		
+		// znak za '/0'
+		Code.put(Code.dup);
+		Code.loadConst(i);
+		Code.loadConst(0);
+		Code.put(Code.bastore);
+	}
+	
+	// NIVO B
+	public void concat() {
+		Code.put(Code.dup);	// dupliraj adresu prvog
+		Code.put(Code.arraylength);
+		
+	}
 :}
 
 scan with {:
@@ -266,9 +294,14 @@ Constant ::= IDENT:constName EQUALS ConstType:constType
 				Obj o = Tab.find(constName);
 	 			if (o == Tab.noObj) {
 	 				o = Tab.insert(Obj.Con, constName, parser.type);
-	 				// parser.report_info("Constant '" + constName + "' declaration at row " + constNameleft, null);
 	 				o.setAdr(constValue);
 	 				constValue = 0;
+	 				// parser.report_info("Constant '" + constName + "' declaration at row " + constNameleft, null);
+	 				
+	 				// NIVO B
+	 				if (o.getType() == parser.stringType) {
+	 					
+					}
 	 			} else {
 	 				parser.report_error("Semantics error at row " + constNameleft + " - multiple definition of '" + constName + "'", null);
 	 			}
@@ -914,6 +947,10 @@ ReadStatement ::= READ LPAREN Designator:desig RPAREN SEMI_COMMA
 							  	 if (desig.getType() == Tab.charType) {
 							  	 	Code.put(Code.bread);	
 							  	 }
+							  	 // NIVO B
+							  	 if (desig.getType() == parser.stringType) {
+							  	 
+							  	 }
 							  	 Code.store(desig);
 							}
 						}
@@ -938,6 +975,27 @@ PrintStatement ::= PRINT LPAREN Expr:expr NumberOpt:n RPAREN SEMI_COMMA
 					  	 	Code.loadConst((n.intValue() == -1 ? 1 : n.intValue()));
 					  	 	Code.put(Code.bprint);
 					  	 }
+					  	 // NIVO B
+					  	 if (expr == parser.stringType) {
+					  	 // na steku imamo adresu niza
+					  	 //		| adr
+					  	 Code.put(Code.dup);
+					  	 //		| adr adr
+					  	 Code.loadConst(0);
+					  	 //		| adr adr 0
+					  	 Code.put(Code.dup2);
+					  	 //		| adr adr 0 adr 0
+					  	 Code.put(Code.dup2);
+					  	 //		| adr adr 0 adr 0 adr 0
+					  	 Code.put(Code.pop);
+					  	 //		| adr adr 0 adr 0 adr
+					  	 Code.put(Code.arraylength);
+					  	 //		| adr adr 0 adr 0 len
+					  	 Code.put(Code.dup2);
+					  	 Code.loadConst(0);
+					  	 //		| adr adr 0 adr 0 len 0 len 0
+						 // ako je vece idi na adr, 0
+						 }
 					}
 				:}
 ;
@@ -964,6 +1022,7 @@ DesignatorList ::= 	DesignatorList:cl STOP IDENT:field
 	                    	o = Tab.noObj;
 	                    	parser.report_error("Semantics error at row " + clleft + " - class attribute '" + field + "' doesn't exist",null);
 	                    } else {
+	                    	// moze da bude string ne moze da bude const string
 	                    	Code.load(o);
 	                    	// parser.report_info("Use of " + parser.objToString(o) + " at row " + clleft,null);
 	                     }
@@ -1032,7 +1091,29 @@ Expr ::= MINUS Term:term
 		}
 	:}
 ;
-Expr ::= Expr:expr Addop:addop Term:term
+Expr ::= Expr:expr Addop:addop 
+	{:
+		if (addop == Code.add) {
+			if (expr.equals(parser.stringType)) {
+				// NIVO B
+				Code.put(Code.dup);
+				Code.put(Code.dup);
+				Code.put(Code.arraylength);
+				Code.loadConst(1);
+				Code.put(Code.sub);
+				// | adr1 adr1 len1-1
+				
+				/*
+				// 		| adr1 
+				Code.put(Code.dup);
+				Code.put(Code.arraylength);
+				// 		| adr1 adr1 arraylenth
+				*/
+				RESULT = parser.stringType;
+			}
+		}
+	:}
+	Term:term
 	{:
 		RESULT = Tab.noType;
 		if (expr.equals(Tab.intType) && term.equals(Tab.intType)) {
@@ -1042,6 +1123,23 @@ Expr ::= Expr:expr Addop:addop Term:term
 		}
 		else if (addop == Code.add) {
 			if (expr.equals(parser.stringType) && term.equals(parser.stringType)) {
+				// NIVO B
+				// na steku imas adresu jednog i adresu drugog
+				// | adr1 adr1 len1-1 adr2
+				Code.put(Code.bastore);
+				
+				/*
+				// | adr1 len1 adr2 dup2
+				Code.put(Code.dup2);
+				Code.put(Code.arraylength);
+				Code.put(Code.add);
+				Code.put(Code.newarray);
+				Code.put(0);
+				// | adr1 len1 adr2 len1 adr2 arraylenth
+				// | adr1 len1 adr2 len1 len2 add
+				// | adr1 len1 adr2 lennew
+				// | adr1 len1 adr2 adr3
+				*/
 				RESULT = parser.stringType;
 			} else
 				parser.report_error("Semantics error at row " + exprleft + " - expressions must be integers or strings", null);
@@ -1097,8 +1195,13 @@ Factor ::= NEW Type:type
 ;
 Factor ::= Designator:desig
 		 {: 
+		 	// NIVO B, proveravas je l const string, nakon ovoga na steku je njegova adresa
+		 	if (desig.getKind() == Obj.Con && desig.getType() == parser.stringType) {
+		 		parser.stringLiteral(constStrings.get(desig.getAdr()));	
+		 	}
 		 	// NIVO A
-		 	Code.load(desig);
+		 	else 
+		 		Code.load(desig);
 		 	RESULT = desig.getType(); 
 		 :}
 		 | NUMBER:n
@@ -1128,6 +1231,8 @@ Factor ::= Designator:desig
 		 | STRING:s
 		 {: 
 		 	// NIVO B
+		 	// kada naidje na string konstantu "nekistring"
+		 	parser.stringLiteral(s);
 		 	RESULT = parser.stringType; 
 		 :}
 		 | LPAREN Expr:expr RPAREN 
