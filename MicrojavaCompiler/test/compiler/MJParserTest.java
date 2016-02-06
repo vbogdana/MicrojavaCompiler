@@ -3,6 +3,7 @@ package compiler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -12,6 +13,8 @@ import java_cup.runtime.Symbol;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
+import rs.etf.pp1.mj.runtime.Code;
+import rs.etf.pp1.mj.runtime.Run;
 import rs.etf.pp1.symboltable.Tab;
 import compiler.util.Log4JUtils;
 
@@ -28,8 +31,8 @@ public class MJParserTest {
 		Reader br = null;
 		
 		try {
-			for (int i = 0; i < 15; i++) {
-				File sourceCode = null;
+			for (int i = 12; i < 13; i++) {
+				File sourceCode = null, outputCode = null;
 				if (i < 10)
 					sourceCode = new File("test/test_files/test0" + i + ".mj");
 				else
@@ -37,10 +40,9 @@ public class MJParserTest {
 				
 			//File sourceCode = new File("test/test_files/test05.mj");
 				log.info("Compiling source file: " + sourceCode.getAbsolutePath());
-			
 				br = new BufferedReader(new FileReader(sourceCode));
-				Yylex lexer = new Yylex(br);
 				
+				Yylex lexer = new Yylex(br);
 				MJParser p = new MJParser(lexer);
 		        Symbol s = p.parse();  //pocetak parsiranja
 		        
@@ -65,12 +67,18 @@ public class MJParserTest {
 		        
 		        if (p.semError)
 		        	log.error("Parsing UNSUCCESSFUL!");
-		        else
+		        else {
 		        	log.info("Parsing SUCCESSFUL!");
+		        	if (i < 10)
+						outputCode = new File("output0" + i + ".obj");
+					else
+						outputCode = new File("output" + i + ".obj");
+		        	if (outputCode.exists())
+		        		outputCode.delete();
+		        	Code.write(new FileOutputStream(outputCode));
+		        }
 		        
-		        Tab.dump();
-		        
-		        
+		        Tab.dump();      
 			}   
 		} 
 		finally {
