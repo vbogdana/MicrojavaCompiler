@@ -8,15 +8,7 @@ program test301
 	
 	char nizch[];
 	
-	//int deljenik, delilac;
-	int duz;
-	
-{
-	//int podeli(int a, int b) {
-		//a = a / b;
-		//return a;
-	//}
-	
+{	
 	void main(){
 	
 		bodovi = 0;
@@ -48,20 +40,7 @@ program test301
 		read(bodovi);
 		bodovi = bodovi + 1;
 		print(bodovi);
-			//izlaz ulaz+1
-			
-		//read(deljenik);
-		//read(delilac);
-		//deljenik = podeli(deljenik, delilac);
-		//print(deljenik);
-		//duz = len(nizch);
-		//print(duz);
-		//duz = ord('7');
-		//print(duz);
-		//nizch[0] = chr(2);
-		//print(nizch[0]);
-		//print(eol);
-	
+			//izlaz ulaz+1	
 	}
 }
 

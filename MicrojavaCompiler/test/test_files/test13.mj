@@ -38,11 +38,10 @@ int niz[];
 			else print(-1);
 		
 			//konkatenacija i poredjenje stringova
-		//str2 = "drugi";
-		//str2 = str2 + str1;
-		// if(str2 == "drugiprvi") print(2);
-		// else print(-2);
-		//print(2);
+		str2 = "drugi";
+		str2 = str2 + str1;
+		if(str2 == "drugiprvi") print(2);
+		else print(-2);
 		
 			//poziv globalnih funkcija
 		niz = new int[3];
@@ -62,10 +61,10 @@ int niz[];
 		else print(-4);
 		
 			//citanje string i konkatenacija
-		//read(ulaz);
-		//ulaz = "glava_" + ulaz;
-		//ulaz = ulaz + "_rep";
-		//print(ulaz);		
+		read(ulaz);
+		ulaz = "glava_" + ulaz;
+		ulaz = ulaz + "_rep";
+		print(ulaz);		
 	}
 }
 
