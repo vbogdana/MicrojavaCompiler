@@ -9,7 +9,7 @@ program test301
 	char nizch[];
 	
 	//int deljenik, delilac;
-	
+	int duz;
 	
 {
 	//int podeli(int a, int b) {
@@ -54,7 +54,13 @@ program test301
 		//read(delilac);
 		//deljenik = podeli(deljenik, delilac);
 		//print(deljenik);
-		
+		//duz = len(nizch);
+		//print(duz);
+		//duz = ord('7');
+		//print(duz);
+		//nizch[0] = chr(2);
+		//print(nizch[0]);
+		//print(eol);
 	
 	}
 }

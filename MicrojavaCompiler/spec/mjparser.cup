@@ -104,7 +104,7 @@ parser code {:
 	
 	// NIVO B
 	public void stringLiteral(String s) {
-		Code.loadConst(s.length() - 2 + 1); // n
+		Code.loadConst(s.length() - 2); // n
 		Code.put(Code.newarray);
 		Code.put(0);
 		
@@ -115,12 +115,12 @@ parser code {:
 			Code.loadConst(s.charAt(i+1));
 			Code.put(Code.bastore);
 		}
+	}
+	
+	// NIVO B
+	public void concat() {
 		
-		// znak za '/0'
-		Code.put(Code.dup);
-		Code.loadConst(i);
-		Code.loadConst(0);
-		Code.put(Code.bastore);
+		
 	}
 	
 	// NIVO B
@@ -154,11 +154,36 @@ parser code {:
 	}
 	
 	// NIVO B
-	public void concat() {
-		Code.put(Code.dup);	// dupliraj adresu prvog
-		Code.put(Code.arraylength);
+	public void declareFunction(String methName) {
+		Obj o = Tab.find(methName);
+		Tab.openScope();
+		o.setAdr(Code.pc);
+		Code.put(Code.enter);
+		Code.put(o.getLevel());
+		Code.put(Tab.currentScope().getnVars());
 		
+		if (methName.equals("len")) {
+			Code.put(Code.load_n + 0);				//	| par
+			Code.put(Code.arraylength);
+		} else if (methName.equals("ord")) {
+			Code.put(Code.load_n + 0);				//	| par
+			Code.loadConst(48);
+			Code.put(Code.sub);
+		} else {
+			Code.put(Code.load_n + 0);				//	| par
+			Code.loadConst(48);
+			Code.put(Code.add);
+		}
+		
+		Tab.chainLocalSymbols(o);
+		Tab.closeScope();
+		
+		// ... povr. vrednost na stek
+		
+		Code.put(Code.exit);
+		Code.put(Code.return_);
 	}
+	
 :}
 
 scan with {:
@@ -242,7 +267,13 @@ non terminal IfMatched ;
 
 /**********************************************************************************************************/
 
-Program ::= PROGRAM ProgramName:p Lists LBRACE MethodDeclList RBRACE:dummy
+Program ::= PROGRAM ProgramName:p Lists LBRACE 
+		{:
+			parser.declareFunction("len");
+			parser.declareFunction("ord");
+			parser.declareFunction("chr");
+		:}
+		MethodDeclList RBRACE:dummy
 		{:
 			// NIVO A
 			Code.dataSize = Tab.currentScope().getnVars();
@@ -821,6 +852,16 @@ ActPars ::= Expr:expr
 				if (currentCall.getLevel() > pos) {
 					if (currentCall.getName().equals("len")) {
 						if (expr.getKind() != Struct.Array)
+							parser.report_error("Semantics error at row " + exprleft + " - incompatible types of " + (pos+1) + ". parameter", null);
+						else
+							RESULT = expr;
+					} else if (currentCall.getName().equals("ord")) {
+						if (expr != Tab.charType)
+							parser.report_error("Semantics error at row " + exprleft + " - incompatible types of " + (pos+1) + ". parameter", null);
+						else
+							RESULT = expr;
+					} else if (currentCall.getName().equals("chr")) {
+						if (expr != Tab.intType)
 							parser.report_error("Semantics error at row " + exprleft + " - incompatible types of " + (pos+1) + ". parameter", null);
 						else
 							RESULT = expr;

@@ -31,7 +31,7 @@ public class MJParserTest {
 		Reader br = null;
 		
 		try {
-			for (int i = 0; i < 15; i++) {
+			for (int i = 12; i < 13; i++) {
 				File sourceCode = null, outputCode = null;
 				if (i < 10)
 					sourceCode = new File("test/test_files/test0" + i + ".mj");

@@ -1,0 +1,21 @@
+program Concat;
+
+	char str1[], str2[], res[];
+{
+	void main(){
+
+		str1 = new char [5];
+		str1[0] = 'a';
+		str1[1] = 'a';
+		str1[2] = 'a';
+		str1[3] = 'a';
+		str1[4] = 'a';
+		
+		str2 = new char [3];
+		str2[0] = 'b';
+		str2[1] = 'b';
+		str2[2] = 'b';
+		
+	}
+	
+}
