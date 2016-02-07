@@ -190,13 +190,15 @@ action code {:
 	boolean returnFound = false;
 	int fpPos = 0, actPars = 0;
 	boolean isVoid = false;
-	boolean inWhile = false;
+	int inWhile = 0;
 	
 	// NIVO B
 	// if else patch stack
 	Stack<Integer> patch = new Stack<Integer> ();
 	Stack<Integer> patch2 = new Stack<Integer> ();
 	Stack<Boolean> cond = new Stack<Boolean> ();
+	Stack<Integer> top = new Stack<Integer> ();
+	Stack<Integer> brk = new Stack<Integer> ();
 :}
 
 /**********************************************************************************************************/
@@ -717,14 +719,14 @@ SideEffect ::= Designator:desig IncDec:op SEMI_COMMA
 						if (!desig.getType().equals(Tab.intType))
 							parser.report_error("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
 						else {
-							Code.put(Code.inc);
-							Code.put(desig.getAdr()); 
-							//Code.load(desig);
+							Code.load(desig);
+							Code.loadConst(1);
 							if (op == Code.inc) {
-								Code.put(1);
+								Code.put(Code.add);
 							} else {
-								Code.put(-1);
+								Code.put(Code.sub);
 							}
+							Code.store(desig);
 						}
 					}
 				} // else
@@ -872,25 +874,48 @@ IfMatched ::= IfTerm LPAREN Condition RPAREN Matched ELSE
 				}
 		  :} 
 ;
-IfTerm ::= IF 
-		{:
-		
-		:}
-;
+IfTerm ::= IF ;
 
 
 
+// NIVO B
 MatchedWhileStatement ::= WhileTerm LPAREN Condition RPAREN Matched 
-						{: inWhile = false; :}
+						{: 
+							Code.putJump(top.pop());
+							if (cond.pop().booleanValue()) Code.fixup(patch.pop());
+							if ((brk.size() > 0) && (brk.peek().intValue() == inWhile)) {
+								brk.pop();
+								Code.fixup(brk.pop());
+							}
+							inWhile--; 
+						:}
 ;
 UnmatchedWhileStatement ::= WhileTerm LPAREN Condition RPAREN Unmatched 
-						{: inWhile = false; :}
+						{: 
+							Code.putJump(top.pop());
+							if (cond.pop().booleanValue()) Code.fixup(patch.pop());
+							if ((brk.size() > 0) && (brk.peek().intValue() == inWhile)) {
+								brk.pop();
+								Code.fixup(brk.pop());
+							}
+							inWhile--; 
+						:}
 ;
-WhileTerm ::= WHILE {: inWhile = true; :} ;
+WhileTerm ::= WHILE 
+		{: 
+			top.push(new Integer(Code.pc));
+			inWhile++; 
+		:} 
+;
 BreakStatement ::= BREAK:dummy SEMI_COMMA 
 				{:
-					if (!inWhile)
+					if (inWhile == 0)
 						parser.report_error("Semantics error at row " + dummyleft + " - 'break' statement can only be used inside a while loop", null);
+					else {
+						Code.putJump(0);
+						brk.push(new Integer(Code.pc - 2));
+						brk.push(new Integer(inWhile));
+					}
 				:}
 ;
 
@@ -910,7 +935,10 @@ Condition ::= ConditionCheck:result
 				}
 			:}
 			| error
-			{: parser.report_debug("Successful error recovery - condition of an if/while construction"); :}
+			{: 
+				cond.push(new Boolean(false));
+				parser.report_debug("Successful error recovery - condition of an if/while construction"); 
+			:}
 ;
 ConditionCheck ::= ConditionCheck:typeL OR CondTerm:typeR
 			  {:
@@ -994,11 +1022,7 @@ ReturnStatement ::= RETURN:dummy SEMI_COMMA
 				 	Struct currMethType = currentMethod.getType();
 				 	if (!isVoid) {
 				 		parser.report_error("Semantics error at row " + dummyleft + " - function missing a return value", null);
-				 	}
-				 	/*
-				 	Code.put(Code.exit);
-					Code.put(Code.return_);
-					*/  	 
+				 	}	 
 			    :}
 			    |	RETURN Expr:expr SEMI_COMMA
 			    {:
