@@ -1,0 +1,34 @@
+public void stringLiteral(String s) {
+		Code.loadConst(s.length() - 2); // n
+		Code.put(Code.newarray);
+		Code.put(0);
+		
+		int i = 0;
+		for (; i < s.length() - 2; i++) {
+			Code.put(Code.dup);
+			Code.loadConst(i);
+			Code.loadConst(s.charAt(i+1));
+			Code.put(Code.bastore);
+		}
+	}
+	
+zovem je ovde
+Factor ::= Designator:desig
+		 {: 
+		 	// NIVO B, proveravas je l const string, nakon ovoga na steku je njegova adresa
+		 	if (desig.getKind() == Obj.Con && desig.getType() == parser.stringType) {
+		 		parser.stringLiteral(constStrings.get(desig.getAdr()));	
+		 	}
+		 	// NIVO A
+		 	else 
+		 		Code.load(desig);
+		 	RESULT = desig.getType(); 
+		 :}
+		 
+Factor:: = STRING:s
+		 {: 
+		 	// NIVO B
+		 	// kada naidje na string konstantu "nekistring"
+		 	parser.stringLiteral(s);
+		 	RESULT = parser.stringType; 
+		 :}

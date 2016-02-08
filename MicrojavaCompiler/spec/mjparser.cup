@@ -743,10 +743,10 @@ SideEffect ::= Designator:desig IncDec:op SEMI_COMMA
 				// NIVO A
 				if (desig != null) {
 					if (desig.getKind() != Obj.Var && desig.getKind() != Obj.Fld && desig.getKind() != Obj.Elem) {
-						parser.report_error("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+						parser.report_error("Semantics error at row " + desigleft + " - expression must be an lvalue", null);
 					} else {
 						if (!desig.getType().equals(Tab.intType))
-							parser.report_error("Semantics error at row " + desigleft + " - expression '" + desig.getName() + "' must be an lvalue", null);
+							parser.report_error("Semantics error at row " + desigleft + " - expression must be an lvalue", null);
 						else {
 							Code.load(desig);
 							Code.loadConst(1);
@@ -850,10 +850,9 @@ Function ::= Designator:desig LPAREN
 			 		if (desig.getKind() != Obj.Meth)
 			 			parser.report_error("Semantics error at row " + desigleft + " - variable must be a global function or a class method", null);
 			 		else {
-							if (desig.getLevel() > 0)
-								if (desig.getLevel() > 1 && desig.getFpPos() != -1)
-									parser.report_error("Semantics error at row " + desigleft + " - function '" + desig.getName() + "' missing parameters", null);
-							else {
+							if ((desig.getLevel() > 0 && desig.getFpPos() != -1) || (desig.getLevel() > 1 && desig.getFpPos() == -1)){
+								parser.report_error("Semantics error at row " + desigleft + " - function '" + desig.getName() + "' missing parameters", null);
+							} else {
 								RESULT = desig.getType();
 								// NIVO B
 								if (desig.getFpPos() != - 1) {
