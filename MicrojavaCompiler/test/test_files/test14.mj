@@ -55,7 +55,7 @@ program test303
 		r3 = new Poslasticar;
 		pe = new Pekar;
 		ps = new Poslasticar;
-	
+		
 		ps.pomocnik = pe;
 		ps.pomocnik.p = new char[4];
 		
@@ -73,9 +73,9 @@ program test303
 		stampaj(r1.ime);    //izlaz Zoran
 		stampaj(r2.ime);    //izlaz Pekar Goran
 		stampaj(r3.ime);    //izlaz Poslasticar Goran
-		stampaj(ps.pomocnik.ime); // izlaz Pekar Ceca
+		stampaj(ps.pomocnik.ime); //izlaz Pekar Ceca
 		
-		print(uporedi(r2.ime, r3.ime));  // izlaz razliciti
+		print(uporedi(r2.ime, r3.ime));  //izlaz razliciti
 		print(eol);
 		
 		i = 0;
@@ -90,7 +90,7 @@ program test303
 		if (r1.godinaRodjenja > 0)
 			stampaj(pe.ime);     //Pekar Bojan
 		else
-			stampaj(ps.ime);     // Poslasticar Mira
+			stampaj(ps.ime);     //Poslasticar Mira
 			
 		r2.godinaRodjenja = 1970;
 		r2.stampajGodinu();

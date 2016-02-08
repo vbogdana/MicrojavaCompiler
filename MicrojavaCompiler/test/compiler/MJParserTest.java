@@ -31,14 +31,8 @@ public class MJParserTest {
 		Reader br = null;
 		
 		try {
-			for (int i = 12; i < 14; i++) {
 				File sourceCode = null, outputCode = null;
-				if (i < 10)
-					sourceCode = new File("test/test_files/test0" + i + ".mj");
-				else
-					sourceCode = new File("test/test_files/test" + i + ".mj");
-				
-			//File sourceCode = new File("test/test_files/test05.mj");
+				sourceCode = new File("test/test_files/" + args[0] + ".mj");
 				log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 				br = new BufferedReader(new FileReader(sourceCode));
 				
@@ -69,17 +63,13 @@ public class MJParserTest {
 		        	log.error("Parsing UNSUCCESSFUL!");
 		        else {
 		        	log.info("Parsing SUCCESSFUL!");
-		        	if (i < 10)
-						outputCode = new File("test/output_files/output0" + i + ".obj");
-					else
-						outputCode = new File("test/output_files/output" + i + ".obj");
+					outputCode = new File("test/output_files/" + args[0] + ".obj");
 		        	if (outputCode.exists())
 		        		outputCode.delete();
 		        	Code.write(new FileOutputStream(outputCode));
 		        }
 		        
-		        Tab.dump();      
-			}   
+		        Tab.dump();       
 		} 
 		finally {
 			if (br != null)

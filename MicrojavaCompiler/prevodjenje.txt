@@ -45,10 +45,19 @@ KADA SU KLASE/METODE VEC DEFINISANE						URADJENO		(ona pronadjena ide)
 *** SREDI NOVU FJU ZA PROVERU assignabilnosti 			URADJENO
 (osnovne izvedene klase) 
 MOZDA ZA AKT.Parametre treba asignable
-*** SREDI STRING TYPE
-*** SREDI ARRAY TYPE
+*** SREDI STRING TYPE									URADJENO
+*** SREDI ARRAY TYPE									URADJENO
+*** SREDI GENERISANJE VTABELA							URADJENO
+*** SREDI POLIMORF POZIVANJE METODA
+*** SREDI PROSLEDJIVANJE THISa
+*** KAKO ZNATI DA LI SE ZOVE FJA ILI METODA				URADJENO		U objektu metode na fppos staviti -1 ako je metoda		
+*** SREDI ISPIS GRESAKA AKT PARAMETARA					URADJENO
+*** SREDI THIS DA NE MOZE GLOB I LOK PROMENLJIVE		URADJENO
+*** SREDI POREDJENJE KLASA (kompatibilnost)				URADJENO		poredi samo adrese
+*** SREDI ISPISE
+*** SREDI MJPARSERTEST
+*** POKRENI DOMACI ISPOCETKA
 
-
-BOOL TREBA DA TI BUDE INT A MOZDA I NE
-KADA REFERISEMO ELEMENT NIZA U DESIGNATORU KREIRAMO NOV OBJEKAT SA KIND = Obj.Elem I SA ADR = MEM.OFSET (odnosno broj elem u nizu) I IMENOM KAO NIZ
-OBRATI PAZNJI NA MENJANO
+PITANJA:
+- VTabele generisemo pre maina, ali sta ako u nekoj metodi klase generisemo nov objekat neke klase, tada necemo znati adresu njene VTabele iz Obj cvora
+- Da li se poredjenje nizova odnosi samo na stringove

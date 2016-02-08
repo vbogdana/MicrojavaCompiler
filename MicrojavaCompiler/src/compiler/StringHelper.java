@@ -10,10 +10,10 @@ public class StringHelper {
 	public static final int STR1 = 0, LEN1 = 1, STR2 = 2, LEN2 = 3, RES = 4, I = 5, J = 6, LEN3 = 7; 
 	public static final Struct stringType = new Struct(Struct.Array, Tab.charType);
 	public static final Struct boolType = new Struct(Struct.Int);
-	public Obj concatCall = Tab.insert(Obj.Meth, "concat", stringType),
-			   printsCall = Tab.insert(Obj.Meth, "prints", stringType),
+	public Obj printsCall = Tab.insert(Obj.Meth, "prints", Tab.noType),
 			   readsCall = Tab.insert(Obj.Meth, "reads", stringType),
-			   cmpStrCall = Tab.insert(Obj.Meth, "cmpStr", Tab.intType);
+			   cmpStrCall = Tab.insert(Obj.Meth, "cmpStr", Tab.intType),
+			   concatCall = Tab.insert(Obj.Meth, "concat", stringType);
 	
 	
 	// NIVO B
