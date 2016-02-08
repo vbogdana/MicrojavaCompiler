@@ -42,34 +42,36 @@ public class MJParserTest {
 		        
 		        br.close();
 		        
-		        // nivo A
-		        log.info("Global variables = " + p.globalVarCnt);
-		        log.info("Local variables = " + p.localVarCnt);
-		        log.info("Global constants = " + p.globalConstCnt);
-		        log.info("Global arrays = " + p.globalArrayCnt);
-		        
-		        // nivo B
-		        log.info("Global functions = " + p.functionCnt);
-		        log.info("Function calls = " + p.callCnt);
-		        log.info("Statement blocks = " + p.blockCnt);
-		        log.info("Formal parameters = " + p.formParCnt);
-		        
-		        // nivo C
-		        log.info("Classes = " + p.nestedClassCnt);
-		        log.info("Methods = " + p.nestedClassMethodCnt);
-		        log.info("Class attributes = " + p.nestedClassAttrCnt);
-		        
+		        log.info("=======================SYNTAX ANALYSIS=======================");
 		        if (p.semError)
 		        	log.error("Parsing UNSUCCESSFUL!");
 		        else {
+		        	// nivo A
+		        	log.info("Global constants = " + p.globalConstCnt);
+			        log.info("Global variables = " + p.globalVarCnt);
+			        log.info("Global arrays = " + p.globalArrayCnt);
+			        log.info("Local variables in main = " + p.localVarCnt);
+  
+			        // nivo B
+			        log.info("Global functions = " + (p.functionCnt-1));
+			        log.info("Formal parameters = " + p.formParCnt);
+			        log.info("Function calls in main = " + p.callCnt);
+			        log.info("Statement blocks = " + p.blockCnt);			        
+			        
+			        // nivo C
+			        log.info("Classes = " + p.nestedClassCnt);
+			        log.info("Class attributes = " + p.nestedClassAttrCnt);
+			        log.info("Methods = " + p.nestedClassMethodCnt);
 		        	log.info("Parsing SUCCESSFUL!");
+		        	
+		        	p.dump();
+			        
 					outputCode = new File("test/output_files/" + args[0] + ".obj");
 		        	if (outputCode.exists())
 		        		outputCode.delete();
 		        	Code.write(new FileOutputStream(outputCode));
 		        }
-		        
-		        Tab.dump();       
+		              
 		} 
 		finally {
 			if (br != null)

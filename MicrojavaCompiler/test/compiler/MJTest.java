@@ -25,12 +25,8 @@ public class MJTest {
 		Reader br = null;
 		
 		try {
-			for (int i = 0; i < 11; i++) {
 				File sourceCode = null;
-				if (i != 10)
-					sourceCode = new File("test/test_files/test0" + i + ".mj");
-				else
-					sourceCode = new File("test/test_files/test10.mj");
+				sourceCode = new File("test/test_files/" + args[0] + ".mj");
 				
 				log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 
@@ -39,13 +35,12 @@ public class MJTest {
 				Yylex lexer = new Yylex(br);
 				Symbol currToken = null;
 				while ((currToken = lexer.next_token()).sym != sym.EOF) {
-					if (currToken != null)
+					if (currToken != null) {
 						log.info(currToken.toString() + " " + currToken.value.toString());
+					}
 				}
 
 				br.close();
-				// log = Logger.getLogger(MJTest.class);
-			}
 
 		} finally {
 			if (br != null)

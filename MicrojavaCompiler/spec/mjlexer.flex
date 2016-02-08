@@ -1,10 +1,12 @@
 package compiler;
 
 import java_cup.runtime.Symbol;
+import org.apache.log4j.*;
 
 %%
 
 %{
+	Logger log = Logger.getLogger(getClass());
 
 	// ukljucivanje informacije o poziciji tokena
 	private Symbol new_symbol(int type) {
@@ -87,4 +89,4 @@ import java_cup.runtime.Symbol;
 <COMMENT> . 	{ yybegin(COMMENT); }
 <COMMENT>"\r\n" { yybegin(YYINITIAL); }
 
-. { System.err.println("Lexical error (" + yytext() + ") at row " + (yyline + 1) + ", column " + (yycolumn + 1)); }
+. { log.error("Lexical error (" + yytext() + ") at row " + (yyline + 1) + ", column " + (yycolumn + 1)); }

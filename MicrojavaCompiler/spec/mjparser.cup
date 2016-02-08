@@ -88,15 +88,23 @@ parser code {:
     	return stv.getOutput();
     }
     
+    public void dump() {
+    	SymbolTableVisitor stv = new DumpSymbolTableVisitor();
+		for (Scope s = Tab.currentScope; s != null; s = s.getOuter()) {
+			s.accept(stv);
+		}
+		log.info( "=====================SYMBOL TABLE DUMP=========================\n" + stv.getOutput());
+    }
+    
      public boolean assignableTo(Obj dst, Struct src) {
     	Struct dstType = dst.getType();
     	
+    	if (dstType.getKind() == Struct.Array && dstType.getElemType().equals(Tab.charType) && dstType != StringHelper.stringType&& src == StringHelper.stringType)
+			return false;
+			
     	if (src.assignableTo(dstType))
     		return true;
-    	/*
-		if (dstType.getKind() == Struct.Array && dstType.getElemType().equals(Tab.charType) && src.equals(StringHelper.stringType))
-			return true;
-		*/
+    		
 		if (dstType.getKind() == Struct.Class && src.getKind() == Struct.Class)
 			if (inheritanceTable.containsKey(src))
 				if (inheritanceTable.get(src).contains(dstType))

@@ -54,10 +54,11 @@ MOZDA ZA AKT.Parametre treba asignable
 *** SREDI ISPIS GRESAKA AKT PARAMETARA					URADJENO
 *** SREDI THIS DA NE MOZE GLOB I LOK PROMENLJIVE		URADJENO
 *** SREDI POREDJENJE KLASA (kompatibilnost)				URADJENO		poredi samo adrese
-*** SREDI U 09 primeru red 34
+*** SREDI U 09 primeru red 34							URADJENO		da li treba assignable kod form parametara
 *** SREDI U 05 primeru red 40 (boolean int)
-*** SREDI ISPISE
-*** SREDI MJPARSERTEST
+*** SREDI MJPARSERTEST									URADJENO
+*** SREDI ISPISE														SREDJEN LEKSICKA, SINTAKSNA, SEMANTICKA - SAMO PARSER.reportinfo sredi
+*** SREDI ISPIS "\n"
 *** POKRENI DOMACI ISPOCETKA
 
 PITANJA:

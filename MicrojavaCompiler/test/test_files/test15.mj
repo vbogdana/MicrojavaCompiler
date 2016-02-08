@@ -50,20 +50,20 @@ program Concat
 	}
 	
 	void ucitaj() int i, len; char c; string res; {
-		len = 0;
-		read(c);
-		while (c != 13) {
-			len++;
-			read(c);
-		}
+		// len = 0;
+		// read(c);
+		// while (c != 13) {
+			// len++;
+			// read(c);
+		// }
 		
 		//res = new char [len];
-		i = len - 1;
-		while(i >= 0) {
+		// i = len - 1;
+		// while(i >= 0) {
 			// c = vrednost sa steka
 			// res[i] = c
-			i--;
-		}
+			// i--;
+		// }
 	}
 	
 	void main(){
