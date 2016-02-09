@@ -69,7 +69,7 @@ public class StringHelper {
 		Tab.insert(Obj.Var, "len2", Tab.intType).setFpPos(3);
 		cmpStrCall.setLevel(4);
 
-		Tab.insert(Obj.Var, "i", Tab.intType);
+		Tab.insert(Obj.Var, "i", boolType);
 		cmpStrCall.setAdr(Code.pc);
 		Code.put(Code.enter);
 		Code.put(cmpStrCall.getLevel());
@@ -184,7 +184,7 @@ public class StringHelper {
 		Tab.insert(Obj.Var, "len2", Tab.intType).setFpPos(3);
 		concatCall.setLevel(4);
 
-		Tab.insert(Obj.Var, "res", Tab.intType);
+		Tab.insert(Obj.Var, "res", stringType);
 		Tab.insert(Obj.Var, "i", Tab.intType);
 		Tab.insert(Obj.Var, "j", Tab.intType);
 		Tab.insert(Obj.Var, "len3", Tab.intType);
@@ -394,7 +394,7 @@ public class StringHelper {
 		Tab.insert(Obj.Var, "i", Tab.intType);
 		Tab.insert(Obj.Var, "len", Tab.intType);
 		Tab.insert(Obj.Var, "c", Tab.charType);
-		Tab.insert(Obj.Var, "res", Tab.intType);
+		Tab.insert(Obj.Var, "res", stringType);
 		readsCall.setAdr(Code.pc);
 		Code.put(Code.enter);
 		Code.put(readsCall.getLevel());

@@ -1,39 +1,41 @@
-program MJProgram
-	const int i = 2, j = 3;
-	const int in = true;
-	const string prvi = "prvi", drugi = "drugi", treci = "treci";
-	const string str = 2;
-	const char c = 'a';
-	const string cetvrti = "cetvrti";
-	const bool tflag = true, fflag = false;
-	
-	int x, y;
-	int x y;
-	int x y
-	int x y;
-	int x y, z;
-	int x, y z, z, y z;
-	string a,b, f d;
-	int a, f g, a;
-	bool flag;
-	int niz[], niz1[];
-	
-	class klasa extends klasa {
-		string c;
+program Program
+	class A {
+		int x[], y[];
 	}
-{
-	void main() int a; {
-		flag = true;
-		niz[niz1[x]] = 2;
+
+	const int pi = 3, e = 2;
+	
+	class B extends A {
+		int i; 
+		int x[];
+		{
+				int getValue(int a) int b; bool c; { 
+					return this.i + this.x[0] + a; 
+				}
+		}
 	}
-}
+	
+	class C extends B {
+		A theA;
+		string a;
+	}
 
-// glob promenljive = 8
-// lok promenljive = 1
-// glob konst = 0
-// glob nizovi = 0
-
-// def funkcija = 1 (main)
-// pozivi funkcija = 0
-// blokovi naredbi = 1
-// formalni parametri = 0
+	{
+		void main() A a; C c; int i; int x[]; {
+			a = new A;
+			a.x = new int[5];
+			a.y = new int[5];
+			c = new C;
+			c.theA = a;
+			c.x = new int[5];
+			x = new int[3];
+			i=0;
+			read(c.i);
+			while(i<5) {
+				read(c.x[i]); 
+				read(c.theA.x[i]);
+				i++;
+			}
+			print(c.getValue(c.theA.x[0]));
+		}
+	}

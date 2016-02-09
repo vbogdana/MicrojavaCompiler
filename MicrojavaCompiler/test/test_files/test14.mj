@@ -55,7 +55,7 @@ program test303
 		r3 = new Poslasticar;
 		pe = new Pekar;
 		ps = new Poslasticar;
-		
+			
 		ps.pomocnik = pe;
 		ps.pomocnik.p = new char[4];
 		

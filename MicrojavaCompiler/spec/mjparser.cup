@@ -10,6 +10,7 @@ import rs.etf.pp1.symboltable.visitors.SymbolTableVisitor;
 import rs.etf.pp1.mj.runtime.Code;
 import compiler.StringHelper;
 import compiler.ClassHelper;
+import compiler.Visitor;
 
 parser code {:
 	
@@ -82,14 +83,18 @@ parser code {:
     }
     
     public String objToString(Obj o) {
-    	SymbolTableVisitor stv = new DumpSymbolTableVisitor();
+    	SymbolTableVisitor stv = new Visitor();
+    	Visitor.stringType = StringHelper.stringType;
+    	Visitor.boolType = StringHelper.boolType;
     	
     	stv.visitObjNode(o);
     	return stv.getOutput();
     }
     
     public void dump() {
-    	SymbolTableVisitor stv = new DumpSymbolTableVisitor();
+    	SymbolTableVisitor stv = new Visitor();
+    	Visitor.stringType = StringHelper.stringType;
+    	Visitor.boolType = StringHelper.boolType;
 		for (Scope s = Tab.currentScope; s != null; s = s.getOuter()) {
 			s.accept(stv);
 		}
@@ -112,6 +117,19 @@ parser code {:
 	
 		return false;
 	}
+	
+	public boolean inherits(Struct typeL, Struct typeR) {
+ 		// TODO Auto-generated method stub
+    	 if (inheritanceTable.containsKey(typeR))
+ 			if (inheritanceTable.get(typeR).contains(typeL))
+ 				return true;
+    	 
+    	 if (inheritanceTable.containsKey(typeL))
+  			if (inheritanceTable.get(typeL).contains(typeR))
+  				return true;
+    	 
+    	 return false;
+ 	}
 	
 	// NIVO B
 	public void checkCond(int or) {
@@ -270,7 +288,7 @@ ProgramName ::= IDENT:progName
 			
 				RESULT = Tab.insert(Obj.Prog, progName, Tab.noType);
 				Tab.openScope();
-				// parser.report_info("PARSING the program '" + progName + "' at row " + progNameleft, null);				
+				parser.report_info("PARSING the program '" + progName + "' at row " + progNameleft, null);				
 			:}
 ;
 
@@ -346,7 +364,7 @@ Constant ::= IDENT:constName EQUALS ConstType:constType
 	 				o.setAdr(constValue);
 	 				constValue = 0;
 	 				parser.globalConstCnt++;
-	 				// parser.report_info("Constant '" + constName + "' declaration at row " + constNameleft, null);
+	 				parser.report_info("Constant '" + constName + "' declaration at row " + constNameleft, null);
 	 			} else if (!constName.equals(parser.classThis)) {
 	 				parser.report_error("Semantics error at row " + constNameleft + " - multiple definition of '" + constName + "'", null);
 	 			} else {
@@ -380,7 +398,7 @@ Variable ::= IDENT:varName BracketsOpt:brack
 		 				Tab.insert(Obj.Var, varName, parser.type);
 	 				else
 	 					Tab.insert(Obj.Var, varName, new Struct(Struct.Array, parser.type));
-	 				// parser.report_info("Global variable '" + varName + "' declaration at row " + varNameleft, null);	
+	 				parser.report_info("Global variable '" + varName + "' declaration at row " + varNameleft, null);	
 	 			} else if (!varName.equals(parser.classThis)) {
 	 				parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of '" + varName + "'", null);
 	 			} else {
@@ -431,7 +449,7 @@ LocalVariable ::= IDENT:varName BracketsOpt:brack
 		 					else
 		 						o = Tab.insert(Obj.Fld, varName, new Struct(Struct.Array, parser.type));
 		 					o.setAdr(o.getAdr() + 1);
-		 					// parser.report_info("Class attribute '" + varName + "' declaration at row " + varNameleft, null);
+		 					parser.report_info("Class attribute '" + varName + "' declaration at row " + varNameleft, null);
 	 					} else if (!varName.equals(parser.classThis)) {
 	 						if ((superClass != null) && (superClass.getMembers().searchKey(varName) != null)) {
 	 							int adr = o.getAdr();
@@ -441,7 +459,7 @@ LocalVariable ::= IDENT:varName BracketsOpt:brack
 			 					else
 			 						o = Tab.insert(Obj.Fld, varName, new Struct(Struct.Array, parser.type));
 	 							o.setAdr(adr);
-	 							// parser.report_info("Class attribute '" + varName + "' redefinition at row " + varNameleft, null);
+	 							parser.report_info("Class attribute '" + varName + "' redefinition at row " + varNameleft, null);
 	 						} else
 	 							parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of a class attribute '" + varName + "'", null);				
 	 					} else {
@@ -454,7 +472,7 @@ LocalVariable ::= IDENT:varName BracketsOpt:brack
 			 					Tab.insert(Obj.Var, varName, parser.type);
 		 					else
 		 						Tab.insert(Obj.Var, varName, new Struct(Struct.Array, parser.type));
-		 					// parser.report_info("Local variable '" + varName + "' declaration at row " + varNameleft, null);
+		 					parser.report_info("Local variable '" + varName + "' declaration at row " + varNameleft, null);
 		 				} else if (!varName.equals(parser.classThis)) {
 		 					parser.report_error("Semantics error at row " + varNameleft + " - multiple definition of a local variable '" + varName + "'", null);
 		 				} else {
@@ -487,7 +505,7 @@ ClassDecl ::= CLASS IDENT:className
 			  	Obj o = Tab.find(className);
 			  	if (o == Tab.noObj) {
 	 				currentClass = Tab.insert(Obj.Type, className, new Struct(Struct.Class));
-	 				// parser.report_info("Class '" + className + "' definition at row " + classNameleft, null);
+	 				parser.report_info("Class '" + className + "' definition at row " + classNameleft, null);
 	 			} else {
 	 				currentClass = o;
 	 				parser.report_error("Semantics error at row " + classNameleft + " - multiple definition of a class '" + className + "'", null);
@@ -561,7 +579,7 @@ Extends ::= EXTENDS Type:outerClass
 				else if (outerClass == currentClass.getType())
 					parser.report_error("Semantics error at row " + outerClassleft + " - class cannot inherit itself", null);
 				else {
-					// parser.report_info("Class inheritance at row " + outerClassleft, null);
+					parser.report_info("Class inheritance at row " + outerClassleft, null);
 					superClass = outerClass;
 					Iterator<Obj> exIter = superClass.getMembers().symbols().iterator();
 					Obj o = null;
@@ -574,7 +592,8 @@ Extends ::= EXTENDS Type:outerClass
 			 				else
 			 					o1 = Tab.insert(o.getKind(), o.getName(), new Struct(Struct.Array, o.getType().getElemType()));
 							// NIVO C
-							o1.setAdr(o1.getAdr() + 1);
+							//o1.setAdr(o1.getAdr() + 1);
+							o1.setAdr(o.getAdr());
 						}
 					}
 				}
@@ -598,14 +617,13 @@ MethodDecl ::= ReturnType:retType IDENT:methName
 			   	  Obj o = Tab.currentScope().findSymbol(methName);
 				  if (o == null) {
 		 				currentMethod = Tab.insert(Obj.Meth, methName, retType);
-		 				// parser.report_info("Function '" + methName + "' definition at row " + methNameleft, null);
+		 				parser.report_info("Function '" + methName + "' definition at row " + methNameleft, null);
 		 		  } else {
 		 		  		currentMethod = o;
-		 		  		if (!((superClass != null) && (superClass.getMembers().searchKey(methName) != null)))
-		 					parser.report_error("Semantics error at row " + methNameleft + " - multiple definition of a function '" + methName + "'", null);
-		 		  		else {
-		 		  			// parser.report_info("Class method '" + methName + "' redefinition at row " + methNameleft, null);
-		 		  		}
+		 		  		if ((superClass != null) && (superClass.getMembers().searchKey(methName) != null))
+		 		  			parser.report_info("Class method '" + methName + "' redefinition at row " + methNameleft, null);		
+		 		  		else
+		 		  			parser.report_error("Semantics error at row " + methNameleft + " - multiple definition of a class method '" + methName + "'", null);
 		 		  }	 
 			   	  Tab.openScope();
 			   	  
@@ -694,7 +712,7 @@ FormPar ::= Type:type IDENT:parName BracketsOpt:brack
 	 					o = Tab.insert(Obj.Var, parName, new Struct(Struct.Array, type));
 	 				o.setFpPos(fpPos);
 	 				fpPos++;
-	 				// parser.report_info("Formal parameter '" + parName + "' declaration at row " + parNameleft, null);
+	 				parser.report_info("Formal parameter '" + parName + "' declaration at row " + parNameleft, null);
 	 			} else if (!parName.equals("this")) {
 	 				parser.report_error("Semantics error at row " + parNameleft + " - multiple definition of '" + parName + "'", null);
 	 			} else {
@@ -939,7 +957,7 @@ ActPars ::= ActPars:actPars COMMA Expr:expr
 					else
 						RESULT = expr;
 					// NIVO C
-					classHelper.dummyCall();
+					//classHelper.dummyCall();
 					pos++;
 				} else 
 					parser.report_error("Semantics error at row " + exprleft + " - number of parameters doesn't match", null);	
@@ -1076,28 +1094,39 @@ CondFact ::= Expr:expr
 CondFact ::= Expr:typeL Relop:op Expr:typeR
 		{:
 			RESULT = Tab.noType;
-			if (typeL == strHelper.stringType || typeR == strHelper.stringType || typeL.getKind() == Struct.Class || typeR.getKind() == Struct.Class) {
+			if (typeL.getKind() == Struct.Array || typeR.getKind() == Struct.Array  || typeL.getKind() == Struct.Class || typeR.getKind() == Struct.Class) {
 				if (op != Code.ne && op != Code.eq)
 					parser.report_error("Semantics error at row " + typeLleft + " - operator in condition expression is not allowed for class/array types", null);
 				else {
-					if (!typeL.compatibleWith(typeR))
+					if ((typeL == StringHelper.stringType && typeR != StringHelper.stringType) || (typeL != StringHelper.stringType && typeR == StringHelper.stringType))
 						parser.report_error("Semantics error at row " + typeLleft + " - incompatible types", null);
-					else {
-						if (typeL == strHelper.stringType) {
-							//		| adr1 adr2
-							Code.put(Code.dup2);
-							Code.put(Code.pop);
-							Code.put(Code.arraylength);
-							//		| adr1 adr2 len1
-							Code.put(Code.dup2);
-							Code.put(Code.pop);
-							Code.put(Code.arraylength);
-							//		| adr1 adr2 len1 len2
-							strHelper.callCmpStr();
-							//		| rezultat
-						}
+					else if (typeL == StringHelper.stringType && typeR == StringHelper.stringType) {						
+						//		| adr1 adr2
+						Code.put(Code.dup2);
+						Code.put(Code.pop);
+						Code.put(Code.arraylength);
+						//		| adr1 adr2 len1
+						Code.put(Code.dup2);
+						Code.put(Code.pop);
+						Code.put(Code.arraylength);
+						//		| adr1 adr2 len1 len2
+						strHelper.callCmpStr();
+						//		| rezultat
 						RESULT = StringHelper.boolType;
-					}
+					} else if (((typeL.getKind() == Struct.Array || typeR.getKind() == Struct.Array) && typeL.compatibleWith(typeR))
+							|| ((typeL.getKind() == Struct.Class || typeR.getKind() == Struct.Class) && (typeL.compatibleWith(typeR) || parser.inherits(typeL, typeR)))) {
+						// poredjenje referenci klasa ili nizova
+						Code.putFalseJump(op, 0);	// ako je netacno idi na else
+						int p = Code.pc - 2;
+						Code.loadConst(1);			// ako je tacno postavi 1 na stek
+						Code.putJump(0);
+						int p2 = Code.pc - 2;
+						Code.fixup(p);
+						Code.loadConst(0);			// ako je netacan uslov postavi 0 na stek
+						Code.fixup(p2);
+						RESULT = StringHelper.boolType;
+					} else
+						parser.report_error("Semantics error at row " + typeLleft + " - incompatible types", null);
 				}
 			}
 			else {
@@ -1233,7 +1262,7 @@ DesignatorList ::= 	DesignatorList:cl STOP IDENT:field
 	                    	}	                    	
 	                    	else
 	                    		Code.load(cl);
-	                    	// parser.report_info("Use of " + parser.objToString(o) + " at row " + clleft,null);
+	                    	parser.report_info("Use of " + parser.objToString(o) + " at row " + clleft,null);
 	                     }
 	                    RESULT = o;
                     }     
@@ -1262,7 +1291,7 @@ DesignatorList ::= 	DesignatorList:cl STOP IDENT:field
 					} else {
 						Obj o = Tab.find(ident);
 						if (o != Tab.noObj) {
-							// parser.report_info("Use of " + parser.objToString(o) + " at row " + identleft,null);		
+							parser.report_info("Use of " + parser.objToString(o) + " at row " + identleft,null);		
 						} else {
 	                    	parser.report_error("Semantics error at row " + identleft + " - symbol '" + ident + "' not found",null);					
 						}
