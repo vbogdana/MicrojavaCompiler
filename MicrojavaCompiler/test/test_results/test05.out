@@ -1,0 +1,105 @@
+INFO  05:44:09,073 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test05.mj
+INFO  05:44:09,099 - PARSING the program 'Rastojanje' at row 3
+INFO  05:44:09,099 - Global variable 'xa' declaration at row 4
+INFO  05:44:09,099 - Global variable 'ya' declaration at row 4
+INFO  05:44:09,099 - Global variable 'xb' declaration at row 4
+INFO  05:44:09,099 - Global variable 'yb' declaration at row 4
+INFO  05:44:09,099 - Global variable 'xc' declaration at row 4
+INFO  05:44:09,101 - Global variable 'cccc' declaration at row 5
+INFO  05:44:09,101 - Global variable 'a' declaration at row 6
+DEBUG 05:44:09,103 - Successful error recovery - global variable definition
+INFO  05:44:09,103 - Global variable 'u' declaration at row 7
+INFO  05:44:09,103 - Global variable 'v' declaration at row 7
+INFO  05:44:09,103 - Function 'distance' definition at row 9
+INFO  05:44:09,103 - Formal parameter 'x1' declaration at row 9
+INFO  05:44:09,103 - Formal parameter 'y1' declaration at row 9
+INFO  05:44:09,103 - Formal parameter 'x2' declaration at row 9
+INFO  05:44:09,105 - Formal parameter 'y2' declaration at row 9
+INFO  05:44:09,105 - Use of Var x1: int, 0, 1  at row 10
+INFO  05:44:09,105 - Use of Var x2: int, 2, 1  at row 10
+INFO  05:44:09,107 - Use of Var y1: int, 1, 1  at row 10
+INFO  05:44:09,107 - Use of Var y2: int, 3, 1  at row 10
+INFO  05:44:09,107 - Function 'obim' definition at row 13
+INFO  05:44:09,107 - Formal parameter 'a' declaration at row 13
+INFO  05:44:09,109 - Formal parameter 'b' declaration at row 13
+INFO  05:44:09,109 - Formal parameter 'c' declaration at row 13
+INFO  05:44:09,109 - Local variable 'o' declaration at row 13
+INFO  05:44:09,109 - Use of Var o: char, 3, 1  at row 14
+INFO  05:44:09,109 - Use of Var a: int, 0, 1  at row 14
+INFO  05:44:09,109 - Use of Var b: int, 1, 1  at row 14
+INFO  05:44:09,109 - Use of Var c: int, 2, 1  at row 14
+INFO  05:44:09,109 - Use of Var o: char, 3, 1  at row 15
+INFO  05:44:09,111 - Function 'povrsina' definition at row 18
+INFO  05:44:09,111 - Formal parameter 'a' declaration at row 18
+INFO  05:44:09,111 - Formal parameter 'b' declaration at row 18
+INFO  05:44:09,111 - Formal parameter 'c' declaration at row 18
+INFO  05:44:09,111 - Local variable 's' declaration at row 18
+INFO  05:44:09,111 - Use of Var s: string, 3, 1  at row 19
+INFO  05:44:09,111 - Use of Var a: int, 0, 1  at row 19
+INFO  05:44:09,111 - Use of Var b: int, 1, 1  at row 19
+INFO  05:44:09,111 - Use of Var c: int, 2, 1  at row 19
+INFO  05:44:09,113 - Use of Var s: string, 3, 1  at row 20
+INFO  05:44:09,113 - Function 'pogresna' definition at row 23
+INFO  05:44:09,113 - Formal parameter 'x' declaration at row 23
+DEBUG 05:44:09,113 - Successful error recovery - formal parameter declaration
+INFO  05:44:09,113 - Function 'main' definition at row 27
+INFO  05:44:09,113 - Local variable 'b' declaration at row 27
+DEBUG 05:44:09,115 - Successful error recovery - local variable definition
+INFO  05:44:09,115 - Use of Var xc: int, 4, 0  at row 30
+INFO  05:44:09,115 - Use of Var a: int, 6, 0  at row 32
+INFO  05:44:09,115 - Use of Meth distance: int, 307, 4 
+   Var x1: int, 0, 1 
+   Var y1: int, 1, 1 
+   Var x2: int, 2, 1 
+   Var y2: int, 3, 1 
+ at row 32
+INFO  05:44:09,117 - Use of Var cccc: char, 5, 0  at row 32
+INFO  05:44:09,117 - Use of Var ya: int, 1, 0  at row 32
+INFO  05:44:09,117 - Use of Var xb: int, 2, 0  at row 32
+INFO  05:44:09,117 - Use of Var yb: int, 3, 0  at row 32
+INFO  05:44:09,117 - Use of Var b: bool, 0, 1  at row 34
+INFO  05:44:09,117 - Use of Meth distance: int, 307, 4 
+   Var x1: int, 0, 1 
+   Var y1: int, 1, 1 
+   Var x2: int, 2, 1 
+   Var y2: int, 3, 1 
+ at row 34
+INFO  05:44:09,117 - Use of Var xb: int, 2, 0  at row 34
+INFO  05:44:09,117 - Use of Var yb: int, 3, 0  at row 34
+INFO  05:44:09,117 - Use of Var xc: int, 4, 0  at row 34
+INFO  05:44:09,119 - Use of Meth distance: int, 307, 4 
+   Var x1: int, 0, 1 
+   Var y1: int, 1, 1 
+   Var x2: int, 2, 1 
+   Var y2: int, 3, 1 
+ at row 37
+INFO  05:44:09,119 - Use of Var ya: int, 1, 0  at row 37
+INFO  05:44:09,119 - Use of Var xc: int, 4, 0  at row 37
+INFO  05:44:09,119 - Use of Var a: int, 6, 0  at row 39
+INFO  05:44:09,121 - Use of Var u: int, 7, 0  at row 39
+INFO  05:44:09,121 - Use of Var v: int, 8, 0  at row 39
+INFO  05:44:09,121 - Use of Var a: int, 6, 0  at row 39
+INFO  05:44:09,121 - Use of Var v: int, 8, 0  at row 39
+INFO  05:44:09,121 - Use of Var u: int, 7, 0  at row 39
+INFO  05:44:09,121 - Use of Var u: int, 7, 0  at row 39
+INFO  05:44:09,121 - Use of Var v: int, 8, 0  at row 39
+INFO  05:44:09,121 - Use of Var a: int, 6, 0  at row 39
+INFO  05:44:09,125 - Use of Meth obim: int, 318, 3 
+   Var a: int, 0, 1 
+   Var b: int, 1, 1 
+   Var c: int, 2, 1 
+   Var o: char, 3, 1 
+ at row 40
+INFO  05:44:09,125 - Use of Var a: int, 6, 0  at row 40
+INFO  05:44:09,125 - Use of Var b: bool, 0, 1  at row 40
+INFO  05:44:09,125 - Use of Var u: int, 7, 0  at row 40
+INFO  05:44:09,125 - Use of Var v: int, 8, 0  at row 40
+INFO  05:44:09,131 - Use of Meth povrsina: notype, 329, 3 
+   Var a: int, 0, 1 
+   Var b: int, 1, 1 
+   Var c: int, 2, 1 
+   Var s: string, 3, 1 
+   Con : int, 2, 1 
+ at row 41
+INFO  05:44:09,133 - Use of Con eol: char, 10, 0  at row 46
+INFO  05:44:09,133 - =======================SYNTAX ANALYSIS=======================

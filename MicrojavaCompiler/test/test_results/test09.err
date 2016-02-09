@@ -1,0 +1,25 @@
+ERROR 05:44:51,198 - Semantics error at row 12 - incompatible types
+ERROR 05:44:51,198 - Semantics error at row 14 - function does not need a return value
+ERROR 05:44:51,200 - Semantics error at row 21 - multiple definition of a class method 'saberi'
+ERROR 05:44:51,204 - Syntax error at row 32 - unrecognized symbol '++'
+ERROR 05:44:51,204 - Semantics error at row 33 - incompatible types
+ERROR 05:44:51,206 - Semantics error at row 34 - incompatible types
+ERROR 05:44:51,208 - Semantics error at row 48 - symbol 'niz' not found
+ERROR 05:44:51,208 - Semantics error at row 48 - incompatible types
+ERROR 05:44:51,208 - Semantics error at row 49 - incompatible types
+ERROR 05:44:51,208 - Semantics error at row 49 - expression must be a boolean value
+ERROR 05:44:51,210 - Semantics error at row 50 - symbol 'niz' not found
+ERROR 05:44:51,210 - Semantics error at row 50 - expected an array
+ERROR 05:44:51,210 - Semantics error at row 50 - array index must be an integer value
+ERROR 05:44:51,210 - Semantics error at row 50 - expressions must be integers or strings
+ERROR 05:44:51,210 - Semantics error at row 51 - expression must be an lvalue
+ERROR 05:44:51,212 - Semantics error at row 60 - function 'stampaj' missing 'return' statement
+ERROR 05:44:51,226 - Semantics error at row 68 - incompatible types
+ERROR 05:44:51,226 - Semantics error at row 72 - incompatible types of 1. parameter
+ERROR 05:44:51,228 - Semantics error at row 72 - incompatible types of 2. parameter
+ERROR 05:44:51,230 - Semantics error at row 75 - operator in condition expression is not allowed for class/array types
+ERROR 05:44:51,230 - Semantics error at row 75 - expression must be a boolean value
+ERROR 05:44:51,230 - Semantics error at row 77 - incompatible types
+ERROR 05:44:51,230 - Semantics error at row 77 - incompatible types
+ERROR 05:44:51,230 - Semantics error at row 77 - expression must be a boolean value
+ERROR 05:44:51,232 - Parsing UNSUCCESSFUL!

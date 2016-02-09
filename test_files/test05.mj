@@ -48,3 +48,13 @@ program Rastojanje
 		
 	}
 }
+
+// glob promenljive = 10
+// lok promenljive = 1
+// glob konst = 0
+// glob nizovi = 0
+
+// def funkcija = 5
+// pozivi funkcija = 5
+// blokovi naredbi = 7
+// formalni parametri = 11

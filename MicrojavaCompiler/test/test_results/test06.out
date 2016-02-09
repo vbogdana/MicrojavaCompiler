@@ -1,0 +1,35 @@
+INFO  05:44:19,633 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test06.mj
+INFO  05:44:19,659 - PARSING the program 'test06' at row 3
+INFO  05:44:19,659 - Global variable 'a' declaration at row 4
+INFO  05:44:19,659 - Global variable 'b' declaration at row 4
+INFO  05:44:19,659 - Global variable 'x' declaration at row 4
+INFO  05:44:19,659 - Global variable 'y' declaration at row 4
+INFO  05:44:19,659 - Global variable 'c' declaration at row 5
+INFO  05:44:19,659 - Global variable 'd' declaration at row 5
+INFO  05:44:19,659 - Global variable 'j' declaration at row 5
+INFO  05:44:19,661 - Function 'main' definition at row 8
+INFO  05:44:19,661 - Use of Var x: int, 2, 0  at row 9
+INFO  05:44:19,661 - Use of Var a: Arr of int, 0, 0  at row 10
+INFO  05:44:19,663 - Use of Var a: Arr of int, 0, 0  at row 11
+INFO  05:44:19,663 - Use of Var x: int, 2, 0  at row 11
+DEBUG 05:44:19,665 - Successful error recovery - array indexing
+INFO  05:44:19,665 - Use of Var a: Arr of int, 0, 0  at row 12
+INFO  05:44:19,665 - Use of Var j: char, 6, 0  at row 12
+INFO  05:44:19,665 - Use of Var a: Arr of int, 0, 0  at row 13
+INFO  05:44:19,665 - Use of Var x: int, 2, 0  at row 13
+INFO  05:44:19,665 - Use of Var b: Arr of int, 1, 0  at row 13
+INFO  05:44:19,667 - Use of Var j: char, 6, 0  at row 14
+INFO  05:44:19,667 - Use of Var c: Arr of char, 4, 0  at row 15
+INFO  05:44:19,667 - Use of Var c: Arr of char, 4, 0  at row 16
+INFO  05:44:19,667 - Use of Var j: char, 6, 0  at row 16
+DEBUG 05:44:19,669 - Successful error recovery - value assignment
+INFO  05:44:19,669 - Use of Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+ at row 17
+INFO  05:44:19,669 - Use of Var x: int, 2, 0  at row 17
+INFO  05:44:19,669 - Use of Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+ at row 18
+INFO  05:44:19,669 - Use of Var a: Arr of int, 0, 0  at row 18
+INFO  05:44:19,669 - Use of Var a: Arr of int, 0, 0  at row 19
+INFO  05:44:19,671 - =======================SYNTAX ANALYSIS=======================

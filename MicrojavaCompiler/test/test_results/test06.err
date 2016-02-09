@@ -1,0 +1,10 @@
+ERROR 05:44:19,663 - Semantics error at row 10 - incompatible types
+ERROR 05:44:19,663 - Syntax error at row 11 - unrecognized symbol '++'
+ERROR 05:44:19,665 - Semantics error at row 12 - array index must be an integer value
+ERROR 05:44:19,665 - Semantics error at row 12 - incompatible types
+ERROR 05:44:19,665 - Semantics error at row 13 - expressions must be integers or strings
+ERROR 05:44:19,667 - Semantics error at row 13 - incompatible types
+ERROR 05:44:19,667 - Syntax error at row 16 - unrecognized symbol '++'
+ERROR 05:44:19,669 - Semantics error at row 17 - incompatible types of 1. parameter
+ERROR 05:44:19,669 - Semantics error at row 19 - parameter must be an integer/character/boolean or a string value
+ERROR 05:44:19,671 - Parsing UNSUCCESSFUL!

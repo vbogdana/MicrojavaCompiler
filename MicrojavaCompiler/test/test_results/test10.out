@@ -1,0 +1,1202 @@
+INFO  05:45:04,124 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test10.mj
+INFO  05:45:04,153 - PARSING the program 'Program' at row 3
+INFO  05:45:04,153 - Class 'A' definition at row 4
+INFO  05:45:04,153 - Class attribute 'x' declaration at row 5
+INFO  05:45:04,154 - Class attribute 'y' declaration at row 5
+INFO  05:45:04,154 - Function 'pr' definition at row 7
+INFO  05:45:04,156 - Function 'pr1' definition at row 14
+INFO  05:45:04,157 - Use of Meth pr: int, 315, 1 
+   Var this: this pointer
+   Con : int, 0, 1 
+ at row 15
+INFO  05:45:04,158 - Constant 'pi' declaration at row 20
+INFO  05:45:04,158 - Constant 'e' declaration at row 20
+INFO  05:45:04,158 - Constant 'strin' declaration at row 21
+INFO  05:45:04,158 - Class 'B' definition at row 23
+INFO  05:45:04,158 - Class inheritance at row 23
+INFO  05:45:04,159 - Class attribute 'i' declaration at row 24
+INFO  05:45:04,159 - Class attribute 'x' redefinition at row 24
+INFO  05:45:04,159 - Class attribute 'theAA' declaration at row 25
+INFO  05:45:04,159 - Function 'voidtest' definition at row 27
+INFO  05:45:04,160 - Formal parameter 'a' declaration at row 27
+INFO  05:45:04,160 - Formal parameter 'b' declaration at row 27
+INFO  05:45:04,160 - Local variable 'c' declaration at row 28
+INFO  05:45:04,160 - Use of Var a: int, 1, 1  at row 30
+INFO  05:45:04,161 - Use of Var b: char, 2, 1  at row 30
+INFO  05:45:04,161 - Use of Var c: int, 3, 1  at row 30
+INFO  05:45:04,161 - Function 'met' definition at row 33
+INFO  05:45:04,161 - Formal parameter 'a' declaration at row 33
+INFO  05:45:04,161 - Use of Var a: int, 1, 1  at row 34
+INFO  05:45:04,162 - Function 'getValue' definition at row 37
+INFO  05:45:04,162 - Formal parameter 'a' declaration at row 37
+INFO  05:45:04,162 - Local variable 'b' declaration at row 37
+INFO  05:45:04,162 - Local variable 'c' declaration at row 37
+INFO  05:45:04,162 - Use of Fld i: int, 3, 1  at row 39
+INFO  05:45:04,163 - Use of Fld i: int, 3, 1  at row 40
+INFO  05:45:04,163 - Use of Fld x: Arr of int, 1, 1  at row 40
+INFO  05:45:04,163 - Use of Meth met: int, 358, 2 
+   Var this: this pointer
+   Var a: int, 1, 1 
+   Con : int, 1, 1 
+ at row 40
+INFO  05:45:04,163 - Use of Var a: int, 1, 1  at row 40
+INFO  05:45:04,164 - Class 'C' definition at row 44
+INFO  05:45:04,164 - Class inheritance at row 44
+INFO  05:45:04,164 - Class attribute 'theA' declaration at row 45
+DEBUG 05:45:04,165 - Successful error recovery - class attribute declaration
+INFO  05:45:04,166 - Function 'glupost' definition at row 49
+DEBUG 05:45:04,166 - Successful error recovery - formal parameter declaration
+INFO  05:45:04,166 - Local variable 'i' declaration at row 49
+DEBUG 05:45:04,167 - Successful error recovery - local variable definition
+INFO  05:45:04,167 - Use of Var i: int, 1, 1  at row 50
+INFO  05:45:04,168 - Class 'E' definition at row 56
+DEBUG 05:45:04,168 - Successful error recovery - class inheritance
+INFO  05:45:04,168 - Class attribute 'b' declaration at row 57
+DEBUG 05:45:04,169 - Successful error recovery - class attribute declaration
+INFO  05:45:04,169 - Class attribute 'e' declaration at row 59
+INFO  05:45:04,169 - Function 'met' definition at row 65
+INFO  05:45:04,169 - Formal parameter 'par' declaration at row 65
+INFO  05:45:04,169 - Use of Var par: int, 0, 1  at row 65
+INFO  05:45:04,170 - Function 'strfunc' definition at row 66
+INFO  05:45:04,170 - Formal parameter 's' declaration at row 66
+INFO  05:45:04,170 - Use of Var s: string, 0, 1  at row 66
+INFO  05:45:04,171 - Function 'main' definition at row 68
+INFO  05:45:04,171 - Local variable 'a' declaration at row 68
+INFO  05:45:04,171 - Local variable 'b' declaration at row 68
+INFO  05:45:04,171 - Local variable 'c' declaration at row 68
+INFO  05:45:04,172 - Local variable 'i' declaration at row 68
+INFO  05:45:04,172 - Local variable 'y' declaration at row 68
+INFO  05:45:04,172 - Local variable 'z' declaration at row 68
+INFO  05:45:04,172 - Local variable 'x' declaration at row 68
+INFO  05:45:04,172 - Local variable 'str1' declaration at row 68
+INFO  05:45:04,172 - Local variable 'str2' declaration at row 68
+INFO  05:45:04,176 - Local variable 'bulin' declaration at row 68
+INFO  05:45:04,177 - Use of Var str2: string, 8, 1  at row 70
+INFO  05:45:04,177 - Use of Var str1: string, 7, 1  at row 71
+INFO  05:45:04,177 - Use of Meth strfunc: string, 440, 1 
+   Var s: string, 0, 1 
+ at row 71
+INFO  05:45:04,177 - Use of Var str2: string, 8, 1  at row 71
+INFO  05:45:04,178 - Use of Var str2: string, 8, 1  at row 72
+INFO  05:45:04,178 - Use of Con strin: string, 0, 0  at row 73
+INFO  05:45:04,179 - Use of Var bulin: bool, 9, 1  at row 74
+INFO  05:45:04,179 - Use of Var bulin: bool, 9, 1  at row 75
+INFO  05:45:04,180 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 76
+INFO  05:45:04,180 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 77
+INFO  05:45:04,180 - Use of Fld x: Arr of int, 1, 1  at row 77
+INFO  05:45:04,181 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 78
+INFO  05:45:04,181 - Use of Fld y: Arr of int, 2, 1  at row 78
+INFO  05:45:04,182 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 79
+INFO  05:45:04,183 - Use of Var i: int, 3, 1  at row 80
+INFO  05:45:04,183 - Use of Meth met: int, 430, 1 
+   Var par: int, 0, 1 
+   Con : int, 1, 1 
+ at row 80
+INFO  05:45:04,184 - Use of Con pi: int, 3, 0  at row 80
+INFO  05:45:04,184 - Use of Con e: int, 2, 0  at row 80
+INFO  05:45:04,185 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 82
+INFO  05:45:04,185 - Use of Fld theA: Class, 5, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 82
+INFO  05:45:04,185 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 82
+INFO  05:45:04,186 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 83
+INFO  05:45:04,186 - Use of Fld x: Arr of int, 1, 1  at row 83
+INFO  05:45:04,187 - Use of Var x: Arr of int, 6, 1  at row 84
+INFO  05:45:04,187 - Use of Var i: int, 3, 1  at row 85
+INFO  05:45:04,188 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 86
+INFO  05:45:04,188 - Use of Fld i: int, 3, 1  at row 86
+INFO  05:45:04,188 - Use of Var i: int, 3, 1  at row 87
+INFO  05:45:04,189 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 88
+INFO  05:45:04,189 - Use of Fld x: Arr of int, 1, 1  at row 88
+INFO  05:45:04,189 - Use of Var i: int, 3, 1  at row 88
+INFO  05:45:04,190 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 88
+INFO  05:45:04,190 - Use of Fld theA: Class, 5, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 88
+INFO  05:45:04,190 - Use of Fld x: Arr of int, 1, 1  at row 88
+INFO  05:45:04,191 - Use of Var i: int, 3, 1  at row 88
+INFO  05:45:04,191 - Use of Var i: int, 3, 1  at row 89
+INFO  05:45:04,192 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 92
+INFO  05:45:04,192 - Use of Meth getValue: int, 368, 2 
+   Var this: this pointer
+   Var a: int, 1, 1 
+   Var b: int, 2, 1 
+   Var c: bool, 3, 1 
+   Var : int, 4, 1 
+ at row 92
+INFO  05:45:04,193 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 92
+INFO  05:45:04,193 - Use of Fld theA: Class, 5, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 92
+INFO  05:45:04,193 - Use of Fld x: Arr of int, 1, 1  at row 92
+INFO  05:45:04,194 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 93
+INFO  05:45:04,194 - Use of Fld theA: Class, 5, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 93
+INFO  05:45:04,194 - Use of Fld x: Arr of int, 1, 1  at row 93
+INFO  05:45:04,195 - Use of Var i: int, 3, 1  at row 94
+INFO  05:45:04,195 - Use of Var i: int, 3, 1  at row 95
+INFO  05:45:04,196 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 95
+INFO  05:45:04,196 - Use of Meth met: int, 358, 2 
+   Var this: this pointer
+   Var a: int, 1, 1 
+   Var : int, 2, 1 
+ at row 95
+INFO  05:45:04,197 - Use of Var b: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Con : int, 1, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Con : int, 0, 1 
+   ] at row 95
+INFO  05:45:04,197 - Use of Meth getValue: int, 368, 2 
+   Var this: this pointer
+   Var a: int, 1, 1 
+   Var b: int, 2, 1 
+   Var c: bool, 3, 1 
+   Con : int, 0, 1 
+ at row 95
+INFO  05:45:04,198 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 95
+INFO  05:45:04,198 - Use of Fld x: Arr of int, 1, 1  at row 95
+INFO  05:45:04,199 - Use of Var b: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Con : int, 1, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Con : int, 0, 1 
+   ] at row 96
+INFO  05:45:04,199 - Use of Meth getValue: int, 368, 2 
+   Var this: this pointer
+   Var a: int, 1, 1 
+   Var b: int, 2, 1 
+   Var c: bool, 3, 1 
+   Con : int, 0, 1 
+ at row 96
+INFO  05:45:04,200 - Use of Var b: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Con : int, 1, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Con : int, 0, 1 
+   ] at row 96
+INFO  05:45:04,200 - Use of Fld y: Arr of int, 2, 1  at row 96
+INFO  05:45:04,200 - Use of Var i: int, 3, 1  at row 96
+INFO  05:45:04,201 - Use of Var b: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Con : int, 1, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Con : int, 0, 1 
+   ] at row 97
+INFO  05:45:04,201 - Use of Meth pr: int, 315, 1 
+   Var this: this pointer
+   Var : int, 1, 1 
+ at row 97
+INFO  05:45:04,201 - Use of Var i: int, 3, 1  at row 98
+INFO  05:45:04,201 - Use of Var i: int, 3, 1  at row 98
+INFO  05:45:04,202 - Use of Var i: int, 3, 1  at row 98
+INFO  05:45:04,202 - Use of Meth met: int, 430, 1 
+   Var par: int, 0, 1 
+   Con : int, 1, 1 
+ at row 98
+INFO  05:45:04,202 - Use of Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+ at row 99
+INFO  05:45:04,202 - Use of Var i: int, 3, 1  at row 100
+INFO  05:45:04,202 - Use of Meth ord: int, 12, 1 
+   Var ch: char, 0, 1 
+ at row 100
+INFO  05:45:04,203 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 104
+INFO  05:45:04,203 - Use of Var b: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Con : int, 1, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Con : int, 0, 1 
+   ] at row 104
+INFO  05:45:04,204 - Use of Var i: int, 3, 1  at row 105
+INFO  05:45:04,204 - Use of Var str2: string, 8, 1  at row 107
+INFO  05:45:04,204 - Use of Var str1: string, 7, 1  at row 107
+INFO  05:45:04,205 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 108
+INFO  05:45:04,206 - Use of Fld theA: Class, 5, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 108
+INFO  05:45:04,206 - Use of Fld x: Arr of int, 1, 1  at row 108
+INFO  05:45:04,206 - Use of Var i: int, 3, 1  at row 108
+INFO  05:45:04,206 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 108
+INFO  05:45:04,206 - Use of Fld x: Arr of int, 1, 1  at row 108
+INFO  05:45:04,206 - Use of Var i: int, 3, 1  at row 108
+INFO  05:45:04,207 - Use of Var b: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Con : int, 1, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Con : int, 0, 1 
+   ] at row 109
+INFO  05:45:04,207 - Use of Fld theAA: Class, 5, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 109
+INFO  05:45:04,207 - Use of Fld y: Arr of int, 2, 1  at row 109
+INFO  05:45:04,208 - Use of Var i: int, 3, 1  at row 109
+INFO  05:45:04,208 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 109
+INFO  05:45:04,208 - Use of Fld theA: Class, 5, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Con : int, 0, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+   ] at row 109
+INFO  05:45:04,209 - Use of Fld x: Arr of int, 1, 1  at row 109
+INFO  05:45:04,209 - Use of Var i: int, 3, 1  at row 109
+INFO  05:45:04,209 - Use of Var c: Class, 2, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theAA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Fld theA: Class, 5, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+        Meth pr: int, 315, 1 
+         Var this: this pointer
+         Con : int, 0, 1 
+        Meth pr1: int, 323, 1 
+         Var this: this pointer
+      ]
+     Meth pr: int, 315, 1 
+      Var this: this pointer
+      Var : int, 1, 1 
+     Meth pr1: int, 323, 1 
+      Var this: this pointer
+     Meth voidtest: notype, 347, 3 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: char, 2, 1 
+      Var c: int, 3, 1 
+     Meth met: int, 358, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var : int, 2, 1 
+     Meth getValue: int, 368, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+     Meth glupost: notype, 422, 1 
+      Var this: this pointer
+      Var i: int, 1, 1 
+   ] at row 109
+INFO  05:45:04,209 - Use of Meth pr1: int, 323, 1 
+   Var this: this pointer
+ at row 109
+INFO  05:45:04,210 - Use of Var str1: string, 7, 1  at row 110
+INFO  05:45:04,210 - Use of Var str2: string, 8, 1  at row 111
+INFO  05:45:04,210 - =======================SYNTAX ANALYSIS=======================

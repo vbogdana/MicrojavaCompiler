@@ -1,0 +1,19 @@
+ERROR 05:57:37,718 - Semantics error at row 4 - type 'x' not found in symbol table
+ERROR 05:57:37,718 - Syntax error at row 4 - unrecognized symbol ';'
+ERROR 05:57:37,720 - Syntax error at row 7 - unrecognized symbol '='
+ERROR 05:57:37,720 - Semantics error at row 8 - multiple definition of 'c'
+ERROR 05:57:37,722 - Syntax error at row 10 - unrecognized symbol '='
+ERROR 05:57:37,724 - Semantics error at row 13 - incompatible types
+ERROR 05:57:37,724 - Semantics error at row 13 - expression must be a boolean value
+ERROR 05:57:37,724 - Semantics error at row 14 - expression must be an integer value
+ERROR 05:57:37,724 - Semantics error at row 14 - incompatible types
+ERROR 05:57:37,724 - Syntax error at row 15 - unrecognized symbol '>'
+ERROR 05:57:37,726 - Semantics error at row 17 - expression must be an integer value
+ERROR 05:57:37,726 - Semantics error at row 17 - incompatible types
+ERROR 05:57:37,726 - Semantics error at row 19 - symbol 'x' not found
+ERROR 05:57:37,726 - Semantics error at row 19 - parameter must be an integer/character/boolean or a string value
+ERROR 05:57:37,728 - Semantics error at row 20 - symbol 'x' not found
+ERROR 05:57:37,728 - Semantics error at row 20 - expression must be an lvalue
+ERROR 05:57:37,728 - Semantics error at row 21 - symbol 'max' not found
+ERROR 05:57:37,728 - Semantics error at row 21 - parameter must be an integer/character/boolean or a string value
+ERROR 05:57:37,728 - Parsing UNSUCCESSFUL!

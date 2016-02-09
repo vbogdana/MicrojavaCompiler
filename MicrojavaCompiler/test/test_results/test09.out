@@ -1,0 +1,267 @@
+INFO  05:44:51,164 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test09.mj
+INFO  05:44:51,192 - PARSING the program 'MJAlfabet' at row 3
+INFO  05:44:51,192 - Global variable 'str1' declaration at row 5
+INFO  05:44:51,192 - Global variable 'str2' declaration at row 5
+INFO  05:44:51,192 - Global variable 'i' declaration at row 6
+INFO  05:44:51,194 - Class 'Alfa' definition at row 7
+INFO  05:44:51,194 - Class attribute 'a' declaration at row 8
+INFO  05:44:51,194 - Class attribute 'b' declaration at row 8
+INFO  05:44:51,194 - Class attribute 'rez' declaration at row 9
+INFO  05:44:51,194 - Function 'dodaj' definition at row 11
+INFO  05:44:51,196 - Formal parameter 'x' declaration at row 11
+INFO  05:44:51,196 - Formal parameter 'y' declaration at row 11
+INFO  05:44:51,196 - Formal parameter 'z' declaration at row 11
+INFO  05:44:51,196 - Use of Fld a: char, 1, 1  at row 12
+INFO  05:44:51,196 - Use of Var x: int, 1, 1  at row 12
+INFO  05:44:51,198 - Use of Var z: int, 3, 1  at row 13
+INFO  05:44:51,198 - Use of Var x: int, 1, 1  at row 13
+INFO  05:44:51,198 - Use of Var y: int, 2, 1  at row 13
+INFO  05:44:51,198 - Use of Var z: int, 3, 1  at row 14
+INFO  05:44:51,198 - Function 'saberi' definition at row 17
+INFO  05:44:51,198 - Formal parameter 'x' declaration at row 17
+INFO  05:44:51,198 - Formal parameter 'y' declaration at row 17
+INFO  05:44:51,198 - Use of Fld rez: int, 3, 1  at row 18
+INFO  05:44:51,200 - Use of Var x: int, 1, 1  at row 18
+INFO  05:44:51,200 - Use of Var y: int, 2, 1  at row 18
+INFO  05:44:51,200 - Formal parameter 'x' declaration at row 21
+INFO  05:44:51,200 - Use of Fld rez: int, 3, 1  at row 22
+INFO  05:44:51,200 - Use of Fld rez: int, 3, 1  at row 22
+INFO  05:44:51,200 - Use of Var x: int, 1, 1  at row 22
+INFO  05:44:51,200 - Class 'Beta' definition at row 27
+INFO  05:44:51,202 - Class inheritance at row 27
+INFO  05:44:51,202 - Class attribute 'c' declaration at row 28
+INFO  05:44:51,202 - Class attribute 'd' declaration at row 29
+INFO  05:44:51,202 - Class method 'dodaj' redefinition at row 31
+INFO  05:44:51,202 - Formal parameter 'x' declaration at row 31
+INFO  05:44:51,202 - Formal parameter 'y' declaration at row 31
+INFO  05:44:51,202 - Formal parameter 'z' declaration at row 31
+INFO  05:44:51,202 - Local variable 'bulova' declaration at row 31
+INFO  05:44:51,202 - Use of Fld c: int, 4, 1  at row 32
+INFO  05:44:51,202 - Use of Var bulova: bool, 4, 1  at row 32
+DEBUG 05:44:51,204 - Successful error recovery - value assignment
+INFO  05:44:51,204 - Use of Fld a: char, 1, 1  at row 33
+INFO  05:44:51,206 - Use of Fld d: Arr of char, 5, 1  at row 34
+INFO  05:44:51,206 - Use of Fld b: char, 2, 1  at row 35
+INFO  05:44:51,206 - Use of Fld b: char, 2, 1  at row 36
+INFO  05:44:51,206 - Class 'Gama' definition at row 41
+INFO  05:44:51,206 - Class inheritance at row 41
+INFO  05:44:51,206 - Class attribute 'a' redefinition at row 42
+INFO  05:44:51,206 - Class method 'dodaj' redefinition at row 44
+INFO  05:44:51,206 - Formal parameter 'x' declaration at row 44
+INFO  05:44:51,208 - Formal parameter 'y' declaration at row 44
+INFO  05:44:51,208 - Formal parameter 'z' declaration at row 44
+INFO  05:44:51,208 - Use of Fld a: int, 1, 1  at row 46
+INFO  05:44:51,208 - Use of Var x: int, 1, 1  at row 46
+INFO  05:44:51,208 - Use of Var i: char, 2, 0  at row 47
+INFO  05:44:51,208 - Use of Var i: char, 2, 0  at row 49
+INFO  05:44:51,210 - Use of Var i: char, 2, 0  at row 50
+INFO  05:44:51,210 - Use of Var x: int, 1, 1  at row 50
+INFO  05:44:51,210 - Use of Var y: int, 2, 1  at row 50
+INFO  05:44:51,210 - Use of Var z: int, 3, 1  at row 50
+INFO  05:44:51,210 - Use of Var i: char, 2, 0  at row 50
+INFO  05:44:51,210 - Use of Var i: char, 2, 0  at row 51
+INFO  05:44:51,212 - Class 'Delta' definition at row 56
+INFO  05:44:51,212 - Function 'stampaj' definition at row 58
+INFO  05:44:51,212 - Function 'main' definition at row 65
+INFO  05:44:51,212 - Local variable 'a1' declaration at row 65
+INFO  05:44:51,212 - Local variable 'a2' declaration at row 65
+INFO  05:44:51,212 - Local variable 'b' declaration at row 65
+INFO  05:44:51,212 - Local variable 'g' declaration at row 65
+INFO  05:44:51,214 - Local variable 'd' declaration at row 65
+INFO  05:44:51,214 - Use of Var a1: Class, 0, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Meth dodaj: notype, 307, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 66
+INFO  05:44:51,214 - Use of Var a2: Class, 1, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Meth dodaj: notype, 307, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 67
+INFO  05:44:51,226 - Use of Var b: Class, 2, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Fld c: int, 4, 1 
+     Fld d: Arr of char, 5, 1 
+     Meth dodaj: notype, 342, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+      Var bulova: bool, 4, 1 
+      Con : char, 98, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 68
+INFO  05:44:51,226 - Use of Var g: Class, 3, 1
+   [
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Fld a: int, 1, 1 
+     Meth dodaj: notype, 438, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+      Con : char, 5, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 69
+INFO  05:44:51,226 - Use of Var d: Class, 4, 1
+   [
+     Meth stampaj: bool, 478, 1 
+      Var this: this pointer
+   ] at row 70
+INFO  05:44:51,226 - Use of Var a1: Class, 0, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Meth dodaj: notype, 307, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 72
+INFO  05:44:51,226 - Use of Meth dodaj: notype, 307, 4 
+   Var this: this pointer
+   Var x: int, 1, 1 
+   Var y: int, 2, 1 
+   Var z: int, 3, 1 
+ at row 72
+INFO  05:44:51,226 - Use of Var str2: string, 1, 0  at row 72
+INFO  05:44:51,228 - Use of Var a1: Class, 0, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Meth dodaj: notype, 307, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 73
+INFO  05:44:51,228 - Use of Var a2: Class, 1, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Meth dodaj: notype, 307, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 73
+INFO  05:44:51,228 - Use of Var a1: Class, 0, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Meth dodaj: notype, 307, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 75
+INFO  05:44:51,228 - Use of Var a2: Class, 1, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Meth dodaj: notype, 307, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 75
+INFO  05:44:51,230 - Use of Var g: Class, 3, 1
+   [
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Fld a: int, 1, 1 
+     Meth dodaj: notype, 438, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+      Con : char, 5, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 77
+INFO  05:44:51,230 - Use of Var d: Class, 4, 1
+   [
+     Meth stampaj: bool, 478, 1 
+      Var this: this pointer
+   ] at row 77
+INFO  05:44:51,230 - Use of Var g: Class, 3, 1
+   [
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Fld a: int, 1, 1 
+     Meth dodaj: notype, 438, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+      Con : char, 5, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 77
+INFO  05:44:51,230 - Use of Var b: Class, 2, 1
+   [
+     Fld a: char, 1, 1 
+     Fld b: char, 2, 1 
+     Fld rez: int, 3, 1 
+     Fld c: int, 4, 1 
+     Fld d: Arr of char, 5, 1 
+     Meth dodaj: notype, 342, 4 
+      Var this: this pointer
+      Var x: int, 1, 1 
+      Var y: int, 2, 1 
+      Var z: int, 3, 1 
+      Var bulova: bool, 4, 1 
+      Con : char, 98, 1 
+     Meth saberi: notype, 329, 2 
+      Var this: this pointer
+      Var x: int, 1, 1 
+   ] at row 77
+INFO  05:44:51,232 - =======================SYNTAX ANALYSIS=======================

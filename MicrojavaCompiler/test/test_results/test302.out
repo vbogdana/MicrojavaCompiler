@@ -1,0 +1,149 @@
+INFO  05:45:26,767 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test302.mj
+INFO  05:45:26,795 - PARSING the program 'test302' at row 3
+INFO  05:45:26,795 - Constant 'str1' declaration at row 5
+INFO  05:45:26,795 - Global variable 'str2' declaration at row 6
+INFO  05:45:26,795 - Global variable 'ulaz' declaration at row 7
+INFO  05:45:26,795 - Global variable 'i' declaration at row 9
+INFO  05:45:26,795 - Global variable 'ijedva' declaration at row 10
+INFO  05:45:26,795 - Global variable 'niz' declaration at row 12
+INFO  05:45:26,797 - Function 'sum' definition at row 15
+INFO  05:45:26,797 - Formal parameter 'z' declaration at row 15
+INFO  05:45:26,797 - Formal parameter 'd' declaration at row 15
+INFO  05:45:26,797 - Use of Var z: int, 0, 1  at row 16
+INFO  05:45:26,797 - Use of Var d: int, 1, 1  at row 16
+INFO  05:45:26,799 - Function 'inkrement' definition at row 19
+INFO  05:45:26,799 - Formal parameter 'a' declaration at row 19
+INFO  05:45:26,799 - Local variable 'pom' declaration at row 19
+INFO  05:45:26,799 - Use of Var pom: int, 1, 1  at row 20
+INFO  05:45:26,799 - Use of Meth sum: int, 307, 2 
+   Var z: int, 0, 1 
+   Var d: int, 1, 1 
+ at row 21
+INFO  05:45:26,799 - Use of Var a: int, 0, 1  at row 21
+INFO  05:45:26,799 - Use of Var pom: int, 1, 1  at row 21
+INFO  05:45:26,801 - Function 'main' definition at row 24
+INFO  05:45:26,801 - Use of Var i: int, 2, 0  at row 31
+INFO  05:45:26,801 - Use of Var ijedva: bool, 3, 0  at row 31
+INFO  05:45:26,801 - Use of Var i: int, 2, 0  at row 32
+INFO  05:45:26,801 - Use of Var i: int, 2, 0  at row 33
+INFO  05:45:26,801 - Use of Var i: int, 2, 0  at row 34
+INFO  05:45:26,803 - Use of Var ijedva: bool, 3, 0  at row 34
+INFO  05:45:26,803 - Use of Var ijedva: bool, 3, 0  at row 36
+INFO  05:45:26,803 - Use of Var i: int, 2, 0  at row 37
+INFO  05:45:26,803 - Use of Var str2: string, 0, 0  at row 41
+INFO  05:45:26,803 - Use of Var str2: string, 0, 0  at row 42
+INFO  05:45:26,803 - Use of Var str2: string, 0, 0  at row 42
+INFO  05:45:26,803 - Use of Con str1: string, 0, 0  at row 42
+INFO  05:45:26,803 - Use of Var str2: string, 0, 0  at row 43
+INFO  05:45:26,805 - Use of Var niz: Arr of int, 4, 0  at row 47
+INFO  05:45:26,805 - Use of Var niz: Arr of int, 4, 0  at row 48
+INFO  05:45:26,805 - Use of Var niz: Arr of int, 4, 0  at row 49
+INFO  05:45:26,805 - Use of Var niz: Arr of int, 4, 0  at row 50
+INFO  05:45:26,805 - Use of Meth sum: int, 307, 2 
+   Var z: int, 0, 1 
+   Var d: int, 1, 1 
+ at row 50
+INFO  05:45:26,805 - Use of Var niz: Arr of int, 4, 0  at row 50
+INFO  05:45:26,805 - Use of Var niz: Arr of int, 4, 0  at row 50
+INFO  05:45:26,807 - Use of Var niz: Arr of int, 4, 0  at row 51
+INFO  05:45:26,807 - Use of Var i: int, 2, 0  at row 55
+INFO  05:45:26,807 - Use of Var i: int, 2, 0  at row 56
+INFO  05:45:26,807 - Use of Var i: int, 2, 0  at row 57
+INFO  05:45:26,815 - Use of Var i: int, 2, 0  at row 58
+INFO  05:45:26,815 - Use of Meth inkrement: int, 317, 1 
+   Var a: int, 0, 1 
+   Var pom: int, 1, 1 
+   Con : int, 1, 1 
+ at row 58
+INFO  05:45:26,817 - Use of Var i: int, 2, 0  at row 58
+INFO  05:45:26,817 - Use of Var i: int, 2, 0  at row 60
+INFO  05:45:26,817 - Use of Var ulaz: string, 1, 0  at row 64
+INFO  05:45:26,817 - Use of Var ulaz: string, 1, 0  at row 65
+INFO  05:45:26,817 - Use of Var ulaz: string, 1, 0  at row 65
+INFO  05:45:26,817 - Use of Var ulaz: string, 1, 0  at row 66
+INFO  05:45:26,817 - Use of Var ulaz: string, 1, 0  at row 66
+INFO  05:45:26,819 - Use of Var ulaz: string, 1, 0  at row 67
+INFO  05:45:26,819 - =======================SYNTAX ANALYSIS=======================
+INFO  05:45:26,819 - Global constants = 1
+INFO  05:45:26,819 - Global variables = 4
+INFO  05:45:26,819 - Global arrays = 1
+INFO  05:45:26,819 - Local variables in main = 0
+INFO  05:45:26,819 - Global functions = 2
+INFO  05:45:26,819 - Formal parameters = 3
+INFO  05:45:26,819 - Function calls in main = 2
+INFO  05:45:26,819 - Statement blocks = 5
+INFO  05:45:26,819 - Classes = 0
+INFO  05:45:26,821 - Class attributes = 0
+INFO  05:45:26,821 - Methods = 0
+INFO  05:45:26,821 - Parsing SUCCESSFUL!
+INFO  05:45:26,821 - =====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: char, 10, 0 
+Con null: Class, 0, 0
+   [
+   ]
+Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+
+Meth ord: int, 12, 1 
+   Var ch: char, 0, 1 
+
+Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: bool, -1, -1 
+Type string: string, -1, -1 
+Meth prints: notype, 31, 2 
+   Var str: string, 0, 0 
+   Var len: int, 1, 0 
+   Var i: int, 2, 0 
+
+Meth reads: string, 64, 0 
+   Var i: int, 0, 0 
+   Var len: int, 1, 0 
+   Var c: char, 2, 0 
+   Var res: string, 3, 0 
+
+Meth cmpStr: int, 134, 4 
+   Var arr1: string, 0, 0 
+   Var arr2: string, 1, 0 
+   Var len1: int, 2, 0 
+   Var len2: int, 3, 0 
+   Var i: bool, 4, 0 
+
+Meth concat: string, 207, 4 
+   Var str1: string, 0, 0 
+   Var len1: int, 1, 0 
+   Var str2: string, 2, 0 
+   Var len2: int, 3, 0 
+   Var res: string, 4, 0 
+   Var i: int, 5, 0 
+   Var j: int, 6, 0 
+   Var len3: int, 7, 0 
+
+Meth dummy: notype, 300, 2 
+   Var adr: int, 0, 0 
+   Var par: int, 1, 0 
+
+Prog test302: notype, 0, 1 
+   Con str1: string, 0, 0 
+   Var str2: string, 0, 0 
+   Var ulaz: string, 1, 0 
+   Var i: int, 2, 0 
+   Var ijedva: bool, 3, 0 
+   Var niz: Arr of int, 4, 0 
+   Meth sum: int, 307, 2 
+      Var z: int, 0, 1 
+      Var d: int, 1, 1 
+
+   Meth inkrement: int, 317, 1 
+      Var a: int, 0, 1 
+      Var pom: int, 1, 1 
+      Con : int, 1, 1 
+
+   Meth main: notype, 331, 0 
+      Con : int, 4, 1 
+
+
+

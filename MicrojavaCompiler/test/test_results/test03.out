@@ -1,0 +1,20 @@
+INFO  05:58:00,863 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test03.mj
+INFO  05:58:00,891 - PARSING the program 'test03' at row 3
+INFO  05:58:00,891 - Constant 'a' declaration at row 5
+INFO  05:58:00,891 - Global variable 'x' declaration at row 6
+INFO  05:58:00,893 - Global variable 'y' declaration at row 6
+INFO  05:58:00,893 - Global variable 'z' declaration at row 7
+INFO  05:58:00,893 - Function 'main' definition at row 9
+INFO  05:58:00,893 - Use of Con a: int, 3, 0  at row 10
+INFO  05:58:00,895 - Use of Con a: int, 3, 0  at row 11
+INFO  05:58:00,895 - Use of Var x: int, 0, 0  at row 12
+INFO  05:58:00,895 - Use of Var y: int, 1, 0  at row 12
+INFO  05:58:00,895 - Use of Var z: char, 2, 0  at row 12
+INFO  05:58:00,895 - Use of Var z: char, 2, 0  at row 13
+INFO  05:58:00,897 - Use of Con a: int, 3, 0  at row 13
+INFO  05:58:00,897 - Use of Var z: char, 2, 0  at row 14
+INFO  05:58:00,897 - Use of Var y: int, 1, 0  at row 14
+INFO  05:58:00,897 - Use of Var x: int, 0, 0  at row 14
+INFO  05:58:00,897 - Use of Var x: int, 0, 0  at row 15
+INFO  05:58:00,897 - Use of Var x: int, 0, 0  at row 15
+INFO  05:58:00,899 - =======================SYNTAX ANALYSIS=======================

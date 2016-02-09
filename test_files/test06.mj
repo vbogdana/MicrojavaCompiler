@@ -19,3 +19,13 @@ program test06
 		print(a);             //semanticka, nekorektan tip parametra
 	}
 }
+
+// glob promenljive = 3
+// lok promenljive = 0
+// glob konst = 0
+// glob nizovi = 4
+
+// def funkcija = 1
+// pozivi funkcija = 2
+// blokovi naredbi = 1
+// formalni parametri = 0

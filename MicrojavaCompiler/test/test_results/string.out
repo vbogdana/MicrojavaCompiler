@@ -1,0 +1,201 @@
+INFO  05:46:08,802 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\string.mj
+INFO  05:46:08,830 - PARSING the program 'Concat' at row 1
+INFO  05:46:08,830 - Global variable 'str1' declaration at row 3
+INFO  05:46:08,830 - Global variable 'str2' declaration at row 3
+INFO  05:46:08,830 - Global variable 'res' declaration at row 3
+INFO  05:46:08,830 - Global variable 'i' declaration at row 4
+INFO  05:46:08,830 - Global variable 'j' declaration at row 4
+INFO  05:46:08,832 - Function 'konkatenacija' definition at row 8
+INFO  05:46:08,832 - Formal parameter 'str1' declaration at row 8
+INFO  05:46:08,832 - Formal parameter 'len1' declaration at row 8
+INFO  05:46:08,832 - Formal parameter 'str2' declaration at row 8
+INFO  05:46:08,832 - Formal parameter 'len2' declaration at row 8
+INFO  05:46:08,832 - Local variable 'res' declaration at row 8
+INFO  05:46:08,832 - Local variable 'i' declaration at row 8
+INFO  05:46:08,834 - Local variable 'j' declaration at row 8
+INFO  05:46:08,834 - Local variable 'len3' declaration at row 8
+INFO  05:46:08,834 - Use of Var len3: int, 7, 1  at row 9
+INFO  05:46:08,834 - Use of Var len1: int, 1, 1  at row 9
+INFO  05:46:08,834 - Use of Var len2: int, 3, 1  at row 9
+INFO  05:46:08,834 - Use of Var res: Arr of char, 4, 1  at row 10
+INFO  05:46:08,834 - Use of Var len3: int, 7, 1  at row 10
+INFO  05:46:08,836 - Use of Var i: int, 5, 1  at row 12
+INFO  05:46:08,836 - Use of Var i: int, 5, 1  at row 13
+INFO  05:46:08,836 - Use of Var len1: int, 1, 1  at row 13
+INFO  05:46:08,836 - Use of Var res: Arr of char, 4, 1  at row 14
+INFO  05:46:08,836 - Use of Var i: int, 5, 1  at row 14
+INFO  05:46:08,836 - Use of Var str1: string, 0, 1  at row 14
+INFO  05:46:08,836 - Use of Var i: int, 5, 1  at row 14
+INFO  05:46:08,838 - Use of Var i: int, 5, 1  at row 15
+INFO  05:46:08,838 - Use of Var j: int, 6, 1  at row 18
+INFO  05:46:08,838 - Use of Var j: int, 6, 1  at row 19
+INFO  05:46:08,838 - Use of Var len2: int, 3, 1  at row 19
+INFO  05:46:08,838 - Use of Var res: Arr of char, 4, 1  at row 20
+INFO  05:46:08,838 - Use of Var i: int, 5, 1  at row 20
+INFO  05:46:08,838 - Use of Var str2: string, 2, 1  at row 20
+INFO  05:46:08,840 - Use of Var j: int, 6, 1  at row 20
+INFO  05:46:08,840 - Use of Var i: int, 5, 1  at row 21
+INFO  05:46:08,840 - Use of Var j: int, 6, 1  at row 22
+INFO  05:46:08,840 - Function 'stampaj' definition at row 29
+INFO  05:46:08,840 - Formal parameter 'str' declaration at row 29
+INFO  05:46:08,840 - Formal parameter 'len' declaration at row 29
+INFO  05:46:08,840 - Local variable 'i' declaration at row 29
+INFO  05:46:08,840 - Use of Var i: int, 2, 1  at row 31
+INFO  05:46:08,840 - Use of Var i: int, 2, 1  at row 32
+INFO  05:46:08,842 - Use of Var len: int, 1, 1  at row 32
+INFO  05:46:08,842 - Use of Var str: string, 0, 1  at row 33
+INFO  05:46:08,842 - Use of Var i: int, 2, 1  at row 33
+INFO  05:46:08,842 - Use of Var i: int, 2, 1  at row 34
+INFO  05:46:08,842 - Function 'uporedi' definition at row 38
+INFO  05:46:08,842 - Formal parameter 'arr1' declaration at row 38
+INFO  05:46:08,842 - Formal parameter 'arr2' declaration at row 38
+INFO  05:46:08,842 - Formal parameter 'len1' declaration at row 38
+INFO  05:46:08,850 - Formal parameter 'len2' declaration at row 38
+INFO  05:46:08,850 - Local variable 'i' declaration at row 38
+INFO  05:46:08,850 - Use of Var len1: int, 2, 1  at row 39
+INFO  05:46:08,850 - Use of Var len2: int, 3, 1  at row 39
+INFO  05:46:08,852 - Use of Var i: int, 4, 1  at row 42
+INFO  05:46:08,852 - Use of Var i: int, 4, 1  at row 43
+INFO  05:46:08,852 - Use of Var len1: int, 2, 1  at row 43
+INFO  05:46:08,852 - Use of Var arr1: string, 0, 1  at row 44
+INFO  05:46:08,852 - Use of Var i: int, 4, 1  at row 44
+INFO  05:46:08,852 - Use of Var arr2: string, 1, 1  at row 44
+INFO  05:46:08,852 - Use of Var i: int, 4, 1  at row 44
+INFO  05:46:08,852 - Use of Var i: int, 4, 1  at row 46
+INFO  05:46:08,854 - Function 'ucitaj' definition at row 52
+INFO  05:46:08,854 - Local variable 'i' declaration at row 52
+INFO  05:46:08,854 - Local variable 'len' declaration at row 52
+INFO  05:46:08,854 - Local variable 'c' declaration at row 52
+INFO  05:46:08,854 - Local variable 'res' declaration at row 52
+INFO  05:46:08,854 - Function 'main' definition at row 69
+INFO  05:46:08,856 - Use of Var str1: Arr of char, 0, 0  at row 71
+INFO  05:46:08,856 - Use of Var str1: Arr of char, 0, 0  at row 72
+INFO  05:46:08,856 - Use of Var str1: Arr of char, 0, 0  at row 73
+INFO  05:46:08,856 - Use of Var str1: Arr of char, 0, 0  at row 74
+INFO  05:46:08,856 - Use of Var str2: Arr of char, 1, 0  at row 78
+INFO  05:46:08,858 - Use of Var str2: Arr of char, 1, 0  at row 79
+INFO  05:46:08,858 - Use of Var str2: Arr of char, 1, 0  at row 80
+INFO  05:46:08,858 - Use of Var str2: Arr of char, 1, 0  at row 81
+INFO  05:46:08,858 - Use of Meth uporedi: int, 434, 4 
+   Var arr1: string, 0, 1 
+   Var arr2: string, 1, 1 
+   Var len1: int, 2, 1 
+   Var len2: int, 3, 1 
+   Var i: int, 4, 1 
+   Con : int, 1, 1 
+ at row 85
+INFO  05:46:08,858 - Use of Var str1: Arr of char, 0, 0  at row 85
+INFO  05:46:08,858 - Use of Var str2: Arr of char, 1, 0  at row 85
+INFO  05:46:08,858 - Use of Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+ at row 85
+INFO  05:46:08,860 - Use of Var str1: Arr of char, 0, 0  at row 85
+INFO  05:46:08,860 - Use of Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+ at row 85
+INFO  05:46:08,860 - Use of Var str2: Arr of char, 1, 0  at row 85
+INFO  05:46:08,860 - =======================SYNTAX ANALYSIS=======================
+INFO  05:46:08,860 - Global constants = 0
+INFO  05:46:08,860 - Global variables = 2
+INFO  05:46:08,860 - Global arrays = 3
+INFO  05:46:08,860 - Local variables in main = 0
+INFO  05:46:08,860 - Global functions = 4
+INFO  05:46:08,860 - Formal parameters = 10
+INFO  05:46:08,860 - Function calls in main = 3
+INFO  05:46:08,860 - Statement blocks = 9
+INFO  05:46:08,862 - Classes = 0
+INFO  05:46:08,862 - Class attributes = 0
+INFO  05:46:08,862 - Methods = 0
+INFO  05:46:08,862 - Parsing SUCCESSFUL!
+INFO  05:46:08,862 - =====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: char, 10, 0 
+Con null: Class, 0, 0
+   [
+   ]
+Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+
+Meth ord: int, 12, 1 
+   Var ch: char, 0, 1 
+
+Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: bool, -1, -1 
+Type string: string, -1, -1 
+Meth prints: notype, 31, 2 
+   Var str: string, 0, 0 
+   Var len: int, 1, 0 
+   Var i: int, 2, 0 
+
+Meth reads: string, 64, 0 
+   Var i: int, 0, 0 
+   Var len: int, 1, 0 
+   Var c: char, 2, 0 
+   Var res: string, 3, 0 
+
+Meth cmpStr: int, 134, 4 
+   Var arr1: string, 0, 0 
+   Var arr2: string, 1, 0 
+   Var len1: int, 2, 0 
+   Var len2: int, 3, 0 
+   Var i: bool, 4, 0 
+
+Meth concat: string, 207, 4 
+   Var str1: string, 0, 0 
+   Var len1: int, 1, 0 
+   Var str2: string, 2, 0 
+   Var len2: int, 3, 0 
+   Var res: string, 4, 0 
+   Var i: int, 5, 0 
+   Var j: int, 6, 0 
+   Var len3: int, 7, 0 
+
+Meth dummy: notype, 300, 2 
+   Var adr: int, 0, 0 
+   Var par: int, 1, 0 
+
+Prog Concat: notype, 0, 1 
+   Var str1: Arr of char, 0, 0 
+   Var str2: Arr of char, 1, 0 
+   Var res: Arr of char, 2, 0 
+   Var i: int, 3, 0 
+   Var j: int, 4, 0 
+   Meth konkatenacija: notype, 307, 4 
+      Var str1: string, 0, 1 
+      Var len1: int, 1, 1 
+      Var str2: string, 2, 1 
+      Var len2: int, 3, 1 
+      Var res: Arr of char, 4, 1 
+      Var i: int, 5, 1 
+      Var j: int, 6, 1 
+      Var len3: int, 7, 1 
+      Con : int, 0, 1 
+
+   Meth stampaj: notype, 401, 2 
+      Var str: string, 0, 1 
+      Var len: int, 1, 1 
+      Var i: int, 2, 1 
+      Con : int, 0, 1 
+
+   Meth uporedi: int, 434, 4 
+      Var arr1: string, 0, 1 
+      Var arr2: string, 1, 1 
+      Var len1: int, 2, 1 
+      Var len2: int, 3, 1 
+      Var i: int, 4, 1 
+      Con : int, 1, 1 
+
+   Meth ucitaj: notype, 509, 0 
+      Var i: int, 0, 1 
+      Var len: int, 1, 1 
+      Var c: char, 2, 1 
+      Var res: string, 3, 1 
+
+   Meth main: notype, 514, 0 
+      Con : int, 97, 1 
+
+
+

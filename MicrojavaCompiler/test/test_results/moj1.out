@@ -1,0 +1,357 @@
+INFO  05:45:54,541 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\moj1.mj
+INFO  05:45:54,569 - PARSING the program 'Program' at row 1
+INFO  05:45:54,569 - Class 'A' definition at row 2
+INFO  05:45:54,569 - Class attribute 'x' declaration at row 3
+INFO  05:45:54,571 - Class attribute 'y' declaration at row 3
+INFO  05:45:54,571 - Constant 'pi' declaration at row 6
+INFO  05:45:54,571 - Constant 'e' declaration at row 6
+INFO  05:45:54,571 - Class 'B' definition at row 8
+INFO  05:45:54,571 - Class inheritance at row 8
+INFO  05:45:54,573 - Class attribute 'i' declaration at row 9
+INFO  05:45:54,573 - Class attribute 'x' redefinition at row 10
+INFO  05:45:54,573 - Function 'getValue' definition at row 12
+INFO  05:45:54,573 - Formal parameter 'a' declaration at row 12
+INFO  05:45:54,573 - Local variable 'b' declaration at row 12
+INFO  05:45:54,573 - Local variable 'c' declaration at row 12
+INFO  05:45:54,575 - Use of Fld i: int, 3, 1  at row 13
+INFO  05:45:54,575 - Use of Fld x: Arr of int, 1, 1  at row 13
+INFO  05:45:54,575 - Use of Var a: int, 1, 1  at row 13
+INFO  05:45:54,575 - Class 'C' definition at row 18
+INFO  05:45:54,575 - Class inheritance at row 18
+INFO  05:45:54,575 - Class attribute 'theA' declaration at row 19
+INFO  05:45:54,577 - Class attribute 'a' declaration at row 20
+INFO  05:45:54,577 - Function 'main' definition at row 24
+INFO  05:45:54,577 - Local variable 'a' declaration at row 24
+INFO  05:45:54,577 - Local variable 'c' declaration at row 24
+INFO  05:45:54,577 - Local variable 'i' declaration at row 24
+INFO  05:45:54,577 - Local variable 'x' declaration at row 24
+INFO  05:45:54,577 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+   ] at row 25
+INFO  05:45:54,577 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+   ] at row 26
+INFO  05:45:54,579 - Use of Fld x: Arr of int, 1, 1  at row 26
+INFO  05:45:54,579 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+   ] at row 27
+INFO  05:45:54,579 - Use of Fld y: Arr of int, 2, 1  at row 27
+INFO  05:45:54,579 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 28
+INFO  05:45:54,579 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 29
+INFO  05:45:54,579 - Use of Fld theA: Class, 4, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+   ] at row 29
+INFO  05:45:54,581 - Use of Var a: Class, 0, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+   ] at row 29
+INFO  05:45:54,581 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 30
+INFO  05:45:54,581 - Use of Fld x: Arr of int, 1, 1  at row 30
+INFO  05:45:54,581 - Use of Var x: Arr of int, 3, 1  at row 31
+INFO  05:45:54,581 - Use of Var i: int, 2, 1  at row 32
+INFO  05:45:54,581 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 33
+INFO  05:45:54,583 - Use of Fld i: int, 3, 1  at row 33
+INFO  05:45:54,583 - Use of Var i: int, 2, 1  at row 34
+INFO  05:45:54,583 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 35
+INFO  05:45:54,583 - Use of Fld x: Arr of int, 1, 1  at row 35
+INFO  05:45:54,583 - Use of Var i: int, 2, 1  at row 35
+INFO  05:45:54,583 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 36
+INFO  05:45:54,585 - Use of Fld theA: Class, 4, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+   ] at row 36
+INFO  05:45:54,585 - Use of Fld x: Arr of int, 1, 1  at row 36
+INFO  05:45:54,585 - Use of Var i: int, 2, 1  at row 36
+INFO  05:45:54,585 - Use of Var i: int, 2, 1  at row 37
+INFO  05:45:54,585 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 39
+INFO  05:45:54,585 - Use of Meth getValue: int, 307, 2 
+   Var this: this pointer
+   Var a: int, 1, 1 
+   Var b: int, 2, 1 
+   Var c: bool, 3, 1 
+   Var : int, 4, 1 
+ at row 39
+INFO  05:45:54,587 - Use of Var c: Class, 1, 1
+   [
+     Fld y: Arr of int, 2, 1 
+     Fld i: int, 3, 1 
+     Fld x: Arr of int, 1, 1 
+     Fld theA: Class, 4, 1
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+     Fld a: string, 5, 1 
+     Meth getValue: int, 307, 2 
+      Var this: this pointer
+      Var a: int, 1, 1 
+      Var b: int, 2, 1 
+      Var c: bool, 3, 1 
+      Var : int, 4, 1 
+   ] at row 39
+INFO  05:45:54,587 - Use of Fld theA: Class, 4, 1
+   [
+     Fld x: Arr of int, 1, 1 
+     Fld y: Arr of int, 2, 1 
+   ] at row 39
+INFO  05:45:54,587 - Use of Fld x: Arr of int, 1, 1  at row 39
+INFO  05:45:54,587 - =======================SYNTAX ANALYSIS=======================
+INFO  05:45:54,587 - Global constants = 2
+INFO  05:45:54,587 - Global variables = 0
+INFO  05:45:54,587 - Global arrays = 0
+INFO  05:45:54,587 - Local variables in main = 4
+INFO  05:45:54,587 - Global functions = 0
+INFO  05:45:54,587 - Formal parameters = 1
+INFO  05:45:54,589 - Function calls in main = 1
+INFO  05:45:54,589 - Statement blocks = 3
+INFO  05:45:54,589 - Classes = 3
+INFO  05:45:54,589 - Class attributes = 6
+INFO  05:45:54,589 - Methods = 1
+INFO  05:45:54,589 - Parsing SUCCESSFUL!
+INFO  05:45:54,591 - =====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: char, 10, 0 
+Con null: Class, 0, 0
+   [
+   ]
+Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+
+Meth ord: int, 12, 1 
+   Var ch: char, 0, 1 
+
+Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: bool, -1, -1 
+Type string: string, -1, -1 
+Meth prints: notype, 31, 2 
+   Var str: string, 0, 0 
+   Var len: int, 1, 0 
+   Var i: int, 2, 0 
+
+Meth reads: string, 64, 0 
+   Var i: int, 0, 0 
+   Var len: int, 1, 0 
+   Var c: char, 2, 0 
+   Var res: string, 3, 0 
+
+Meth cmpStr: int, 134, 4 
+   Var arr1: string, 0, 0 
+   Var arr2: string, 1, 0 
+   Var len1: int, 2, 0 
+   Var len2: int, 3, 0 
+   Var i: bool, 4, 0 
+
+Meth concat: string, 207, 4 
+   Var str1: string, 0, 0 
+   Var len1: int, 1, 0 
+   Var str2: string, 2, 0 
+   Var len2: int, 3, 0 
+   Var res: string, 4, 0 
+   Var i: int, 5, 0 
+   Var j: int, 6, 0 
+   Var len3: int, 7, 0 
+
+Meth dummy: notype, 300, 2 
+   Var adr: int, 0, 0 
+   Var par: int, 1, 0 
+
+Prog Program: notype, 0, 1 
+   Type A: Class, 0, 0
+      [
+        Fld x: Arr of int, 1, 1 
+        Fld y: Arr of int, 2, 1 
+      ]
+   Con pi: int, 3, 0 
+   Con e: int, 2, 0 
+   Type B: Class, 1, 0
+      [
+        Fld y: Arr of int, 2, 1 
+        Fld i: int, 3, 1 
+        Fld x: Arr of int, 1, 1 
+        Meth getValue: int, 307, 2 
+         Var this: this pointer
+         Var a: int, 1, 1 
+         Var b: int, 2, 1 
+         Var c: bool, 3, 1 
+         Con : int, 0, 1 
+      ]
+   Type C: Class, 12, 0
+      [
+        Fld y: Arr of int, 2, 1 
+        Fld i: int, 3, 1 
+        Fld x: Arr of int, 1, 1 
+        Fld theA: Class, 4, 1
+         [
+           Fld x: Arr of int, 1, 1 
+           Fld y: Arr of int, 2, 1 
+         ]
+        Fld a: string, 5, 1 
+        Meth getValue: int, 307, 2 
+         Var this: this pointer
+         Var a: int, 1, 1 
+         Var b: int, 2, 1 
+         Var c: bool, 3, 1 
+         Var : int, 4, 1 
+      ]
+   Meth main: notype, 327, 0 
+      Var a: Class, 0, 1
+         [
+           Fld x: Arr of int, 1, 1 
+           Fld y: Arr of int, 2, 1 
+         ]
+      Var c: Class, 1, 1
+         [
+           Fld y: Arr of int, 2, 1 
+           Fld i: int, 3, 1 
+           Fld x: Arr of int, 1, 1 
+           Fld theA: Class, 4, 1
+            [
+              Fld x: Arr of int, 1, 1 
+              Fld y: Arr of int, 2, 1 
+            ]
+           Fld a: string, 5, 1 
+           Meth getValue: int, 307, 2 
+            Var this: this pointer
+            Var a: int, 1, 1 
+            Var b: int, 2, 1 
+            Var c: bool, 3, 1 
+            Var : int, 4, 1 
+         ]
+      Var i: int, 2, 1 
+      Var x: Arr of int, 3, 1 
+      Con : int, 0, 1 
+
+
+

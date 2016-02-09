@@ -1,0 +1,15 @@
+ERROR 05:45:04,155 - Semantics error at row 10 - multiple definition of a class method 'pr'
+ERROR 05:45:04,164 - Syntax error at row 46 - unrecognized symbol '='
+ERROR 05:45:04,166 - Syntax error at row 49 - unrecognized symbol ','
+ERROR 05:45:04,166 - Syntax error at row 49 - unrecognized symbol 'c'
+ERROR 05:45:04,167 - Semantics error at row 50 - symbol 'c' not found
+ERROR 05:45:04,167 - Semantics error at row 50 - expressions must be integers or strings
+ERROR 05:45:04,168 - Semantics error at row 50 - function does not need a return value
+ERROR 05:45:04,168 - Syntax error at row 56 - unrecognized symbol '{'
+ERROR 05:45:04,168 - Syntax error at row 58 - unrecognized symbol ','
+ERROR 05:45:04,178 - Semantics error at row 73 - expression 'strin' must be a variable
+ERROR 05:45:04,179 - Semantics error at row 73 - incompatible types
+ERROR 05:45:04,179 - Semantics error at row 74 - expression must be an integer value
+ERROR 05:45:04,179 - Semantics error at row 74 - incompatible types
+ERROR 05:45:04,210 - Semantics error at row 109 - expression must be a boolean value
+ERROR 05:45:04,210 - Parsing UNSUCCESSFUL!

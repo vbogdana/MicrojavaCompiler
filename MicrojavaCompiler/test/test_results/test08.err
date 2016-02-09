@@ -1,0 +1,22 @@
+ERROR 05:44:40,985 - Semantics error at row 5 - type 'Nepostojeca' not found in symbol table
+ERROR 05:44:40,985 - Semantics error at row 5 - outer class must be of a class type
+ERROR 05:44:40,985 - Semantics error at row 7 - multiple definition of a class attribute 'x'
+ERROR 05:44:40,985 - Semantics error at row 8 - type 'real' not found in symbol table
+ERROR 05:44:40,987 - Semantics error at row 9 - name 'y' doesn't represent a type
+ERROR 05:44:40,989 - Semantics error at row 17 - expression 'Alfa' must be a variable
+ERROR 05:44:40,989 - Semantics error at row 17 - incompatible types
+ERROR 05:44:40,989 - Semantics error at row 18 - incompatible types
+ERROR 05:44:40,989 - Semantics error at row 19 - class attribute 'zh' doesn't exist
+ERROR 05:44:40,991 - Semantics error at row 19 - incompatible types
+ERROR 05:44:40,991 - Semantics error at row 20 - incompatible types
+ERROR 05:44:40,991 - Semantics error at row 21 - return types are not compatible
+ERROR 05:44:40,999 - Semantics error at row 53 - symbol 'this' not found
+ERROR 05:44:40,999 - Semantics error at row 53 - incompatible types
+ERROR 05:44:40,999 - Semantics error at row 55 - number of parameters doesn't match
+ERROR 05:44:41,001 - Semantics error at row 56 - function 'setAB' missing parameters
+ERROR 05:44:41,003 - Semantics error at row 57 - incompatible types of 1. parameter
+ERROR 05:44:41,003 - Semantics error at row 57 - incompatible types of 2. parameter
+ERROR 05:44:41,003 - Semantics error at row 58 - incompatible types of 1. parameter
+ERROR 05:44:41,005 - Semantics error at row 59 - incompatible types of 2. parameter
+ERROR 05:44:41,005 - Semantics error at row 61 - program missing 'main' function
+ERROR 05:44:41,005 - Parsing UNSUCCESSFUL!

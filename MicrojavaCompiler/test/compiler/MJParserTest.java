@@ -25,7 +25,13 @@ public class MJParserTest {
 		Log4JUtils.instance().prepareLogFile(Logger.getRootLogger());
 	}
 	
+	public static boolean  executable = false;
+	
 	public static void main(String[] args) throws Exception {
+		if (args.length <= 0) {
+			System.err.println("Not enough parameters.");
+			return;
+		}
 		
 		Logger log = Logger.getLogger(MJParserTest.class);
 		Reader br = null;
@@ -65,11 +71,13 @@ public class MJParserTest {
 		        	log.info("Parsing SUCCESSFUL!");
 		        	
 		        	p.dump();
-			        
+
 					outputCode = new File("test/output_files/" + args[0] + ".obj");
 		        	if (outputCode.exists())
 		        		outputCode.delete();
 		        	Code.write(new FileOutputStream(outputCode));
+		        	
+		        	executable = true;
 		        }
 		              
 		} 

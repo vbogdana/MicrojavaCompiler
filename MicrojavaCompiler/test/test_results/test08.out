@@ -1,0 +1,219 @@
+INFO  05:44:40,957 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test08.mj
+INFO  05:44:40,983 - PARSING the program 'test08' at row 3
+INFO  05:44:40,983 - Class 'Alfa' definition at row 5
+INFO  05:44:40,985 - Class attribute 'x' declaration at row 6
+INFO  05:44:40,985 - Class attribute 'y' declaration at row 8
+INFO  05:44:40,987 - Class attribute 'z' declaration at row 9
+INFO  05:44:40,987 - Class attribute 'b' declaration at row 10
+INFO  05:44:40,987 - Function 'k' definition at row 12
+INFO  05:44:40,987 - Use of Fld b: char, 4, 1  at row 13
+INFO  05:44:40,989 - Function 'f' definition at row 16
+INFO  05:44:40,989 - Formal parameter 'sss' declaration at row 16
+INFO  05:44:40,989 - Use of Fld b: char, 4, 1  at row 18
+INFO  05:44:40,991 - Use of Fld b: char, 4, 1  at row 20
+INFO  05:44:40,991 - Use of Meth k: notype, 307, 1 
+   Var this: this pointer
+   Con : char, 97, 1 
+ at row 20
+INFO  05:44:40,991 - Use of Fld b: char, 4, 1  at row 21
+INFO  05:44:40,991 - Class 'Beta' definition at row 27
+INFO  05:44:40,993 - Class attribute 'a' declaration at row 28
+INFO  05:44:40,993 - Class attribute 'b' declaration at row 28
+INFO  05:44:40,993 - Function 'setA' definition at row 30
+INFO  05:44:40,993 - Use of Fld a: int, 1, 1  at row 31
+INFO  05:44:40,993 - Function 'setAB' definition at row 34
+INFO  05:44:40,993 - Formal parameter 'aa' declaration at row 34
+INFO  05:44:40,993 - Formal parameter 'bb' declaration at row 34
+INFO  05:44:40,993 - Use of Fld a: int, 1, 1  at row 35
+INFO  05:44:40,995 - Use of Var aa: int, 1, 1  at row 35
+INFO  05:44:40,995 - Use of Fld b: int, 2, 1  at row 36
+INFO  05:44:40,995 - Use of Var bb: int, 2, 1  at row 36
+INFO  05:44:40,995 - Class 'Gama' definition at row 41
+INFO  05:44:40,995 - Class inheritance at row 41
+INFO  05:44:40,995 - Class attribute 'b' redefinition at row 42
+INFO  05:44:40,995 - Global variable 'g' declaration at row 45
+INFO  05:44:40,995 - Function 'main2' definition at row 47
+INFO  05:44:40,997 - Local variable 'a' declaration at row 48
+INFO  05:44:40,997 - Use of Var a: Class, 0, 1
+   [
+     Fld x: int, 1, 1 
+     Fld y: notype, 2, 1 
+     Fld z: notype, 3, 1 
+     Fld b: char, 4, 1 
+     Meth k: notype, 307, 1 
+      Var this: this pointer
+      Con : char, 97, 1 
+     Meth f: int, 321, 2 
+      Var this: this pointer
+      Var sss: int, 1, 1 
+      Con : int, 2, 1 
+   ] at row 50
+INFO  05:44:40,997 - Use of Var g: Class, 0, 0
+   [
+     Fld a: int, 1, 1 
+     Fld b: Class, 2, 1
+      [
+        Fld a: int, 1, 1 
+        Fld b: int, 2, 1 
+        Meth setA: notype, 347, 1 
+         Var this: this pointer
+        Meth setAB: notype, 356, 3 
+         Var this: this pointer
+         Var aa: int, 1, 1 
+         Var bb: int, 2, 1 
+      ]
+     Meth setA: notype, 347, 1 
+      Var this: this pointer
+     Meth setAB: notype, 356, 3 
+      Var this: this pointer
+      Var aa: int, 1, 1 
+      Var bb: int, 2, 1 
+   ] at row 51
+INFO  05:44:40,997 - Use of Var a: Class, 0, 1
+   [
+     Fld x: int, 1, 1 
+     Fld y: notype, 2, 1 
+     Fld z: notype, 3, 1 
+     Fld b: char, 4, 1 
+     Meth k: notype, 307, 1 
+      Var this: this pointer
+      Con : char, 97, 1 
+     Meth f: int, 321, 2 
+      Var this: this pointer
+      Var sss: int, 1, 1 
+      Con : int, 2, 1 
+   ] at row 52
+INFO  05:44:40,997 - Use of Meth f: int, 321, 2 
+   Var this: this pointer
+   Var sss: int, 1, 1 
+   Con : int, 2, 1 
+ at row 52
+INFO  05:44:40,999 - Use of Var g: Class, 0, 0
+   [
+     Fld a: int, 1, 1 
+     Fld b: Class, 2, 1
+      [
+        Fld a: int, 1, 1 
+        Fld b: int, 2, 1 
+        Meth setA: notype, 347, 1 
+         Var this: this pointer
+        Meth setAB: notype, 356, 3 
+         Var this: this pointer
+         Var aa: int, 1, 1 
+         Var bb: int, 2, 1 
+      ]
+     Meth setA: notype, 347, 1 
+      Var this: this pointer
+     Meth setAB: notype, 356, 3 
+      Var this: this pointer
+      Var aa: int, 1, 1 
+      Var bb: int, 2, 1 
+   ] at row 55
+INFO  05:44:40,999 - Use of Meth setA: notype, 347, 1 
+   Var this: this pointer
+ at row 55
+INFO  05:44:41,001 - Use of Var g: Class, 0, 0
+   [
+     Fld a: int, 1, 1 
+     Fld b: Class, 2, 1
+      [
+        Fld a: int, 1, 1 
+        Fld b: int, 2, 1 
+        Meth setA: notype, 347, 1 
+         Var this: this pointer
+        Meth setAB: notype, 356, 3 
+         Var this: this pointer
+         Var aa: int, 1, 1 
+         Var bb: int, 2, 1 
+      ]
+     Meth setA: notype, 347, 1 
+      Var this: this pointer
+     Meth setAB: notype, 356, 3 
+      Var this: this pointer
+      Var aa: int, 1, 1 
+      Var bb: int, 2, 1 
+   ] at row 56
+INFO  05:44:41,001 - Use of Meth setAB: notype, 356, 3 
+   Var this: this pointer
+   Var aa: int, 1, 1 
+   Var bb: int, 2, 1 
+ at row 56
+INFO  05:44:41,001 - Use of Var g: Class, 0, 0
+   [
+     Fld a: int, 1, 1 
+     Fld b: Class, 2, 1
+      [
+        Fld a: int, 1, 1 
+        Fld b: int, 2, 1 
+        Meth setA: notype, 347, 1 
+         Var this: this pointer
+        Meth setAB: notype, 356, 3 
+         Var this: this pointer
+         Var aa: int, 1, 1 
+         Var bb: int, 2, 1 
+      ]
+     Meth setA: notype, 347, 1 
+      Var this: this pointer
+     Meth setAB: notype, 356, 3 
+      Var this: this pointer
+      Var aa: int, 1, 1 
+      Var bb: int, 2, 1 
+   ] at row 57
+INFO  05:44:41,001 - Use of Meth setAB: notype, 356, 3 
+   Var this: this pointer
+   Var aa: int, 1, 1 
+   Var bb: int, 2, 1 
+ at row 57
+INFO  05:44:41,003 - Use of Var g: Class, 0, 0
+   [
+     Fld a: int, 1, 1 
+     Fld b: Class, 2, 1
+      [
+        Fld a: int, 1, 1 
+        Fld b: int, 2, 1 
+        Meth setA: notype, 347, 1 
+         Var this: this pointer
+        Meth setAB: notype, 356, 3 
+         Var this: this pointer
+         Var aa: int, 1, 1 
+         Var bb: int, 2, 1 
+      ]
+     Meth setA: notype, 347, 1 
+      Var this: this pointer
+     Meth setAB: notype, 356, 3 
+      Var this: this pointer
+      Var aa: int, 1, 1 
+      Var bb: int, 2, 1 
+   ] at row 58
+INFO  05:44:41,003 - Use of Meth setAB: notype, 356, 3 
+   Var this: this pointer
+   Var aa: int, 1, 1 
+   Var bb: int, 2, 1 
+ at row 58
+INFO  05:44:41,005 - Use of Var g: Class, 0, 0
+   [
+     Fld a: int, 1, 1 
+     Fld b: Class, 2, 1
+      [
+        Fld a: int, 1, 1 
+        Fld b: int, 2, 1 
+        Meth setA: notype, 347, 1 
+         Var this: this pointer
+        Meth setAB: notype, 356, 3 
+         Var this: this pointer
+         Var aa: int, 1, 1 
+         Var bb: int, 2, 1 
+      ]
+     Meth setA: notype, 347, 1 
+      Var this: this pointer
+     Meth setAB: notype, 356, 3 
+      Var this: this pointer
+      Var aa: int, 1, 1 
+      Var bb: int, 2, 1 
+   ] at row 59
+INFO  05:44:41,005 - Use of Meth setAB: notype, 356, 3 
+   Var this: this pointer
+   Var aa: int, 1, 1 
+   Var bb: int, 2, 1 
+ at row 59
+INFO  05:44:41,005 - =======================SYNTAX ANALYSIS=======================

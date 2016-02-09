@@ -1,0 +1,36 @@
+ERROR 05:44:09,099 - Semantics error at row 4 - multiple definition of 'xc'
+ERROR 05:44:09,101 - Syntax error at row 6 - unrecognized symbol 'c'
+ERROR 05:44:09,105 - Semantics error at row 10 - symbol 'sqrt' not found
+ERROR 05:44:09,105 - Semantics error at row 10 - variable must be a global function or a class method
+ERROR 05:44:09,105 - Semantics error at row 10 - symbol 'sqr' not found
+ERROR 05:44:09,105 - Semantics error at row 10 - variable must be a global function or a class method
+ERROR 05:44:09,105 - Semantics error at row 10 - symbol 'sqr' not found
+ERROR 05:44:09,107 - Semantics error at row 10 - variable must be a global function or a class method
+ERROR 05:44:09,107 - Semantics error at row 10 - expressions must be integers or strings
+ERROR 05:44:09,107 - Semantics error at row 11 - function 'distance' missing 'return' statement
+ERROR 05:44:09,109 - Semantics error at row 14 - incompatible types
+ERROR 05:44:09,109 - Semantics error at row 15 - return types are not compatible
+ERROR 05:44:09,111 - Semantics error at row 19 - incompatible types
+ERROR 05:44:09,113 - Semantics error at row 20 - function does not need a return value
+ERROR 05:44:09,113 - Semantics error at row 23 - type 'z' not found in symbol table
+ERROR 05:44:09,113 - Syntax error at row 23 - unrecognized symbol ','
+ERROR 05:44:09,113 - Semantics error at row 27 - function 'main' must be VOID
+ERROR 05:44:09,113 - Syntax error at row 27 - unrecognized symbol '{'
+ERROR 05:44:09,115 - Semantics error at row 30 - symbol 'yc' not found
+ERROR 05:44:09,115 - Semantics error at row 30 - parameter must be an integer/character/boolean or a string value
+ERROR 05:44:09,117 - Semantics error at row 32 - incompatible types of 1. parameter
+ERROR 05:44:09,117 - Semantics error at row 34 - symbol 'yc' not found
+ERROR 05:44:09,119 - Semantics error at row 34 - incompatible types of 4. parameter
+ERROR 05:44:09,119 - Semantics error at row 34 - incompatible types
+ERROR 05:44:09,119 - Semantics error at row 37 - symbol 'c' not found
+ERROR 05:44:09,119 - Semantics error at row 37 - symbol 'yc' not found
+ERROR 05:44:09,119 - Semantics error at row 37 - incompatible types of 3. parameter
+ERROR 05:44:09,119 - Semantics error at row 37 - function 'distance' missing parameters
+ERROR 05:44:09,119 - Semantics error at row 37 - incompatible types
+ERROR 05:44:09,125 - Semantics error at row 40 - incompatible types of 2. parameter
+ERROR 05:44:09,131 - Semantics error at row 40 - number of parameters doesn't match
+ERROR 05:44:09,131 - Semantics error at row 41 - incompatible types of 2. parameter
+ERROR 05:44:09,131 - Semantics error at row 41 - symbol 'c' not found
+ERROR 05:44:09,131 - Semantics error at row 41 - incompatible types of 3. parameter
+ERROR 05:44:09,133 - Semantics error at row 49 - function 'main' missing 'return' statement
+ERROR 05:44:09,133 - Parsing UNSUCCESSFUL!

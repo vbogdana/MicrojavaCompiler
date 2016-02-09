@@ -1,0 +1,8 @@
+ERROR 05:58:00,895 - Semantics error at row 10 - expression 'a' must be a variable
+ERROR 05:58:00,895 - Semantics error at row 11 - expression 'a' must be a variable
+ERROR 05:58:00,895 - Semantics error at row 11 - incompatible types
+ERROR 05:58:00,897 - Semantics error at row 13 - incompatible types
+ERROR 05:58:00,897 - Semantics error at row 13 - expression must be a boolean value
+ERROR 05:58:00,897 - Semantics error at row 14 - incompatible types
+ERROR 05:58:00,899 - Semantics error at row 17 - 'break' statement can only be used inside a while loop
+ERROR 05:58:00,899 - Parsing UNSUCCESSFUL!

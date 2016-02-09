@@ -1,0 +1,114 @@
+INFO  06:00:12,350 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test301.mj
+INFO  06:00:12,379 - PARSING the program 'test301' at row 3
+INFO  06:00:12,379 - Constant 'jedan' declaration at row 4
+INFO  06:00:12,380 - Constant 'pet' declaration at row 5
+INFO  06:00:12,380 - Global variable 'bodovi' declaration at row 6
+INFO  06:00:12,380 - Global variable 'niz' declaration at row 7
+INFO  06:00:12,381 - Global variable 'nizch' declaration at row 9
+INFO  06:00:12,381 - Function 'main' definition at row 12
+INFO  06:00:12,382 - Use of Var bodovi: int, 0, 0  at row 14
+INFO  06:00:12,382 - Use of Var bodovi: int, 0, 0  at row 15
+INFO  06:00:12,383 - Use of Var bodovi: int, 0, 0  at row 16
+INFO  06:00:12,383 - Use of Var bodovi: int, 0, 0  at row 16
+INFO  06:00:12,383 - Use of Con jedan: int, 1, 0  at row 16
+INFO  06:00:12,383 - Use of Var bodovi: int, 0, 0  at row 17
+INFO  06:00:12,384 - Use of Var bodovi: int, 0, 0  at row 18
+INFO  06:00:12,384 - Use of Var niz: Arr of int, 1, 0  at row 21
+INFO  06:00:12,384 - Use of Var niz: Arr of int, 1, 0  at row 22
+INFO  06:00:12,384 - Use of Con pet: int, 5, 0  at row 22
+INFO  06:00:12,385 - Use of Var niz: Arr of int, 1, 0  at row 23
+INFO  06:00:12,385 - Use of Var bodovi: int, 0, 0  at row 24
+INFO  06:00:12,385 - Use of Var niz: Arr of int, 1, 0  at row 24
+INFO  06:00:12,386 - Use of Var niz: Arr of int, 1, 0  at row 24
+INFO  06:00:12,386 - Use of Var bodovi: int, 0, 0  at row 25
+INFO  06:00:12,386 - Use of Var nizch: Arr of char, 2, 0  at row 28
+INFO  06:00:12,386 - Use of Var nizch: Arr of char, 2, 0  at row 29
+INFO  06:00:12,387 - Use of Var nizch: Arr of char, 2, 0  at row 30
+INFO  06:00:12,387 - Use of Con jedan: int, 1, 0  at row 30
+INFO  06:00:12,387 - Use of Var nizch: Arr of char, 2, 0  at row 31
+INFO  06:00:12,387 - Use of Con pet: int, 5, 0  at row 31
+INFO  06:00:12,388 - Use of Var nizch: Arr of char, 2, 0  at row 32
+INFO  06:00:12,388 - Use of Var nizch: Arr of char, 2, 0  at row 33
+INFO  06:00:12,388 - Use of Con jedan: int, 1, 0  at row 33
+INFO  06:00:12,389 - Use of Var bodovi: int, 0, 0  at row 36
+INFO  06:00:12,389 - Use of Con pet: int, 5, 0  at row 36
+INFO  06:00:12,389 - Use of Con jedan: int, 1, 0  at row 36
+INFO  06:00:12,390 - Use of Var bodovi: int, 0, 0  at row 37
+INFO  06:00:12,390 - Use of Var bodovi: int, 0, 0  at row 40
+INFO  06:00:12,390 - Use of Var bodovi: int, 0, 0  at row 41
+INFO  06:00:12,390 - Use of Var bodovi: int, 0, 0  at row 41
+INFO  06:00:12,391 - Use of Var bodovi: int, 0, 0  at row 42
+INFO  06:00:12,391 - =======================SYNTAX ANALYSIS=======================
+INFO  06:00:12,391 - Global constants = 2
+INFO  06:00:12,391 - Global variables = 1
+INFO  06:00:12,392 - Global arrays = 2
+INFO  06:00:12,392 - Local variables in main = 0
+INFO  06:00:12,392 - Global functions = 0
+INFO  06:00:12,392 - Formal parameters = 0
+INFO  06:00:12,392 - Function calls in main = 0
+INFO  06:00:12,392 - Statement blocks = 1
+INFO  06:00:12,392 - Classes = 0
+INFO  06:00:12,392 - Class attributes = 0
+INFO  06:00:12,392 - Methods = 0
+INFO  06:00:12,392 - Parsing SUCCESSFUL!
+INFO  06:00:12,393 - =====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: char, 10, 0 
+Con null: Class, 0, 0
+   [
+   ]
+Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+
+Meth ord: int, 12, 1 
+   Var ch: char, 0, 1 
+
+Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: bool, -1, -1 
+Type string: string, -1, -1 
+Meth prints: notype, 31, 2 
+   Var str: string, 0, 0 
+   Var len: int, 1, 0 
+   Var i: int, 2, 0 
+
+Meth reads: string, 64, 0 
+   Var i: int, 0, 0 
+   Var len: int, 1, 0 
+   Var c: char, 2, 0 
+   Var res: string, 3, 0 
+
+Meth cmpStr: int, 134, 4 
+   Var arr1: string, 0, 0 
+   Var arr2: string, 1, 0 
+   Var len1: int, 2, 0 
+   Var len2: int, 3, 0 
+   Var i: bool, 4, 0 
+
+Meth concat: string, 207, 4 
+   Var str1: string, 0, 0 
+   Var len1: int, 1, 0 
+   Var str2: string, 2, 0 
+   Var len2: int, 3, 0 
+   Var res: string, 4, 0 
+   Var i: int, 5, 0 
+   Var j: int, 6, 0 
+   Var len3: int, 7, 0 
+
+Meth dummy: notype, 300, 2 
+   Var adr: int, 0, 0 
+   Var par: int, 1, 0 
+
+Prog test301: notype, 0, 1 
+   Con jedan: int, 1, 0 
+   Con pet: int, 5, 0 
+   Var bodovi: int, 0, 0 
+   Var niz: Arr of int, 1, 0 
+   Var nizch: Arr of char, 2, 0 
+   Meth main: notype, 307, 0 
+      Con : int, 1, 1 
+
+
+

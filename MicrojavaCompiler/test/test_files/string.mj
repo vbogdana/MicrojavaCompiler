@@ -1,0 +1,88 @@
+program Concat
+
+	char str1[], str2[], res[];
+	int i, j;
+	
+	
+{
+	void konkatenacija(string str1, int len1, string str2, int len2) char res[]; int i, j, len3; {
+		len3 = len1 + len2;
+		res = new char[len3];
+		
+		i = 0;
+		while (i < len1) {
+			res[i] = str1[i];
+			i++;
+		}
+		
+		j = 0;
+		while (j < len2) {
+			res[i] = str2[j];
+			i++;
+			j++;
+		}
+		
+		// samo sam posle u parseru dodala da gura adresu res na stek
+
+	}
+	
+	void stampaj(string str, int len) int i; {
+		// uvek ce stampati sa sirinom polja 1
+		i = 0;
+		while (i < len) {
+			print(str[i]);
+			i++;
+		}
+	}
+	
+	int uporedi(string arr1, string arr2, int len1, int len2) int i; {
+		if (len1 != len2)
+			return 0;
+		
+		i = 0;
+		while (i < len1) {
+			if (arr1[i] != arr2[i])
+				return 0;
+			i++;
+		}
+		
+		return 1;
+	}
+	
+	void ucitaj() int i, len; char c; string res; {
+		// len = 0;
+		// read(c);
+		// while (c != 13) {
+			// len++;
+			// read(c);
+		// }
+		
+		//res = new char [len];
+		// i = len - 1;
+		// while(i >= 0) {
+			// c = vrednost sa steka
+			// res[i] = c
+			// i--;
+		// }
+	}
+	
+	void main(){
+
+		str1 = new char [3];
+		str1[0] = 'a';
+		str1[1] = 'a';
+		str1[2] = 'a';
+		//str1[3] = 'a';
+		//str1[4] = 'a';
+		
+		str2 = new char [3];
+		str2[0] = 'b';
+		str2[1] = 'a';
+		str2[2] = 'a';
+		
+		// konkatenacija(str1, len(str1), str2, len(str2));
+		// stampaj(str1, len(str1));
+		uporedi(str1, str2, len(str1), len(str2));
+	}
+	
+}

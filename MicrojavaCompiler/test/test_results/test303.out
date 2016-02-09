@@ -1,0 +1,1007 @@
+INFO  05:45:37,500 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test303.mj
+INFO  05:45:37,530 - PARSING the program 'test303' at row 1
+INFO  05:45:37,530 - Class 'Radnik' definition at row 3
+INFO  05:45:37,530 - Class attribute 'ime' declaration at row 4
+INFO  05:45:37,530 - Class attribute 'godinaRodjenja' declaration at row 5
+INFO  05:45:37,530 - Class attribute 'p' declaration at row 6
+INFO  05:45:37,532 - Function 'postaviIme' definition at row 8
+INFO  05:45:37,532 - Formal parameter 'ime' declaration at row 8
+INFO  05:45:37,532 - Use of Fld ime: string, 1, 1  at row 9
+INFO  05:45:37,534 - Use of Var ime: string, 1, 1  at row 9
+INFO  05:45:37,534 - Function 'stampajGodinu' definition at row 12
+INFO  05:45:37,534 - Use of Fld godinaRodjenja: int, 2, 1  at row 13
+INFO  05:45:37,534 - Use of Con eol: char, 10, 0  at row 14
+INFO  05:45:37,534 - Class 'Pekar' definition at row 19
+INFO  05:45:37,534 - Class inheritance at row 19
+INFO  05:45:37,536 - Class attribute 'z' declaration at row 20
+INFO  05:45:37,536 - Class method 'postaviIme' redefinition at row 22
+INFO  05:45:37,536 - Formal parameter 'ime' declaration at row 22
+INFO  05:45:37,536 - Use of Fld ime: string, 1, 1  at row 23
+INFO  05:45:37,536 - Use of Var ime: string, 1, 1  at row 23
+INFO  05:45:37,536 - Class 'Poslasticar' definition at row 28
+INFO  05:45:37,536 - Class inheritance at row 28
+INFO  05:45:37,538 - Class attribute 'pomocnik' declaration at row 29
+INFO  05:45:37,538 - Class method 'postaviIme' redefinition at row 31
+INFO  05:45:37,538 - Formal parameter 'ime' declaration at row 31
+INFO  05:45:37,538 - Use of Fld ime: string, 1, 1  at row 32
+INFO  05:45:37,538 - Use of Var ime: string, 1, 1  at row 32
+INFO  05:45:37,538 - Constant 'izlaz' declaration at row 37
+INFO  05:45:37,538 - Global variable 'i' declaration at row 38
+INFO  05:45:37,540 - Function 'uporedi' definition at row 41
+INFO  05:45:37,540 - Formal parameter 'a' declaration at row 41
+INFO  05:45:37,540 - Formal parameter 'b' declaration at row 41
+INFO  05:45:37,540 - Use of Var a: string, 0, 1  at row 42
+INFO  05:45:37,540 - Use of Var b: string, 1, 1  at row 42
+INFO  05:45:37,540 - Function 'stampaj' definition at row 47
+INFO  05:45:37,540 - Formal parameter 's' declaration at row 47
+INFO  05:45:37,540 - Use of Var s: string, 0, 1  at row 48
+INFO  05:45:37,540 - Use of Con eol: char, 10, 0  at row 49
+INFO  05:45:37,542 - Function 'main' definition at row 52
+INFO  05:45:37,542 - Local variable 'r1' declaration at row 52
+INFO  05:45:37,542 - Local variable 'r2' declaration at row 52
+INFO  05:45:37,542 - Local variable 'r3' declaration at row 52
+INFO  05:45:37,542 - Local variable 'pe' declaration at row 52
+INFO  05:45:37,542 - Local variable 'ps' declaration at row 52
+INFO  05:45:37,542 - Use of Var r1: Class, 0, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 53
+INFO  05:45:37,544 - Use of Var r2: Class, 1, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 54
+INFO  05:45:37,544 - Use of Var r3: Class, 2, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 55
+INFO  05:45:37,544 - Use of Var pe: Class, 3, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Meth postaviIme: notype, 335, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 56
+INFO  05:45:37,544 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 57
+INFO  05:45:37,546 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 59
+INFO  05:45:37,546 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 59
+INFO  05:45:37,546 - Use of Var pe: Class, 3, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Meth postaviIme: notype, 335, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 59
+INFO  05:45:37,548 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 60
+INFO  05:45:37,550 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 60
+INFO  05:45:37,550 - Use of Fld p: Arr of char, 3, 1  at row 60
+INFO  05:45:37,550 - Use of Var r1: Class, 0, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 62
+INFO  05:45:37,550 - Use of Meth postaviIme: notype, 307, 2 
+   Var this: this pointer
+   Var ime: string, 1, 1 
+ at row 62
+INFO  05:45:37,550 - Use of Var r2: Class, 1, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 63
+INFO  05:45:37,552 - Use of Meth postaviIme: notype, 307, 2 
+   Var this: this pointer
+   Var ime: string, 1, 1 
+ at row 63
+INFO  05:45:37,552 - Use of Var r3: Class, 2, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 64
+INFO  05:45:37,552 - Use of Meth postaviIme: notype, 307, 2 
+   Var this: this pointer
+   Var ime: string, 1, 1 
+ at row 64
+INFO  05:45:37,556 - Use of Var pe: Class, 3, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Meth postaviIme: notype, 335, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 65
+INFO  05:45:37,556 - Use of Meth postaviIme: notype, 335, 2 
+   Var this: this pointer
+   Var ime: string, 1, 1 
+ at row 65
+INFO  05:45:37,556 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 66
+INFO  05:45:37,556 - Use of Meth postaviIme: notype, 407, 2 
+   Var this: this pointer
+   Var ime: string, 1, 1 
+ at row 66
+INFO  05:45:37,558 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 67
+INFO  05:45:37,558 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 67
+INFO  05:45:37,558 - Use of Meth postaviIme: notype, 307, 2 
+   Var this: this pointer
+   Var ime: string, 1, 1 
+ at row 67
+INFO  05:45:37,558 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 68
+INFO  05:45:37,558 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 68
+INFO  05:45:37,558 - Use of Fld p: Arr of char, 3, 1  at row 68
+INFO  05:45:37,560 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 69
+INFO  05:45:37,560 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 69
+INFO  05:45:37,560 - Use of Fld p: Arr of char, 3, 1  at row 69
+INFO  05:45:37,560 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 70
+INFO  05:45:37,562 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 70
+INFO  05:45:37,562 - Use of Fld p: Arr of char, 3, 1  at row 70
+INFO  05:45:37,562 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 71
+INFO  05:45:37,562 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 71
+INFO  05:45:37,562 - Use of Fld p: Arr of char, 3, 1  at row 71
+INFO  05:45:37,562 - Use of Meth stampaj: notype, 701, 1 
+   Var s: string, 0, 1 
+ at row 73
+INFO  05:45:37,564 - Use of Var r1: Class, 0, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 73
+INFO  05:45:37,564 - Use of Fld ime: string, 1, 1  at row 73
+INFO  05:45:37,564 - Use of Meth stampaj: notype, 701, 1 
+   Var s: string, 0, 1 
+ at row 74
+INFO  05:45:37,564 - Use of Var r2: Class, 1, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 74
+INFO  05:45:37,564 - Use of Fld ime: string, 1, 1  at row 74
+INFO  05:45:37,564 - Use of Meth stampaj: notype, 701, 1 
+   Var s: string, 0, 1 
+ at row 75
+INFO  05:45:37,564 - Use of Var r3: Class, 2, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 75
+INFO  05:45:37,564 - Use of Fld ime: string, 1, 1  at row 75
+INFO  05:45:37,566 - Use of Meth stampaj: notype, 701, 1 
+   Var s: string, 0, 1 
+ at row 76
+INFO  05:45:37,566 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 76
+INFO  05:45:37,566 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 76
+INFO  05:45:37,566 - Use of Fld ime: string, 1, 1  at row 76
+INFO  05:45:37,566 - Use of Meth uporedi: string, 551, 2 
+   Var a: string, 0, 1 
+   Var b: string, 1, 1 
+ at row 78
+INFO  05:45:37,566 - Use of Var r2: Class, 1, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 78
+INFO  05:45:37,566 - Use of Fld ime: string, 1, 1  at row 78
+INFO  05:45:37,566 - Use of Var r3: Class, 2, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 78
+INFO  05:45:37,566 - Use of Fld ime: string, 1, 1  at row 78
+INFO  05:45:37,568 - Use of Con eol: char, 10, 0  at row 79
+INFO  05:45:37,568 - Use of Var i: int, 0, 0  at row 81
+INFO  05:45:37,568 - Use of Var i: int, 0, 0  at row 82
+INFO  05:45:37,568 - Use of Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+ at row 82
+INFO  05:45:37,568 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 82
+INFO  05:45:37,568 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 82
+INFO  05:45:37,568 - Use of Fld p: Arr of char, 3, 1  at row 82
+INFO  05:45:37,570 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 83
+INFO  05:45:37,570 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 83
+INFO  05:45:37,570 - Use of Fld p: Arr of char, 3, 1  at row 83
+INFO  05:45:37,570 - Use of Var i: int, 0, 0  at row 83
+INFO  05:45:37,570 - Use of Var i: int, 0, 0  at row 84
+INFO  05:45:37,570 - Use of Con eol: char, 10, 0  at row 86
+INFO  05:45:37,570 - Use of Con izlaz: string, 0, 0  at row 88
+INFO  05:45:37,570 - Use of Var r1: Class, 0, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 89
+INFO  05:45:37,572 - Use of Fld godinaRodjenja: int, 2, 1  at row 89
+INFO  05:45:37,572 - Use of Var r1: Class, 0, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 90
+INFO  05:45:37,572 - Use of Fld godinaRodjenja: int, 2, 1  at row 90
+INFO  05:45:37,572 - Use of Meth stampaj: notype, 701, 1 
+   Var s: string, 0, 1 
+ at row 91
+INFO  05:45:37,572 - Use of Var pe: Class, 3, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Meth postaviIme: notype, 335, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 91
+INFO  05:45:37,572 - Use of Fld ime: string, 1, 1  at row 91
+INFO  05:45:37,572 - Use of Meth stampaj: notype, 701, 1 
+   Var s: string, 0, 1 
+ at row 93
+INFO  05:45:37,572 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 93
+INFO  05:45:37,572 - Use of Fld ime: string, 1, 1  at row 93
+INFO  05:45:37,572 - Use of Var r2: Class, 1, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 95
+INFO  05:45:37,574 - Use of Fld godinaRodjenja: int, 2, 1  at row 95
+INFO  05:45:37,574 - Use of Var r2: Class, 1, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 96
+INFO  05:45:37,574 - Use of Meth stampajGodinu: notype, 317, 1 
+   Var this: this pointer
+ at row 96
+INFO  05:45:37,574 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 98
+INFO  05:45:37,574 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 98
+INFO  05:45:37,574 - Use of Fld godinaRodjenja: int, 2, 1  at row 98
+INFO  05:45:37,574 - Use of Var ps: Class, 4, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Fld z: Arr of char, 4, 1 
+     Fld pomocnik: Class, 5, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+     Meth postaviIme: notype, 407, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 99
+INFO  05:45:37,574 - Use of Fld pomocnik: Class, 5, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld godinaRodjenja: int, 2, 1 
+     Fld p: Arr of char, 3, 1 
+     Meth postaviIme: notype, 307, 2 
+      Var this: this pointer
+      Var ime: string, 1, 1 
+     Meth stampajGodinu: notype, 317, 1 
+      Var this: this pointer
+   ] at row 99
+INFO  05:45:37,574 - Use of Meth stampajGodinu: notype, 317, 1 
+   Var this: this pointer
+ at row 99
+INFO  05:45:37,576 - =======================SYNTAX ANALYSIS=======================
+INFO  05:45:37,576 - Global constants = 1
+INFO  05:45:37,576 - Global variables = 1
+INFO  05:45:37,576 - Global arrays = 0
+INFO  05:45:37,576 - Local variables in main = 5
+INFO  05:45:37,576 - Global functions = 2
+INFO  05:45:37,576 - Formal parameters = 6
+INFO  05:45:37,576 - Function calls in main = 16
+INFO  05:45:37,576 - Statement blocks = 8
+INFO  05:45:37,576 - Classes = 3
+INFO  05:45:37,576 - Class attributes = 5
+INFO  05:45:37,576 - Methods = 4
+INFO  05:45:37,576 - Parsing SUCCESSFUL!
+INFO  05:45:37,578 - =====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: char, 10, 0 
+Con null: Class, 0, 0
+   [
+   ]
+Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+
+Meth ord: int, 12, 1 
+   Var ch: char, 0, 1 
+
+Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: bool, -1, -1 
+Type string: string, -1, -1 
+Meth prints: notype, 31, 2 
+   Var str: string, 0, 0 
+   Var len: int, 1, 0 
+   Var i: int, 2, 0 
+
+Meth reads: string, 64, 0 
+   Var i: int, 0, 0 
+   Var len: int, 1, 0 
+   Var c: char, 2, 0 
+   Var res: string, 3, 0 
+
+Meth cmpStr: int, 134, 4 
+   Var arr1: string, 0, 0 
+   Var arr2: string, 1, 0 
+   Var len1: int, 2, 0 
+   Var len2: int, 3, 0 
+   Var i: bool, 4, 0 
+
+Meth concat: string, 207, 4 
+   Var str1: string, 0, 0 
+   Var len1: int, 1, 0 
+   Var str2: string, 2, 0 
+   Var len2: int, 3, 0 
+   Var res: string, 4, 0 
+   Var i: int, 5, 0 
+   Var j: int, 6, 0 
+   Var len3: int, 7, 0 
+
+Meth dummy: notype, 300, 2 
+   Var adr: int, 0, 0 
+   Var par: int, 1, 0 
+
+Prog test303: notype, 0, 1 
+   Type Radnik: Class, 1, 0
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Meth postaviIme: notype, 307, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+   Type Pekar: Class, 29, 0
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Fld z: Arr of char, 4, 1 
+        Meth postaviIme: notype, 335, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+   Type Poslasticar: Class, 57, 0
+      [
+        Fld ime: string, 1, 1 
+        Fld godinaRodjenja: int, 2, 1 
+        Fld p: Arr of char, 3, 1 
+        Fld z: Arr of char, 4, 1 
+        Fld pomocnik: Class, 5, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld godinaRodjenja: int, 2, 1 
+           Fld p: Arr of char, 3, 1 
+           Meth postaviIme: notype, 307, 2 
+            Var this: this pointer
+            Var ime: string, 1, 1 
+           Meth stampajGodinu: notype, 317, 1 
+            Var this: this pointer
+         ]
+        Meth postaviIme: notype, 407, 2 
+         Var this: this pointer
+         Var ime: string, 1, 1 
+        Meth stampajGodinu: notype, 317, 1 
+         Var this: this pointer
+      ]
+   Con izlaz: string, 0, 0 
+   Var i: int, 0, 0 
+   Meth uporedi: string, 551, 2 
+      Var a: string, 0, 1 
+      Var b: string, 1, 1 
+
+   Meth stampaj: notype, 701, 1 
+      Var s: string, 0, 1 
+
+   Meth main: notype, 719, 0 
+      Var r1: Class, 0, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld godinaRodjenja: int, 2, 1 
+           Fld p: Arr of char, 3, 1 
+           Meth postaviIme: notype, 307, 2 
+            Var this: this pointer
+            Var ime: string, 1, 1 
+           Meth stampajGodinu: notype, 317, 1 
+            Var this: this pointer
+         ]
+      Var r2: Class, 1, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld godinaRodjenja: int, 2, 1 
+           Fld p: Arr of char, 3, 1 
+           Meth postaviIme: notype, 307, 2 
+            Var this: this pointer
+            Var ime: string, 1, 1 
+           Meth stampajGodinu: notype, 317, 1 
+            Var this: this pointer
+         ]
+      Var r3: Class, 2, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld godinaRodjenja: int, 2, 1 
+           Fld p: Arr of char, 3, 1 
+           Meth postaviIme: notype, 307, 2 
+            Var this: this pointer
+            Var ime: string, 1, 1 
+           Meth stampajGodinu: notype, 317, 1 
+            Var this: this pointer
+         ]
+      Var pe: Class, 3, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld godinaRodjenja: int, 2, 1 
+           Fld p: Arr of char, 3, 1 
+           Fld z: Arr of char, 4, 1 
+           Meth postaviIme: notype, 335, 2 
+            Var this: this pointer
+            Var ime: string, 1, 1 
+           Meth stampajGodinu: notype, 317, 1 
+            Var this: this pointer
+         ]
+      Var ps: Class, 4, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld godinaRodjenja: int, 2, 1 
+           Fld p: Arr of char, 3, 1 
+           Fld z: Arr of char, 4, 1 
+           Fld pomocnik: Class, 5, 1
+            [
+              Fld ime: string, 1, 1 
+              Fld godinaRodjenja: int, 2, 1 
+              Fld p: Arr of char, 3, 1 
+              Meth postaviIme: notype, 307, 2 
+               Var this: this pointer
+               Var ime: string, 1, 1 
+              Meth stampajGodinu: notype, 317, 1 
+               Var this: this pointer
+            ]
+           Meth postaviIme: notype, 407, 2 
+            Var this: this pointer
+            Var ime: string, 1, 1 
+           Meth stampajGodinu: notype, 317, 1 
+            Var this: this pointer
+         ]
+      Con : int, 1980, 1 
+
+
+

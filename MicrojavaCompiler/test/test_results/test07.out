@@ -1,0 +1,394 @@
+INFO  05:44:30,845 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test07.mj
+INFO  05:44:30,871 - PARSING the program 'Geometrija' at row 4
+INFO  05:44:30,871 - Constant 'PI' declaration at row 5
+INFO  05:44:30,873 - Global variable 'rezultati' declaration at row 6
+INFO  05:44:30,873 - Global variable 'c' declaration at row 7
+INFO  05:44:30,873 - Class 'kvadrat' definition at row 9
+INFO  05:44:30,873 - Class attribute 'ime' declaration at row 11
+INFO  05:44:30,873 - Class attribute 'a' declaration at row 12
+INFO  05:44:30,873 - Class attribute 'b' declaration at row 13
+INFO  05:44:30,875 - Function 'povrsina' definition at row 16
+INFO  05:44:30,875 - Local variable 'p' declaration at row 17
+INFO  05:44:30,875 - Use of Var p: int, 1, 1  at row 19
+INFO  05:44:30,877 - Use of Fld a: int, 2, 1  at row 19
+INFO  05:44:30,877 - Use of Fld b: int, 3, 1  at row 19
+INFO  05:44:30,877 - Use of Var p: int, 1, 1  at row 20
+INFO  05:44:30,877 - Function 'setA' definition at row 23
+INFO  05:44:30,877 - Use of Fld a: int, 2, 1  at row 25
+INFO  05:44:30,877 - Function 'setB' definition at row 28
+INFO  05:44:30,877 - Use of Fld b: int, 3, 1  at row 30
+INFO  05:44:30,877 - Function 'setIme' definition at row 33
+INFO  05:44:30,879 - Use of Fld ime: string, 1, 1  at row 35
+INFO  05:44:30,879 - Global variable 'kvad' declaration at row 41
+INFO  05:44:30,879 - Function 'obim' definition at row 45
+INFO  05:44:30,879 - Formal parameter 'x' declaration at row 45
+INFO  05:44:30,879 - Formal parameter 'y' declaration at row 45
+INFO  05:44:30,879 - Local variable 'rez' declaration at row 46
+INFO  05:44:30,879 - Use of Var rez: int, 2, 1  at row 48
+INFO  05:44:30,879 - Use of Var x: int, 0, 1  at row 48
+INFO  05:44:30,879 - Use of Var y: int, 1, 1  at row 48
+INFO  05:44:30,881 - Use of Var rez: int, 2, 1  at row 49
+INFO  05:44:30,881 - Function 'obim2' definition at row 52
+INFO  05:44:30,881 - Formal parameter 'k' declaration at row 52
+INFO  05:44:30,881 - Local variable 'rez' declaration at row 53
+INFO  05:44:30,881 - Local variable 'pom' declaration at row 54
+INFO  05:44:30,881 - Use of Var pom: Class, 2, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 56
+INFO  05:44:30,881 - Use of Var k: Class, 0, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 56
+INFO  05:44:30,883 - Use of Var rez: int, 1, 1  at row 57
+INFO  05:44:30,883 - Use of Var pom: Class, 2, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 57
+INFO  05:44:30,883 - Use of Fld b: int, 3, 1  at row 57
+INFO  05:44:30,883 - Use of Var pom: Class, 2, 1
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 57
+INFO  05:44:30,883 - Use of Fld a: int, 2, 1  at row 57
+INFO  05:44:30,883 - Use of Var rez: int, 1, 1  at row 58
+INFO  05:44:30,885 - Function 'racunaj' definition at row 62
+INFO  05:44:30,885 - Local variable 'x' declaration at row 63
+INFO  05:44:30,885 - Local variable 'i' declaration at row 64
+INFO  05:44:30,885 - Use of Var x: int, 0, 1  at row 66
+INFO  05:44:30,885 - Use of Var x: int, 0, 1  at row 67
+INFO  05:44:30,885 - Function 'saberi' definition at row 70
+INFO  05:44:30,885 - Formal parameter 'b' declaration at row 70
+INFO  05:44:30,885 - Formal parameter 'c' declaration at row 70
+INFO  05:44:30,885 - Local variable 'r' declaration at row 71
+INFO  05:44:30,885 - Use of Var b: int, 0, 1  at row 73
+INFO  05:44:30,887 - Use of Var r: int, 2, 1  at row 73
+INFO  05:44:30,887 - Use of Var c: int, 1, 1  at row 73
+INFO  05:44:30,887 - Use of Var b: int, 0, 1  at row 74
+INFO  05:44:30,887 - Function 'prosledi' definition at row 76
+INFO  05:44:30,887 - Formal parameter 'f' declaration at row 76
+INFO  05:44:30,887 - Local variable 'g' declaration at row 77
+INFO  05:44:30,887 - Use of Var g: int, 1, 1  at row 79
+INFO  05:44:30,887 - Use of Var f: int, 0, 1  at row 79
+INFO  05:44:30,887 - Use of Var g: int, 1, 1  at row 80
+INFO  05:44:30,887 - Function 'stampaj' definition at row 83
+INFO  05:44:30,887 - Formal parameter 'r' declaration at row 83
+INFO  05:44:30,889 - Use of Var r: char, 0, 1  at row 85
+INFO  05:44:30,889 - Function 'main' definition at row 88
+INFO  05:44:30,891 - Use of Var rezultati: Arr of int, 0, 0  at row 91
+INFO  05:44:30,891 - Use of Var kvad: Class, 2, 0
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 92
+INFO  05:44:30,893 - Use of Meth setA: notype, 323, 1 
+   Var this: this pointer
+ at row 92
+INFO  05:44:30,893 - Use of Var kvad: Class, 2, 0
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 93
+INFO  05:44:30,893 - Use of Meth setB: notype, 332, 1 
+   Var this: this pointer
+ at row 93
+INFO  05:44:30,895 - Use of Var rezultati: Arr of int, 0, 0  at row 94
+INFO  05:44:30,897 - Use of Var kvad: Class, 2, 0
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 94
+INFO  05:44:30,897 - Use of Meth povrsina: int, 307, 1 
+   Var this: this pointer
+   Var p: int, 1, 1 
+ at row 94
+INFO  05:44:30,897 - Use of Var rezultati: Arr of int, 0, 0  at row 95
+INFO  05:44:30,897 - Use of Meth obim2: int, 368, 1 
+   Var k: Class, 0, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld a: int, 2, 1 
+        Fld b: int, 3, 1 
+        Meth povrsina: int, 307, 1 
+         Var this: this pointer
+         Var p: int, 1, 1 
+        Meth setA: notype, 323, 1 
+         Var this: this pointer
+        Meth setB: notype, 332, 1 
+         Var this: this pointer
+        Meth setIme: notype, 341, 1 
+         Var this: this pointer
+      ]
+   Var rez: int, 1, 1 
+   Var pom: Class, 2, 1
+      [
+        Fld ime: string, 1, 1 
+        Fld a: int, 2, 1 
+        Fld b: int, 3, 1 
+        Meth povrsina: int, 307, 1 
+         Var this: this pointer
+         Var p: int, 1, 1 
+        Meth setA: notype, 323, 1 
+         Var this: this pointer
+        Meth setB: notype, 332, 1 
+         Var this: this pointer
+        Meth setIme: notype, 341, 1 
+         Var this: this pointer
+      ]
+   Con : int, 2, 1 
+ at row 95
+INFO  05:44:30,899 - Use of Var kvad: Class, 2, 0
+   [
+     Fld ime: string, 1, 1 
+     Fld a: int, 2, 1 
+     Fld b: int, 3, 1 
+     Meth povrsina: int, 307, 1 
+      Var this: this pointer
+      Var p: int, 1, 1 
+     Meth setA: notype, 323, 1 
+      Var this: this pointer
+     Meth setB: notype, 332, 1 
+      Var this: this pointer
+     Meth setIme: notype, 341, 1 
+      Var this: this pointer
+   ] at row 95
+INFO  05:44:30,899 - Use of Var c: int, 1, 0  at row 97
+INFO  05:44:30,899 - Use of Var c: int, 1, 0  at row 97
+INFO  05:44:30,899 - Use of Var c: int, 1, 0  at row 97
+INFO  05:44:30,899 - Use of Var c: int, 1, 0  at row 98
+INFO  05:44:30,899 - Use of Meth racunaj: int, 392, 0 
+   Var x: int, 0, 1 
+   Var i: Arr of char, 1, 1 
+ at row 98
+INFO  05:44:30,901 - =======================SYNTAX ANALYSIS=======================
+INFO  05:44:30,901 - Global constants = 1
+INFO  05:44:30,901 - Global variables = 2
+INFO  05:44:30,901 - Global arrays = 1
+INFO  05:44:30,901 - Local variables in main = 0
+INFO  05:44:30,901 - Global functions = 6
+INFO  05:44:30,901 - Formal parameters = 7
+INFO  05:44:30,901 - Function calls in main = 5
+INFO  05:44:30,901 - Statement blocks = 12
+INFO  05:44:30,901 - Classes = 1
+INFO  05:44:30,901 - Class attributes = 3
+INFO  05:44:30,901 - Methods = 4
+INFO  05:44:30,901 - Parsing SUCCESSFUL!
+INFO  05:44:30,903 - =====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: char, 10, 0 
+Con null: Class, 0, 0
+   [
+   ]
+Meth chr: char, 0, 1 
+   Var i: int, 0, 1 
+
+Meth ord: int, 12, 1 
+   Var ch: char, 0, 1 
+
+Meth len: int, 24, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: bool, -1, -1 
+Type string: string, -1, -1 
+Meth prints: notype, 31, 2 
+   Var str: string, 0, 0 
+   Var len: int, 1, 0 
+   Var i: int, 2, 0 
+
+Meth reads: string, 64, 0 
+   Var i: int, 0, 0 
+   Var len: int, 1, 0 
+   Var c: char, 2, 0 
+   Var res: string, 3, 0 
+
+Meth cmpStr: int, 134, 4 
+   Var arr1: string, 0, 0 
+   Var arr2: string, 1, 0 
+   Var len1: int, 2, 0 
+   Var len2: int, 3, 0 
+   Var i: bool, 4, 0 
+
+Meth concat: string, 207, 4 
+   Var str1: string, 0, 0 
+   Var len1: int, 1, 0 
+   Var str2: string, 2, 0 
+   Var len2: int, 3, 0 
+   Var res: string, 4, 0 
+   Var i: int, 5, 0 
+   Var j: int, 6, 0 
+   Var len3: int, 7, 0 
+
+Meth dummy: notype, 300, 2 
+   Var adr: int, 0, 0 
+   Var par: int, 1, 0 
+
+Prog Geometrija: notype, 0, 1 
+   Con PI: int, 3, 0 
+   Var rezultati: Arr of int, 0, 0 
+   Var c: int, 1, 0 
+   Type kvadrat: Class, 3, 0
+      [
+        Fld ime: string, 1, 1 
+        Fld a: int, 2, 1 
+        Fld b: int, 3, 1 
+        Meth povrsina: int, 307, 1 
+         Var this: this pointer
+         Var p: int, 1, 1 
+        Meth setA: notype, 323, 1 
+         Var this: this pointer
+        Meth setB: notype, 332, 1 
+         Var this: this pointer
+        Meth setIme: notype, 341, 1 
+         Var this: this pointer
+      ]
+   Var kvad: Class, 2, 0
+      [
+        Fld ime: string, 1, 1 
+        Fld a: int, 2, 1 
+        Fld b: int, 3, 1 
+        Meth povrsina: int, 307, 1 
+         Var this: this pointer
+         Var p: int, 1, 1 
+        Meth setA: notype, 323, 1 
+         Var this: this pointer
+        Meth setB: notype, 332, 1 
+         Var this: this pointer
+        Meth setIme: notype, 341, 1 
+         Var this: this pointer
+      ]
+   Meth obim: int, 352, 2 
+      Var x: int, 0, 1 
+      Var y: int, 1, 1 
+      Var rez: int, 2, 1 
+      Con : int, 2, 1 
+
+   Meth obim2: int, 368, 1 
+      Var k: Class, 0, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld a: int, 2, 1 
+           Fld b: int, 3, 1 
+           Meth povrsina: int, 307, 1 
+            Var this: this pointer
+            Var p: int, 1, 1 
+           Meth setA: notype, 323, 1 
+            Var this: this pointer
+           Meth setB: notype, 332, 1 
+            Var this: this pointer
+           Meth setIme: notype, 341, 1 
+            Var this: this pointer
+         ]
+      Var rez: int, 1, 1 
+      Var pom: Class, 2, 1
+         [
+           Fld ime: string, 1, 1 
+           Fld a: int, 2, 1 
+           Fld b: int, 3, 1 
+           Meth povrsina: int, 307, 1 
+            Var this: this pointer
+            Var p: int, 1, 1 
+           Meth setA: notype, 323, 1 
+            Var this: this pointer
+           Meth setB: notype, 332, 1 
+            Var this: this pointer
+           Meth setIme: notype, 341, 1 
+            Var this: this pointer
+         ]
+      Con : int, 2, 1 
+
+   Meth racunaj: int, 392, 0 
+      Var x: int, 0, 1 
+      Var i: Arr of char, 1, 1 
+
+   Meth saberi: int, 402, 2 
+      Var b: int, 0, 1 
+      Var c: int, 1, 1 
+      Var r: int, 2, 1 
+
+   Meth prosledi: int, 414, 1 
+      Var f: int, 0, 1 
+      Var g: int, 1, 1 
+
+   Meth stampaj: notype, 424, 1 
+      Var r: char, 0, 1 
+
+   Meth main: notype, 432, 0 
+      Con : int, 0, 1 
+
+
+

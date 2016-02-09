@@ -1,0 +1,22 @@
+INFO  05:57:37,692 - Compiling source file: B:\STUDIJE\CETVRTA GODINA\sedmi semestar\PP\projekat\workspace\MicrojavaCompiler\test\test_files\test02.mj
+INFO  05:57:37,718 - PARSING the program 'MaxCifra' at row 3
+DEBUG 05:57:37,720 - Successful error recovery - constant definition
+INFO  05:57:37,720 - Global variable 'a' declaration at row 6
+INFO  05:57:37,720 - Global variable 'c' declaration at row 6
+INFO  05:57:37,720 - Global variable 'maxcif' declaration at row 6
+DEBUG 05:57:37,720 - Successful error recovery - global variable definition
+INFO  05:57:37,722 - Function 'main' definition at row 10
+INFO  05:57:37,722 - Local variable 'a' declaration at row 10
+DEBUG 05:57:37,722 - Successful error recovery - local variable definition
+INFO  05:57:37,724 - Use of Var a: char, 0, 1  at row 11
+INFO  05:57:37,724 - Use of Var maxcif: int, 2, 0  at row 12
+INFO  05:57:37,724 - Use of Var a: char, 0, 1  at row 13
+INFO  05:57:37,724 - Use of Var c: int, 1, 0  at row 14
+INFO  05:57:37,724 - Use of Var a: char, 0, 1  at row 14
+INFO  05:57:37,724 - Use of Var maxcif: int, 2, 0  at row 15
+DEBUG 05:57:37,726 - Successful error recovery - condition of an if/while construction
+INFO  05:57:37,726 - Use of Var maxcif: int, 2, 0  at row 16
+INFO  05:57:37,726 - Use of Var c: int, 1, 0  at row 16
+INFO  05:57:37,726 - Use of Var a: char, 0, 1  at row 17
+INFO  05:57:37,726 - Use of Var a: char, 0, 1  at row 17
+INFO  05:57:37,728 - =======================SYNTAX ANALYSIS=======================
